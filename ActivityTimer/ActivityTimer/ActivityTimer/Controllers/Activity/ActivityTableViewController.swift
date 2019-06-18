@@ -41,11 +41,7 @@ class ActivityTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            os_log("Could not fetch appdelegate", log: ActivityTableViewController.osLogName, type: .error)
-            
-            fatalError("Could not fetch appdelegate")
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext
         )

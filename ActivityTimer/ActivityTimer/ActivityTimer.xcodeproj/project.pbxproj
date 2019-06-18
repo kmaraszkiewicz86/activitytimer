@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
+		1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCA229C01E500B5C258 /* ActivityTimer.xcdatamodeld */; };
 		1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
 		1F77B71922AC7DAA00EAE381 /* WCSessionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */; };
@@ -32,6 +34,10 @@
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
 		1FDDA88322B05F2B00646E66 /* libIOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDDA84322B05D5C00646E66 /* libIOSShared.a */; };
 		1FE10C5E22B1B2FF00C4CDEE /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
+		1FE5396722B6DCE4008DC81A /* NSKeyedUnarchiverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5396622B6DCE4008DC81A /* NSKeyedUnarchiverMock.swift */; };
+		1FE5396922B6DD43008DC81A /* NSKeyedUnarchiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5396822B6DD43008DC81A /* NSKeyedUnarchiverTests.swift */; };
+		1FEB273922B993DB001EA5F7 /* libIOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDDA84322B05D5C00646E66 /* libIOSShared.a */; };
+		1FEB273A22B993DF001EA5F7 /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +104,13 @@
 			remoteGlobalIDString = 1FE10C4A22B1B1EA00C4CDEE;
 			remoteInfo = WatchOSShared;
 		};
+		1FE5394922B63DB7008DC81A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FA2734822B2F9A300DB5B24;
+			remoteInfo = WatchOSSharedTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -158,6 +171,8 @@
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
 		1FDDA83E22B05D5B00646E66 /* IOSShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IOSShared.xcodeproj; path = IOSShared/IOSShared.xcodeproj; sourceTree = "<group>"; };
 		1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatchOSShared.xcodeproj; path = WatchOSShared/WatchOSShared.xcodeproj; sourceTree = "<group>"; };
+		1FE5396622B6DCE4008DC81A /* NSKeyedUnarchiverMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverMock.swift; sourceTree = "<group>"; };
+		1FE5396822B6DD43008DC81A /* NSKeyedUnarchiverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +195,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FEB273A22B993DF001EA5F7 /* libWatchOSShared.a in Frameworks */,
+				1FEB273922B993DB001EA5F7 /* libIOSShared.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,13 +217,6 @@
 				1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1F7F2F7622AD66A4001650B2 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		1F9A099622974A9A00C1C3DA = {
@@ -254,7 +264,8 @@
 		1F9A09B622974A9D00C1C3DA /* ActivityTimerTests */ = {
 			isa = PBXGroup;
 			children = (
-				1F7F2F7622AD66A4001650B2 /* Mocks */,
+				1FE5396822B6DD43008DC81A /* NSKeyedUnarchiverTests.swift */,
+				1FE5396522B6DCA5008DC81A /* Mocks */,
 				1F9A09B722974A9D00C1C3DA /* ActivityTimerTests.swift */,
 				1F9A09B922974A9D00C1C3DA /* Info.plist */,
 				1F77B71822AC7DAA00EAE381 /* WCSessionExtensionTests.swift */,
@@ -348,8 +359,17 @@
 			isa = PBXGroup;
 			children = (
 				1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */,
+				1FE5394A22B63DB7008DC81A /* WatchOSSharedTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1FE5396522B6DCA5008DC81A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				1FE5396622B6DCE4008DC81A /* NSKeyedUnarchiverMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,6 +551,13 @@
 			remoteRef = 1FE10C5922B1B1EB00C4CDEE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		1FE5394A22B63DB7008DC81A /* WatchOSSharedTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WatchOSSharedTests.xctest;
+			remoteRef = 1FE5394922B63DB7008DC81A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -594,7 +621,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE5396922B6DD43008DC81A /* NSKeyedUnarchiverTests.swift in Sources */,
 				1F77B71922AC7DAA00EAE381 /* WCSessionExtensionTests.swift in Sources */,
+				1FE5396722B6DCE4008DC81A /* NSKeyedUnarchiverMock.swift in Sources */,
+				1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */,
 				1F9A09B822974A9D00C1C3DA /* ActivityTimerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +636,7 @@
 				1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 				1F9A09C322974A9D00C1C3DA /* ActivityTimerUITests.swift in Sources */,
 				1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */,
+				1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */,
 				1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

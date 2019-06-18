@@ -9,16 +9,36 @@
 import os.log
 import UIKit
 
+public protocol NSKeyedArchiverProtocol {
+    var error: Error? { get }
+    
+    var encodedData: Data { get }
+    
+    func encode(_ object: Any?, forKey key: String)
+}
+
+extension NSKeyedArchiver: NSKeyedArchiverProtocol {
+    
+}
+
 ///The NSKeyedArchiver extension
 public extension NSKeyedArchiver {
 
+    static var nsKeyedArchiver: NSKeyedArchiverProtocol? = nil
+    
     ///Encodes activity
     /// - parameter object: The object to encode
     /// - parameter forKey: The name of hashed key
     /// - returns: The Data
     static func encodeActivity(_ object: Any?, forKey: String) -> Data {
         
-        let archiver = NSKeyedArchiver(requiringSecureCoding: false)
+        let archiver: NSKeyedArchiverProtocol
+        
+        if NSKeyedArchiver.nsKeyedArchiver == nil {
+            archiver = NSKeyedArchiver(requiringSecureCoding: false)
+        } else {
+            archiver = NSKeyedArchiver.nsKeyedArchiver!
+        }
         
         archiver.encode(object, forKey: forKey)
         
