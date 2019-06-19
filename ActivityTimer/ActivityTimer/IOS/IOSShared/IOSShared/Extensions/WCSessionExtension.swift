@@ -10,19 +10,38 @@ import os.log
 import WatchConnectivity
 
 public protocol WCSessionProtocol {
-    static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void)
+    var isWatchAppInstalled: Bool { get }
+    var isReachable: Bool { get }
+    var isPaired: Bool { get }
+    
+    var isSupported: Bool { get }
+    
+    func sendMessageData(_ data: Data, replyHandler: ((Data) -> Void)?, errorHandler: ((Error) -> Void)?)
+}
+
+extension WCSession : WCSessionProtocol {
+    
+    public var isSupported: Bool {
+        return WCSession.isSupported()
+    }
+    
 }
 
 ///WCSession extension class
-extension WCSession: WCSessionProtocol {
+extension WCSession {
+    
+    public static var session: WCSessionProtocol?
+    
+    private static var isSupported: Bool {
+        return session == nil ? WCSession.isSupported() : session!.isSupported
+    }
     
     ///Create new IOS instance of watch kit session
     /// - parameter session: Session of watchkit
     /// - parameter sessionAction: Session run if session is in valid status
     /// - parameter onError: Action run if session has invalid state
-    public static func initIOSSession(session: WCSession?, sessionAction: (WCSession) -> Void) {
-        
-        let isSupported = WCSession.isSupported()
+    public static func initIOSSession(session: WCSessionProtocol?, sessionAction: (WCSessionProtocol) -> Void)
+    {
         let isReachable = session?.isReachable ?? false
         let isWatchAppInstalled = session?.isWatchAppInstalled ?? false
         let isPaired = session?.isPaired ?? false
