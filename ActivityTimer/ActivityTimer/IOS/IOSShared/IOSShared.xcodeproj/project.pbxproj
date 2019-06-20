@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F574E4122BC2A9E0067F17E /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E4022BC2A9E0067F17E /* NSCoder.swift */; };
 		1FDDA87322B05EDC00646E66 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86222B05EDB00646E66 /* ActivityService.swift */; };
 		1FDDA87522B05EDC00646E66 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86522B05EDB00646E66 /* ServiceError.swift */; };
 		1FDDA87622B05EDC00646E66 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA86622B05EDB00646E66 /* ActivityOperationTypeError.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F574E4022BC2A9E0067F17E /* NSCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoder.swift; sourceTree = "<group>"; };
 		1FDDA83422B05D5B00646E66 /* libIOSShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIOSShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FDDA86222B05EDB00646E66 /* ActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityService.swift; sourceTree = "<group>"; };
 		1FDDA86522B05EDB00646E66 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				1FDDA86F22B05EDC00646E66 /* NSKeyedArchiverExtension.swift */,
 				1FDDA87122B05EDC00646E66 /* NSManagedObjectArrayExtension.swift */,
 				1FDDA87222B05EDC00646E66 /* OSLogExtension.swift */,
+				1F574E4022BC2A9E0067F17E /* NSCoder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				1FDDA87B22B05EDC00646E66 /* WCSessionExtension.swift in Sources */,
 				1FDDA87522B05EDC00646E66 /* ServiceError.swift in Sources */,
 				1FDDA87C22B05EDC00646E66 /* NSKeyedArchiverExtension.swift in Sources */,
+				1F574E4122BC2A9E0067F17E /* NSCoder.swift in Sources */,
 				1FDDA87322B05EDC00646E66 /* ActivityService.swift in Sources */,
 				1FDDA87F22B05EDC00646E66 /* OSLogExtension.swift in Sources */,
 				1FDDA87722B05EDC00646E66 /* ActivityOperationType.swift in Sources */,

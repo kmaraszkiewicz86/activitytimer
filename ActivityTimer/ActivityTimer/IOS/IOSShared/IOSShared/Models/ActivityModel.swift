@@ -15,6 +15,8 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     ///Is supported security coding
     public static var supportsSecureCoding = true
     
+    private static var nsCoder: NSCoderProtocol?
+    
     ///Class properties names for NSKeyedArchiver or NSKeyedUnarchived classes
     struct Keys {
         static let idKeyName = "id"
@@ -33,10 +35,13 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     
     ///Initialize data for NSCoding decode
     required convenience public init(coder deCoder: NSCoder) {
-        
-        let id = deCoder.decodeObject(forKey: Keys.idKeyName) as? URL
-        let name = deCoder.decodeObject(forKey: Keys.nameKeyName) as! String
-        let operationTypeInt = deCoder.decodeObject(forKey: Keys.operationTypeKeyName) as? Int
+        self.init(coderMock: deCoder)
+    }
+    
+    public convenience init(coderMock deCoderMock: NSCoderProtocol) {
+        let id = deCoderMock.decodeObject(forKey: Keys.idKeyName) as? URL
+        let name = deCoderMock.decodeObject(forKey: Keys.nameKeyName) as! String
+        let operationTypeInt = deCoderMock.decodeObject(forKey: Keys.operationTypeKeyName) as? Int
         
         self.init(id: id, name: name, operationTypeInt: operationTypeInt)
     }
@@ -67,12 +72,20 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.name = name
     }
     
+    public func encode(withMock aCoderMock: NSCoderProtocol) {
+        self.encode(with: aCoderMock as! NSCoder)
+    }
+    
     ///encode data
     /// - parameter aCoder: NSCoder object
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.id, forKey: Keys.idKeyName)
         aCoder.encode(self.name, forKey: Keys.nameKeyName)
         aCoder.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)
+    }
+    
+    public func encodeMock(with aCoder: NSCoder) {
+        
     }
     
     ///Convert ActivityOperationType to integer
