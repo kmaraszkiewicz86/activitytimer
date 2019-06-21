@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
+		1F300FAA22BCFCD7007858E3 /* ActivityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F300FA922BCFCD7007858E3 /* ActivityServiceTests.swift */; };
 		1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCA229C01E500B5C258 /* ActivityTimer.xcdatamodeld */; };
 		1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
 		1F574E3722BC233E0067F17E /* NSManagedObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3522BC233E0067F17E /* NSManagedObjectTests.swift */; };
@@ -20,7 +21,6 @@
 		1F9A09A822974A9A00C1C3DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A622974A9A00C1C3DA /* Main.storyboard */; };
 		1F9A09AA22974A9D00C1C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A922974A9D00C1C3DA /* Assets.xcassets */; };
 		1F9A09AD22974A9D00C1C3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09AB22974A9D00C1C3DA /* LaunchScreen.storyboard */; };
-		1F9A09B822974A9D00C1C3DA /* ActivityTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09B722974A9D00C1C3DA /* ActivityTimerTests.swift */; };
 		1F9A09C322974A9D00C1C3DA /* ActivityTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09C222974A9D00C1C3DA /* ActivityTimerUITests.swift */; };
 		1F9A09C822974A9D00C1C3DA /* ActivityTimer WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1F9A09C722974A9D00C1C3DA /* ActivityTimer WatchKit App.app */; };
 		1F9A09CE22974A9D00C1C3DA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09CC22974A9D00C1C3DA /* Interface.storyboard */; };
@@ -40,6 +40,9 @@
 		1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
 		1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
+		1FB8D1D022BCE3E400B40474 /* libIOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDDA84322B05D5C00646E66 /* libIOSShared.a */; };
+		1FB8D1D222BCE3E900B40474 /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
+		1FB8D1D522BCFBD200B40474 /* ActivityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB8D1D422BCFBD200B40474 /* ActivityServiceTests.swift */; };
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
 		1FDDA88322B05F2B00646E66 /* libIOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDDA84322B05D5C00646E66 /* libIOSShared.a */; };
 		1FE10C5E22B1B2FF00C4CDEE /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
@@ -146,6 +149,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F300FA922BCFCD7007858E3 /* ActivityServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityServiceTests.swift; sourceTree = "<group>"; };
 		1F510FCB229C01E500B5C258 /* ActivityTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityTimer.xcdatamodel; sourceTree = "<group>"; };
 		1F574E2D22BC22A40067F17E /* ActivityModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModelTests.swift; sourceTree = "<group>"; };
 		1F574E2F22BC22A40067F17E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,7 +165,6 @@
 		1F9A09AC22974A9D00C1C3DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F9A09AE22974A9D00C1C3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9A09B322974A9D00C1C3DA /* ActivityTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActivityTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9A09B722974A9D00C1C3DA /* ActivityTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTimerTests.swift; sourceTree = "<group>"; };
 		1F9A09B922974A9D00C1C3DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F9A09BE22974A9D00C1C3DA /* ActivityTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActivityTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9A09C222974A9D00C1C3DA /* ActivityTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTimerUITests.swift; sourceTree = "<group>"; };
@@ -185,6 +188,7 @@
 		1FB6AC382298784E001B7576 /* ActivityTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActivityTimer.entitlements; sourceTree = "<group>"; };
 		1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		1FB8D1D422BCFBD200B40474 /* ActivityServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityServiceTests.swift; path = ActivityTimerTests/IOS/IOSShared/IOSShared/Services/ActivityServiceTests.swift; sourceTree = SOURCE_ROOT; };
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
 		1FDDA83E22B05D5B00646E66 /* IOSShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IOSShared.xcodeproj; path = IOSShared/IOSShared.xcodeproj; sourceTree = "<group>"; };
 		1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatchOSShared.xcodeproj; path = WatchOSShared/WatchOSShared.xcodeproj; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB8D1D222BCE3E900B40474 /* libWatchOSShared.a in Frameworks */,
+				1FB8D1D022BCE3E400B40474 /* libIOSShared.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +232,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F300FA822BCFCD7007858E3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F300FA922BCFCD7007858E3 /* ActivityServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1F510FDA229C88F700B5C258 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +260,7 @@
 		1F574E3922BC23BF0067F17E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1FB8D1D422BCFBD200B40474 /* ActivityServiceTests.swift */,
 				1F574E3C22BC24060067F17E /* ActivityModelTests.swift */,
 			);
 			path = Models;
@@ -300,7 +315,6 @@
 				1FB5C4D122BBDC4000E9E803 /* Managers */,
 				1F9EDA1122BACCA500AE7EDE /* IOS */,
 				1FE5396522B6DCA5008DC81A /* Mocks */,
-				1F9A09B722974A9D00C1C3DA /* ActivityTimerTests.swift */,
 				1F9A09B922974A9D00C1C3DA /* Info.plist */,
 			);
 			path = ActivityTimerTests;
@@ -358,6 +372,7 @@
 		1F9EDA1322BACCBC00AE7EDE /* IOSShared */ = {
 			isa = PBXGroup;
 			children = (
+				1F300FA822BCFCD7007858E3 /* Services */,
 				1F574E3922BC23BF0067F17E /* Models */,
 				1F9EDA1422BACCC800AE7EDE /* Extensions */,
 			);
@@ -714,11 +729,12 @@
 				1F574E3822BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift in Sources */,
 				1F9EDA1C22BACD7500AE7EDE /* WCSessionExtensionMock.swift in Sources */,
 				1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */,
-				1F9A09B822974A9D00C1C3DA /* ActivityTimerTests.swift in Sources */,
 				1F9EDA1D22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift in Sources */,
 				1F574E3722BC233E0067F17E /* NSManagedObjectTests.swift in Sources */,
 				1FB5C4D322BC038900E9E803 /* CoreDataManager.swift in Sources */,
 				1F574E3D22BC24060067F17E /* ActivityModelTests.swift in Sources */,
+				1FB8D1D522BCFBD200B40474 /* ActivityServiceTests.swift in Sources */,
+				1F300FAA22BCFCD7007858E3 /* ActivityServiceTests.swift in Sources */,
 				1F9EDA1922BACD6600AE7EDE /* WCSessionExtesionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

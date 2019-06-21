@@ -73,19 +73,15 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     }
     
     public func encode(withMock aCoderMock: NSCoderProtocol) {
-        self.encode(with: aCoderMock as! NSCoder)
+        aCoderMock.encode(self.id, forKey: Keys.idKeyName)
+        aCoderMock.encode(self.name, forKey: Keys.nameKeyName)
+        aCoderMock.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)
     }
     
     ///encode data
     /// - parameter aCoder: NSCoder object
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.id, forKey: Keys.idKeyName)
-        aCoder.encode(self.name, forKey: Keys.nameKeyName)
-        aCoder.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)
-    }
-    
-    public func encodeMock(with aCoder: NSCoder) {
-        
+        self.encode(withMock: aCoder)
     }
     
     ///Convert ActivityOperationType to integer

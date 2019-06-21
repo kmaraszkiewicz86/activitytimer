@@ -13,7 +13,7 @@ class NSCoderMock: NSCoderProtocol {
     
     var id: URL?
     var name: String?
-    var operationType: String?
+    var operationType: Int?
     
     func decodeObject(forKey key: String) -> Any? {
         switch key {
@@ -32,6 +32,21 @@ class NSCoderMock: NSCoderProtocol {
     }
     
     func encode(_ object: Any?, forKey key: String) {
-        
+        switch key {
+        case "id":
+            id = URL(string: String(describing: object ?? ""))
+            break
+            
+        case "name":
+            name = String(describing: object ?? "")
+            break
+            
+        case "operationType":
+            operationType = object as? Int ?? 0
+            break
+            
+        default:
+            fatalError("Key \(key) not implemented")
+        }
     }
 }
