@@ -19,7 +19,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/IOS/IOSShared/IOSShared/Services/ActivityService.swift"
-            timestampString = "583013813.76008"
+            timestampString = "583021319.545439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -35,7 +35,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/IOS/IOSShared/IOSShared/Services/ActivityService.swift"
-            timestampString = "583013815.053803"
+            timestampString = "583021319.545496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -51,13 +51,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/IOS/IOSShared/IOSShared/Services/ActivityService.swift"
-            timestampString = "583013856.28607"
+            timestampString = "583021319.545537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
             endingLineNumber = "134"
             landmarkName = "findByUrlId(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+            timestampString = "583021319.545578"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "fetch(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.NSManagedObjectContextMock.fetch&lt;A where A: __C.NSFetchRequestResult&gt;(__C.NSFetchRequest&lt;A&gt;) throws -&gt; Swift.Array&lt;A&gt;"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+                  timestampString = "583021320.252308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NSManagedObject) -&gt; A in ActivityTimerTests.NSManagedObjectContextMock.fetch&lt;A where A: __C.NSFetchRequestResult&gt;(__C.NSFetchRequest&lt;A&gt;) throws -&gt; Swift.Array&lt;A&gt;"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+                  timestampString = "583021320.259879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

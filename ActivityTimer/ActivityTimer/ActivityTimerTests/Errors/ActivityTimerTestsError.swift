@@ -7,5 +7,6 @@
 //
 
 enum ActivityTimerTestsError: Error {
+    case unitTestError
     case error
 }

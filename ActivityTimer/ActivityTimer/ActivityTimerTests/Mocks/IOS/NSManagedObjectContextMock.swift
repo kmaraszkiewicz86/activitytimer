@@ -24,7 +24,9 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     }
     
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] where T : NSFetchRequestResult {
-        return toNSManagedObjectArray() as! [T]
+        return toNSManagedObjectArray().map({ (managedObject) -> T in
+            return managedObject as! T
+        })
     }
     
     func save() throws {
@@ -37,13 +39,22 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     }
     
     func existingObject(with objectID: NSManagedObjectID) throws -> NSManagedObject {
-        return toNSManagedObject(activity: activities![activityIndex!])
+        if !(activities?.isEmpty ?? false) {
+            return toNSManagedObject(activity: activities![activityIndex!])
+        }
+        
+        throw ActivityTimerTestsError.error
     }
     
     public func toNSManagedObjectArray () -> [NSManagedObject] {
-        return self.activities!.map({ (activity) -> NSManagedObject in
-            return toNSManagedObject(activity: activity)
-        })
+        
+        if let activitiesTmp = activities, !activitiesTmp.isEmpty {
+            return activitiesTmp.map({ (activity) -> NSManagedObject in
+                return toNSManagedObject(activity: activity)
+            })
+        }
+        
+        return [NSManagedObject]()
     }
     
     public func toNSManagedObject(activity: ActivityModel) -> NSManagedObject {

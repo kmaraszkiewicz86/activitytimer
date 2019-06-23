@@ -12,15 +12,35 @@ import XCTest
 class ActivityServiceTests: XCTestCase {
 
     var sut: ActivityService!
-    var coreDataManager: CoreDataManger!
+    var managedObjectContextMock: NSManagedObjectContextMock!
     
     override func setUp() {
-        coreDataManager = CoreDataManger()
-        sut = ActivityService.shared(coreDataManager.mainContext)
+        managedObjectContextMock = NSManagedObjectContextMock()
+        sut = ActivityService.shared(managedObjectContextMock!.coreDataManager.mainContext)
     }
 
+    func test_getAll_databaseNotEmpty_ReturnNotNullData() throws {
+        
+        managedObjectContextMock.activities = [ActivityModel(name: "test1"),
+                                               ActivityModel(name: "test2"),
+                                               ActivityModel(name: "test3")]
+        do {
+            let activitiesFromDatabase = try sut.getAll()
+            
+            XCTAssertEqual(managedObjectContextMock.activities!.count, activitiesFromDatabase.count)
+            
+            for index in 0..<managedObjectContextMock.activities!.count {
+                XCTAssertEqual(managedObjectContextMock.activities![index].name, activitiesFromDatabase[index].name)
+            }
+            
+            
+        } catch {
+            throw ActivityTimerTestsError.unitTestError
+        }
+    }
+    
     override func tearDown() {
-        coreDataManager = nil
+        managedObjectContextMock = nil
         sut = nil
     }
 }
