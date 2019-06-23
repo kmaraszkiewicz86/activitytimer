@@ -20,18 +20,18 @@ public class ActivityService {
     private static let osLogName = OSLog.activityService
     
     ///The NSManagedObjectContext instance
-    private let managedObject: NSManagedObjectContext
+    private let managedObjectContext: NSManagedObjectContextProtocol
 
     ///The initializer of ActiveService instance
-    init(managedObject: NSManagedObjectContext) {
-        self.managedObject = managedObject
+    init(managedObjectContext: NSManagedObjectContextProtocol) {
+        self.managedObjectContext = managedObjectContext
     }
     
     ///The singlethon of ActivityService class
-    public static func shared(_ managedObject: NSManagedObjectContext) -> ActivityService {
+    public static func shared(_ managedObjectContext: NSManagedObjectContextProtocol) -> ActivityService {
     
         if ActivityService.sharedCommon == nil {
-            ActivityService.sharedCommon = ActivityService(managedObject: managedObject)
+            ActivityService.sharedCommon = ActivityService(managedObjectContext: managedObjectContext)
         }
     
         return ActivityService.sharedCommon!
@@ -45,7 +45,7 @@ public class ActivityService {
         
         do {
             
-            let activities = try managedObject.fetch(fetchPredicate)
+            let activities = try managedObjectContext.fetch(fetchPredicate)
             
             return activities.toActivityModel()
             
@@ -63,13 +63,13 @@ public class ActivityService {
     /// - returns: The ActivityModel array
     public func save(activityModel: ActivityModel) throws -> ActivityModel {
         
-        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedObject)!
-        let activity = NSManagedObject(entity: entity, insertInto: managedObject)
+        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedObjectContext as! NSManagedObjectContext)!
+        let activity = NSManagedObject(entity: entity, insertInto: managedObjectContext as? NSManagedObjectContext)
         
         activity.setValue(activityModel.name, forKey: "name")
         
         do {
-            try managedObject.save()
+            try managedObjectContext.save()
             
             return activity.toActivityModel()
         } catch let error as NSError {
@@ -91,7 +91,7 @@ public class ActivityService {
             
             activity.setValue(activityModel.name, forKey: "name")
             
-            try managedObject.save()
+            try managedObjectContext.save()
             
         } catch let error as NSError {
             os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
@@ -110,9 +110,9 @@ public class ActivityService {
     public func delete(activityModel: ActivityModel) throws {
         
         do {
-            managedObject.delete(try findByUrlId(activityModel.id))
+            managedObjectContext.delete(try findByUrlId(activityModel.id))
             
-            try managedObject.save()
+            try managedObjectContext.save()
             
         } catch let error as NSError {
             os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
@@ -131,7 +131,7 @@ public class ActivityService {
     private func findByUrlId (_ id: URL?) throws -> NSManagedObject {
         do {
             guard let id = id,
-                let objectID = managedObject.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: id) else {
+                let objectID = (managedObjectContext as! NSManagedObjectContext).persistentStoreCoordinator?.managedObjectID(forURIRepresentation: id) else {
                     
                     os_log("Error occours while tring to get object id from ActivityModel",
                            log: ActivityService.osLogName,
@@ -141,7 +141,7 @@ public class ActivityService {
                     
             }
             
-            return try managedObject.existingObject(with: objectID)
+            return try managedObjectContext.existingObject(with: objectID)
             
         } catch let error as NSError {
             os_log("Error occours while tring to fetch data from CoreData by object id. %{PUBLIC}@. %{PUBLIC}@",
