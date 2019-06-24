@@ -9,6 +9,7 @@
 import os.log
 import WatchConnectivity
 
+///Protocol used to mockig WCSession class for unit tests
 public protocol WCSessionProtocol {
     var isWatchAppInstalled: Bool { get }
     var isReachable: Bool { get }
@@ -19,6 +20,8 @@ public protocol WCSessionProtocol {
     func sendMessageData(_ data: Data, replyHandler: ((Data) -> Void)?, errorHandler: ((Error) -> Void)?)
 }
 
+
+// MARK: - WCSessionProtocol
 extension WCSession : WCSessionProtocol {
     
     public var isSupported: Bool {
@@ -27,16 +30,21 @@ extension WCSession : WCSessionProtocol {
     
 }
 
+
 ///WCSession extension class
 extension WCSession {
     
+    ///Property used to injection mocking class or WCSession for application running on iPhone
     public static var session: WCSessionProtocol?
     
+    
+    /// Get if session is supported
+    ///This property used for injection mocking isupported value or real value from WCSession, when app running on iPhone
     private static var isSupported: Bool {
         return session == nil ? WCSession.isSupported() : session!.isSupported
     }
     
-    ///Create new IOS instance of watch kit session
+    ///Check if iPhone can connect to watchOS app and to starting sending information to watchOS app
     /// - parameter session: Session of watchkit
     /// - parameter sessionAction: Session run if session is in valid status
     /// - parameter onError: Action run if session has invalid state

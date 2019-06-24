@@ -9,8 +9,10 @@
 import CoreData
 import Foundation
 
+///Extend NSManagedObject array to convert array of NSManagedObjects to array of ActivityModel objects
 public extension Array where Element: NSManagedObject{
     
+    ///Converts array of NSManagedObjects to array of ActivityModel objects
     func toActivityModel () -> [ActivityModel] {
         var activities = [ActivityModel]()
         

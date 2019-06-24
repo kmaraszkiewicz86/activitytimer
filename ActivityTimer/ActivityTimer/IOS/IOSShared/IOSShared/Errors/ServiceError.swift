@@ -6,9 +6,9 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-///The service error types
+///The service error types used to rise error in action service
 public enum ServiceError: Error {
     
-    ///The database error error
+    ///Database error could be rise wile using database service
     case databaseError
 }

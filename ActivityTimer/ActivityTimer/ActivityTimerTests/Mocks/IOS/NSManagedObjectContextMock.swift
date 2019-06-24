@@ -9,9 +9,14 @@
 import IOSShared
 import CoreData
 
+
+/// Mock class for NSManagedObjectContextMock for use it in unit tests
 class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     
+    /// The CoreDataManager helper to manage database mock
     let coreDataManager = CoreDataManger.shared
+    
+    ///The activities items provided from test scenario to injection it to mocking ActivityService class
     var activities: [ActivityModel]?
     var activityIndex: Int?
     var shouldThrowOnSave = false

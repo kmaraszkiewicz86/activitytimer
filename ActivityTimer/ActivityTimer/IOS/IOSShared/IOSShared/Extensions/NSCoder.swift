@@ -8,6 +8,7 @@
 
 import UIKit
 
+///Protocol used for mocking and use it in unit testing
 public protocol NSCoderProtocol {
     func decodeObject(forKey key: String) -> Any?
     func encode(_ object: Any?, forKey key: String)

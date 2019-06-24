@@ -8,6 +8,7 @@
 
 import CoreData
 
+///Protocol used for mocking and use it in unit testing
 public protocol NSManagedObjectContextProtocol {
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] where T : NSFetchRequestResult
     func save() throws
@@ -17,12 +18,4 @@ public protocol NSManagedObjectContextProtocol {
 
 public protocol NSEntityDescriptionProtocol {
     static func entity(forEntityName: String, in: NSManagedObjectContextProtocol)
-}
-
-public protocol NSPersistentStoreCoordinatorProtocol {
-    
-}
-
-extension NSManagedObjectContext: NSManagedObjectContextProtocol {
-    
 }

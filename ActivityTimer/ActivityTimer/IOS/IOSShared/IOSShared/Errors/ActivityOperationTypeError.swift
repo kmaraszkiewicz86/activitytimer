@@ -6,8 +6,8 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-///The ActivityOperationType errors type
+///The error used while using ActivityOperationType type
 public enum ActivityOperationTypeError: Error {
-    ///The invalid convert error
+    ///The error rise when convert failed
     case invalidConvertType
 }

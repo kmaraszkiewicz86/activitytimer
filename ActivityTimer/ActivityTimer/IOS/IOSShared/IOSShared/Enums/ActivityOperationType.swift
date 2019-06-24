@@ -6,14 +6,14 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-///Activity operation type to check what operation done.
+///Activity operation type to check what operation done on iphone and data is push to watchOS app.
 public enum ActivityOperationType {
-    ///The added activity action
+    ///The option for added operation on an activity, info about this will be push to watchOS app
     case added
     
-    ///The updated activity action
+    ///The option for updated operation on an activity, info about this will be push to watchOS app
     case updated
     
-    ///The deleted activity action
+    ///The option for deleted operation on an activity, info about this will be push to watchOS app
     case deleted
 }

@@ -15,6 +15,7 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     ///Is supported security coding
     public static var supportsSecureCoding = true
     
+    ///Used for dependency injection or to set up object for real envinronment
     private static var nsCoder: NSCoderProtocol?
     
     ///Class properties names for NSKeyedArchiver or NSKeyedUnarchived classes
@@ -24,7 +25,7 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         static let operationTypeKeyName = "operationType"
     }
     
-    //the activity identifier
+    //The activity identifier
     public var id: URL?
     
     ///The name of activity
@@ -38,6 +39,10 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.init(coderMock: deCoder)
     }
     
+    
+    /// Initialize object from NSKeyedUnarchiver object
+    ///
+    /// - Parameter deCoderMock: NSCoder protocol used to dependency injection data from mock class for unit testing or NSCoder class
     public convenience init(coderMock deCoderMock: NSCoderProtocol) {
         let id = deCoderMock.decodeObject(forKey: Keys.idKeyName) as? URL
         let name = deCoderMock.decodeObject(forKey: Keys.nameKeyName) as! String
@@ -46,20 +51,35 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.init(id: id, name: name, operationTypeInt: operationTypeInt)
     }
     
-    ///Initializer for shartness data of Activity
+    ///Initializer to create instance of class
+    ///
+    /// - Parameters:
+    ///   - id: The ActivityModel identifier
+    ///   - name: The name of ActivityModel
     public init(id: URL?, name: String) {
         self.id = id
         self.name = name
     }
     
-    ///Initilizer for full activity data with int operation type
+    /// Inilialize instrance of class
+    ///
+    /// - Parameters:
+    ///   - id: The ActivityModel identifier
+    ///   - name: The ActivityModel name
+    ///   - operationTypeInt: The Int type of operation that was processed
     convenience public init(id: URL?, name: String, operationTypeInt: Int?) {
         self.init(id: id, name: name)
         
         self.operationType = toActivityOperationType(type: operationTypeInt)
     }
     
-    ///Initializer for full Activity data for operation type of ActivityOperationType enum
+    
+    /// Inilialize instrance of class
+    ///
+    /// - Parameters:
+    ///   - id: The ActivityModel identifier
+    ///   - name: The ActivityModel name
+    ///   - operationTypeInt: The ActivityOperationType enum type of operation that was processed
     convenience public init(id: URL?, name: String, operationType: ActivityOperationType?) {
         self.init(id: id, name: name)
         
@@ -72,20 +92,24 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
         self.name = name
     }
     
+    
+    /// The method for encode data for NSKeyedArchiver class
+    ///
+    /// - Parameter aCoderMock: The protocol of dependecy injection of NSCoder used for unit testing or real data
     public func encode(withMock aCoderMock: NSCoderProtocol) {
         aCoderMock.encode(self.id, forKey: Keys.idKeyName)
         aCoderMock.encode(self.name, forKey: Keys.nameKeyName)
         aCoderMock.encode(toInt(type: self.operationType), forKey: Keys.operationTypeKeyName)
     }
     
-    ///encode data
+    ///The wrapper method for encoding data
     /// - parameter aCoder: NSCoder object
     public func encode(with aCoder: NSCoder) {
         self.encode(withMock: aCoder)
     }
     
     ///Convert ActivityOperationType to integer
-    ///- returns: The int value od ActivityOperationType
+    ///- returns: The int value of ActivityOperationType
     private func toInt (type: ActivityOperationType?) -> Int? {
         
         if let t = type {

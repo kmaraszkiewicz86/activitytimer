@@ -16,7 +16,7 @@ public class ActivityService {
     ///The singlethon of ActivityService class
     private static var sharedCommon: ActivityService?
     
-    ///The os_log name
+    ///The os_log type name
     private static let osLogName = OSLog.activityService
     
     ///The NSManagedObjectContext instance

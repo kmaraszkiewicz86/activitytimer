@@ -9,6 +9,7 @@
 import os.log
 import UIKit
 
+///Protocol used for mocking NSKeyedArchiver and use it in unit testing
 public protocol NSKeyedArchiverProtocol {
     var error: Error? { get }
     
@@ -17,16 +18,19 @@ public protocol NSKeyedArchiverProtocol {
     func encode(_ object: Any?, forKey key: String)
 }
 
+
+// MARK: - NSKeyedArchiverProtocol
 extension NSKeyedArchiver: NSKeyedArchiverProtocol {
     
 }
 
 ///The NSKeyedArchiver extension
 public extension NSKeyedArchiver {
-
+    
+    ///Property used to injection mocking class or use real data from NSKeyedArchiver class
     static var nsKeyedArchiver: NSKeyedArchiverProtocol? = nil
     
-    ///Encodes activity
+    ///Encodes ActivityModel object to Data object and send this data to push it to watchOS app
     /// - parameter object: The object to encode
     /// - parameter forKey: The name of hashed key
     /// - returns: The Data

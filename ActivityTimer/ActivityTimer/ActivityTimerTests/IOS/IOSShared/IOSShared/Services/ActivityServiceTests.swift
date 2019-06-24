@@ -19,6 +19,10 @@ class ActivityServiceTests: XCTestCase {
         sut = ActivityService.shared(managedObjectContextMock!.coreDataManager.mainContext)
     }
 
+    
+    /// Test scenario check if getAll method return proper values from db
+    ///
+    /// - Throws: unit test error
     func test_getAll_databaseNotEmpty_ReturnNotNullData() throws {
         
         managedObjectContextMock.activities = [ActivityModel(name: "test1"),

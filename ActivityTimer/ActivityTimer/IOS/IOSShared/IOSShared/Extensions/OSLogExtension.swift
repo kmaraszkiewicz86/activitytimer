@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-///The OSLog extension
+///The extension for helping categorize logs saved on diffrent file or classws
 public extension OSLog {
  
     ///The bundle indetifier
