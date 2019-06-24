@@ -11,20 +11,25 @@ import CoreData
 import XCTest
 import IOSShared
 
+///Unit tests for ios version of NSManagedObject array
 class NSManagedObjectArrayExtensionTests: XCTestCase {
 
+    ///Helper class, that create mock version of Core Data base classes
     var coreDataManager: CoreDataManger!
     
+    ///Set up required data
     override func setUp() {
         super.setUp()
         
         coreDataManager = CoreDataManger()
     }
 
+    ///Clean data after each test
     override func tearDown() {
         coreDataManager = nil
     }
     
+    ///Test valid version of data of toActivityModel method
     func test_toActivitiesModel_whenDataIsValid_ShouldreturnValidActivityItemss() {
         
         let activities: [ActivityModel] = [ActivityModel(name: "test1"), ActivityModel(name: "test2"), ActivityModel(name: "test3")]
@@ -47,6 +52,11 @@ class NSManagedObjectArrayExtensionTests: XCTestCase {
         }
     }
     
+    //MARK: helpers methods
+    ///Generate required objects for creating NSManagedObject object
+    ///
+    /// - Parameter activities: ActivityModel array that will be convert to NSManagedObject array
+    /// - Returns: NSManagedobject array
     private func generateNSManagedObjects(_ activities: [ActivityModel]) -> [NSManagedObject] {
         
         return activities.map({ (activityModel) -> NSManagedObject in

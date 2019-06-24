@@ -11,9 +11,13 @@ import XCTest
 
 class ActivityServiceTests: XCTestCase {
 
+    ///The subject under test
     var sut: ActivityService!
+    
+    ///The mock version of NSManagedObjectContext class
     var managedObjectContextMock: NSManagedObjectContextMock!
     
+    ///Set up required data
     override func setUp() {
         managedObjectContextMock = NSManagedObjectContextMock()
         sut = ActivityService.shared(managedObjectContextMock!.coreDataManager.mainContext)
@@ -43,6 +47,7 @@ class ActivityServiceTests: XCTestCase {
         }
     }
     
+    //Clean data after each test
     override func tearDown() {
         managedObjectContextMock = nil
         sut = nil

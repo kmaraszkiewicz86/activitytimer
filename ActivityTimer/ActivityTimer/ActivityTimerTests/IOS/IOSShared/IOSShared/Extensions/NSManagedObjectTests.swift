@@ -10,21 +10,27 @@ import CoreData
 import XCTest
 import IOSShared
 
+///Unit tests of NSManagedObject extension
 class NSManagedObjectTests: XCTestCase {
 
+    ///Helper class, that create mock version of Core Data base classes
     var coreDataManager: CoreDataManger!
     
+    ///Set up required data
     override func setUp() {
         super.setUp()
         
         coreDataManager = CoreDataManger()
     }
     
+    //Clean data after each test
     override func tearDown() {
         super.tearDown()
         coreDataManager = nil
     }
 
+    
+    /// test toactivityModel method with valid data should return valid data
     func test_toActivityModel_shouldGenerateValidModel () {
         
         //Given
@@ -39,6 +45,12 @@ class NSManagedObjectTests: XCTestCase {
         XCTAssertEqual(activity.name, activityFromModel.name)
     }
     
+    //MARK: helper methods
+    
+    /// Generate required objects for creating NSManagedObject object
+    ///
+    /// - Parameter acivity: The ActivityModel object
+    /// - Returns: NSManagedObject object
     private func generateNsManagedObject(acivity: ActivityModel) -> NSManagedObject {
         
         let context = self.coreDataManager.mainContext

@@ -10,17 +10,23 @@
 import UIKit
 import XCTest
 
+///Unit tests of ActivityModel
 class ActivityModelTests: XCTestCase {
 
+    ///The subject under tests
     var sut: ActivityModel!
+    
+    ///The mock version of NSCoder class
     var nsCoderMock: NSCoderMock!
     
+    ///Set up required data
     override func setUp() {
         super.setUp()
         
         nsCoderMock = NSCoderMock()
     }
 
+    //Clean data after each test
     override func tearDown() {
         
         super.tearDown()
@@ -32,7 +38,8 @@ class ActivityModelTests: XCTestCase {
         self.nsCoderMock = nil
     }
     
-    func test_initWithCoder_DecodeData() {
+    ///test of contructor with coder parameter should decode data
+    func test_initWithCoder_ShouldDecodeData() {
         
         //Given
         var activity = ActivityModel(id: URL(string: "test1"), name: "test1", operationType: .added)
@@ -62,7 +69,8 @@ class ActivityModelTests: XCTestCase {
         testDecodedData(activity: activity)
     }
     
-    func test_initWithCoder_withNilId_DecodeData() {
+    ///test constructor with coder parameter with nil identifier should decode data
+    func test_initWithCoder_withNilId_ShouldDecodeData() {
         
         //Given
         let activity = ActivityModel(name: "test1")
@@ -77,7 +85,8 @@ class ActivityModelTests: XCTestCase {
         XCTAssertEqual(activity.name, sut.name)
     }
     
-    func test_encode_encodeData() {
+    ///test of encode method should encode data
+    func test_encode_shouldEncodeData() {
         
         //Given
         self.sut = ActivityModel(id: URL(string: "test1"), name: "test1", operationType: .added)
@@ -93,7 +102,8 @@ class ActivityModelTests: XCTestCase {
         testEncodedData(operationType: 3)
     }
     
-    func test_encode_withNilId_encodeData() {
+    ///test of encode method with nil identifier sould encode data
+    func test_encode_withNilId_shouldEncodeData() {
         
         //Given
         self.sut = ActivityModel(name: "test1")
@@ -102,6 +112,8 @@ class ActivityModelTests: XCTestCase {
     }
     
     //MARK: helper methods
+    
+    ///test encode data checking method
     private func testEncodedData (operationType: Int) {
         
         //When
@@ -114,6 +126,7 @@ class ActivityModelTests: XCTestCase {
         
     }
     
+    ///test decode data checking method
     private func testDecodedData (activity: ActivityModel) {
         
         //When
