@@ -16,6 +16,6 @@ public protocol NSManagedObjectContextProtocol {
     func existingObject(with objectID: NSManagedObjectID) throws -> NSManagedObject
 }
 
-public protocol NSEntityDescriptionProtocol {
-    static func entity(forEntityName: String, in: NSManagedObjectContextProtocol)
+extension NSManagedObjectContext: NSManagedObjectContextProtocol {
+    
 }

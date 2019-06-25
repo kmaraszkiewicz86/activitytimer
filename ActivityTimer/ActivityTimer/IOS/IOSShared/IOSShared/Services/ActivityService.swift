@@ -23,7 +23,7 @@ public class ActivityService {
     private let managedObjectContext: NSManagedObjectContextProtocol
 
     ///The initializer of ActiveService instance
-    init(managedObjectContext: NSManagedObjectContextProtocol) {
+    private init(managedObjectContext: NSManagedObjectContextProtocol) {
         self.managedObjectContext = managedObjectContext
     }
     

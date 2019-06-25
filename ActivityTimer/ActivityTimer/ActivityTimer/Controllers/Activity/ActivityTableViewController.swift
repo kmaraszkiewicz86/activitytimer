@@ -43,8 +43,7 @@ class ActivityTableViewController: UITableViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as! NSManagedObjectContextProtocol
-        )
+        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol)
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         

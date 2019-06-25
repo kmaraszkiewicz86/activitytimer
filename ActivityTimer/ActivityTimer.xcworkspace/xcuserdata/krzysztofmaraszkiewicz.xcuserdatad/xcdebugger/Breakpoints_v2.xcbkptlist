@@ -19,43 +19,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/IOS/IOSShared/IOSShared/Services/ActivityService.swift"
-            timestampString = "583021319.545439"
+            timestampString = "583182046.710519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "save(activityModel:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActivityTimer/IOS/IOSShared/IOSShared/Services/ActivityService.swift"
-            timestampString = "583021319.545496"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "save(activityModel:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActivityTimer/IOS/IOSShared/IOSShared/Services/ActivityService.swift"
-            timestampString = "583021319.545537"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "findByUrlId(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -66,46 +34,126 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
-            timestampString = "583021319.545578"
+            filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+            timestampString = "583182046.710586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ActivityTimerTests.NSManagedObjectContextMock.fetch&lt;A where A: __C.NSFetchRequestResult&gt;(__C.NSFetchRequest&lt;A&gt;) throws -&gt; Swift.Array&lt;A&gt;"
+                  symbolName = "closure #1 () -&gt; __C.NSPersistentContainer in ActivityTimerTests.CoreDataManger.persistentContainer.getter : __C.NSPersistentContainer"
                   moduleName = "ActivityTimerTests"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
-                  timestampString = "583021320.252308"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+                  timestampString = "583182047.247285"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "61">
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "88">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSManagedObject) -&gt; A in ActivityTimerTests.NSManagedObjectContextMock.fetch&lt;A where A: __C.NSFetchRequestResult&gt;(__C.NSFetchRequest&lt;A&gt;) throws -&gt; Swift.Array&lt;A&gt;"
+                  symbolName = "closure #1 (__C.NSPersistentStoreDescription, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; __C.NSPersistentContainer in ActivityTimerTests.CoreDataManger.persistentContainer.getter : __C.NSPersistentContainer"
                   moduleName = "ActivityTimerTests"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
-                  timestampString = "583021320.259879"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+                  timestampString = "583182047.248897"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "105">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+            timestampString = "583182046.710857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+            timestampString = "583182046.711044"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+            timestampString = "583182046.711228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "persistentContainer"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+            timestampString = "583182046.711408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "mainContext"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+            timestampString = "583182046.711589"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "mainContext"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

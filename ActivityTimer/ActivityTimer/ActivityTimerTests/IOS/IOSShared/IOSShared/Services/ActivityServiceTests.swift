@@ -20,7 +20,7 @@ class ActivityServiceTests: XCTestCase {
     ///Set up required data
     override func setUp() {
         managedObjectContextMock = NSManagedObjectContextMock()
-        sut = ActivityService.shared(managedObjectContextMock!.coreDataManager.mainContext)
+        sut = ActivityService.shared(managedObjectContextMock)
     }
 
     
