@@ -8,7 +8,6 @@
 
 import CoreData
 import XCTest
-import IOSShared
 
 ///Unit tests of NSManagedObject extension
 class NSManagedObjectTests: XCTestCase {

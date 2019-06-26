@@ -6,7 +6,6 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-import IOSShared
 import WatchConnectivity
 import XCTest
 

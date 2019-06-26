@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IOSShared
 
 enum NSKeyedArchiverMockError: Error {
     case errorMock

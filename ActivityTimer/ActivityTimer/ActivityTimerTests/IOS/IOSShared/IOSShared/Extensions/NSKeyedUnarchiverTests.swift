@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import IOSShared
 
 ///Ubit tests of NSKeyedArchiver extension
 class NSKeyedArchiverTests: XCTestCase {

@@ -9,15 +9,18 @@
 /* Begin PBXBuildFile section */
 		1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
-		1F12C2AB22C17D2A007919EE /* ActivityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12C2AA22C17D2A007919EE /* ActivityServiceTests.swift */; };
 		1F12DEB222C29C3F005C5A27 /* ActivityTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCA229C01E500B5C258 /* ActivityTimer.xcdatamodeld */; };
 		1F30239C22C01A46004BE29B /* NSManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30239B22C01A46004BE29B /* NSManagedObjectContextMock.swift */; };
 		1F30239F22C02530004BE29B /* ActivityTimerTestsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30239E22C02530004BE29B /* ActivityTimerTestsError.swift */; };
 		1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCA229C01E500B5C258 /* ActivityTimer.xcdatamodeld */; };
 		1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
-		1F574E3722BC233E0067F17E /* NSManagedObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3522BC233E0067F17E /* NSManagedObjectTests.swift */; };
-		1F574E3822BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3622BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift */; };
-		1F574E3D22BC24060067F17E /* ActivityModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3C22BC24060067F17E /* ActivityModelTests.swift */; };
+		1F52A2A122C40F4700A962F1 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A022C40F4700A962F1 /* ActivityOperationType.swift */; };
+		1F52A2A322C40F4F00A962F1 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A222C40F4F00A962F1 /* NSKeyedUnarchiverError.swift */; };
+		1F52A2A722C40F5700A962F1 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A422C40F5700A962F1 /* OSLogExtension.swift */; };
+		1F52A2A822C40F5700A962F1 /* NSKeyedUnarchivedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A522C40F5700A962F1 /* NSKeyedUnarchivedExtension.swift */; };
+		1F52A2A922C40F5700A962F1 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A622C40F5700A962F1 /* WCSessionExtension.swift */; };
+		1F52A2AB22C40F5E00A962F1 /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */; };
+		1F52A2AD22C40F6600A962F1 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */; };
 		1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */; };
 		1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
@@ -33,8 +36,55 @@
 		1F9A09DE22974A9E00C1C3DA /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09DD22974A9E00C1C3DA /* ExtensionDelegate.swift */; };
 		1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09DF22974A9E00C1C3DA /* NotificationController.swift */; };
 		1F9A09E222974A9F00C1C3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09E122974A9F00C1C3DA /* Assets.xcassets */; };
+		1F9A889822C412A200A27B43 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A022C40F4700A962F1 /* ActivityOperationType.swift */; };
+		1F9A889922C412A200A27B43 /* NSKeyedUnarchiverError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A222C40F4F00A962F1 /* NSKeyedUnarchiverError.swift */; };
+		1F9A889A22C412A200A27B43 /* NSKeyedUnarchivedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A522C40F5700A962F1 /* NSKeyedUnarchivedExtension.swift */; };
+		1F9A889B22C412A200A27B43 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A422C40F5700A962F1 /* OSLogExtension.swift */; };
+		1F9A889C22C412A200A27B43 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2A622C40F5700A962F1 /* WCSessionExtension.swift */; };
+		1F9A889D22C412A200A27B43 /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */; };
+		1F9A889E22C412A200A27B43 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */; };
+		1F9A88A722C4170800A27B43 /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41F22C3E95800490FC8 /* NSCoder.swift */; };
+		1F9A88A822C4170800A27B43 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42122C3E95800490FC8 /* NSKeyedArchiverExtension.swift */; };
+		1F9A88AD22C4170800A27B43 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42022C3E95800490FC8 /* WCSessionExtension.swift */; };
+		1F9A88B322C4180400A27B43 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41822C3E94100490FC8 /* ActivityService.swift */; };
+		1F9A88B422C4180400A27B43 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41A22C3E94B00490FC8 /* ActivityModel.swift */; };
+		1F9A88B522C4180400A27B43 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41C22C3E95800490FC8 /* NSManagedObjectArrayExtension.swift */; };
+		1F9A88B622C4180400A27B43 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42222C3E95800490FC8 /* NSManagedObjectContextExtension.swift */; };
+		1F9A88B722C4180400A27B43 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41D22C3E95800490FC8 /* NSManagedObjectExtension.swift */; };
+		1F9A88B822C4180400A27B43 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41E22C3E95800490FC8 /* OSLogExtension.swift */; };
+		1F9A88B922C4180400A27B43 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42A22C3E96A00490FC8 /* ActivityOperationTypeError.swift */; };
+		1F9A88BA22C4180400A27B43 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
+		1F9A88BB22C4180400A27B43 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
+		1F9A88C322C4186B00A27B43 /* ActivityServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12C2AA22C17D2A007919EE /* ActivityServiceTests.swift */; };
+		1F9A88C422C4186B00A27B43 /* ActivityModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3C22BC24060067F17E /* ActivityModelTests.swift */; };
+		1F9A88C522C4186B00A27B43 /* NSManagedObjectArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3622BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift */; };
+		1F9A88C622C4186B00A27B43 /* NSManagedObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3522BC233E0067F17E /* NSManagedObjectTests.swift */; };
+		1F9A88C722C4186B00A27B43 /* WCSessionExtesionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1722BACD6600AE7EDE /* WCSessionExtesionTests.swift */; };
+		1F9A88C822C4190100A27B43 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41822C3E94100490FC8 /* ActivityService.swift */; };
+		1F9A88C922C4190100A27B43 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41A22C3E94B00490FC8 /* ActivityModel.swift */; };
+		1F9A88CA22C4190100A27B43 /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41F22C3E95800490FC8 /* NSCoder.swift */; };
+		1F9A88CB22C4190100A27B43 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41C22C3E95800490FC8 /* NSManagedObjectArrayExtension.swift */; };
+		1F9A88CC22C4190100A27B43 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42122C3E95800490FC8 /* NSKeyedArchiverExtension.swift */; };
+		1F9A88CD22C4190100A27B43 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42222C3E95800490FC8 /* NSManagedObjectContextExtension.swift */; };
+		1F9A88CE22C4190100A27B43 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41D22C3E95800490FC8 /* NSManagedObjectExtension.swift */; };
+		1F9A88CF22C4190100A27B43 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41E22C3E95800490FC8 /* OSLogExtension.swift */; };
+		1F9A88D022C4190100A27B43 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42022C3E95800490FC8 /* WCSessionExtension.swift */; };
+		1F9A88D122C4190100A27B43 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42A22C3E96A00490FC8 /* ActivityOperationTypeError.swift */; };
+		1F9A88D222C4190100A27B43 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
+		1F9A88D322C4190100A27B43 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
+		1F9A88D422C419ED00A27B43 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41822C3E94100490FC8 /* ActivityService.swift */; };
+		1F9A88D522C419ED00A27B43 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41A22C3E94B00490FC8 /* ActivityModel.swift */; };
+		1F9A88D622C419ED00A27B43 /* NSCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41F22C3E95800490FC8 /* NSCoder.swift */; };
+		1F9A88D722C419ED00A27B43 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41C22C3E95800490FC8 /* NSManagedObjectArrayExtension.swift */; };
+		1F9A88D822C419ED00A27B43 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42122C3E95800490FC8 /* NSKeyedArchiverExtension.swift */; };
+		1F9A88D922C419ED00A27B43 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42222C3E95800490FC8 /* NSManagedObjectContextExtension.swift */; };
+		1F9A88DA22C419ED00A27B43 /* NSManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41D22C3E95800490FC8 /* NSManagedObjectExtension.swift */; };
+		1F9A88DB22C419ED00A27B43 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41E22C3E95800490FC8 /* OSLogExtension.swift */; };
+		1F9A88DC22C419ED00A27B43 /* WCSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42022C3E95800490FC8 /* WCSessionExtension.swift */; };
+		1F9A88DD22C419ED00A27B43 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42A22C3E96A00490FC8 /* ActivityOperationTypeError.swift */; };
+		1F9A88DE22C419ED00A27B43 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
+		1F9A88DF22C419ED00A27B43 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
 		1F9EDA1822BACD6600AE7EDE /* NSKeyedUnarchiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1622BACD6600AE7EDE /* NSKeyedUnarchiverTests.swift */; };
-		1F9EDA1922BACD6600AE7EDE /* WCSessionExtesionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1722BACD6600AE7EDE /* WCSessionExtesionTests.swift */; };
 		1F9EDA1C22BACD7500AE7EDE /* WCSessionExtensionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1A22BACD7500AE7EDE /* WCSessionExtensionMock.swift */; };
 		1F9EDA1D22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1B22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift */; };
 		1FB5C4D022BBD81B00E9E803 /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
@@ -43,7 +93,6 @@
 		1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
 		1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
-		1FB8D1D222BCE3E900B40474 /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
 		1FC0E41922C3E94100490FC8 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41822C3E94100490FC8 /* ActivityService.swift */; };
 		1FC0E41B22C3E94B00490FC8 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41A22C3E94B00490FC8 /* ActivityModel.swift */; };
 		1FC0E42322C3E95800490FC8 /* NSManagedObjectArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E41C22C3E95800490FC8 /* NSManagedObjectArrayExtension.swift */; };
@@ -56,12 +105,7 @@
 		1FC0E42C22C3E96B00490FC8 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42A22C3E96A00490FC8 /* ActivityOperationTypeError.swift */; };
 		1FC0E42D22C3E96B00490FC8 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
 		1FC0E42F22C3E97800490FC8 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
-		1FC0E43022C3F0B500490FC8 /* libIOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC0E40C22C3E56600490FC8 /* libIOSShared.a */; };
-		1FC0E43122C3F11E00490FC8 /* libIOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC0E40C22C3E56600490FC8 /* libIOSShared.a */; };
-		1FC0E43222C3F18500490FC8 /* NSKeyedArchiverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42122C3E95800490FC8 /* NSKeyedArchiverExtension.swift */; };
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
-		1FE10C5E22B1B2FF00C4CDEE /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
-		1FEB273A22B993DF001EA5F7 /* libWatchOSShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,37 +130,25 @@
 			remoteGlobalIDString = 1F9A09C622974A9D00C1C3DA;
 			remoteInfo = "ActivityTimer WatchKit App";
 		};
-		1F9A09D822974A9E00C1C3DA /* PBXContainerItemProxy */ = {
+		1F9A889622C4128200A27B43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F9A099722974A9A00C1C3DA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1F9A09D522974A9E00C1C3DA;
-			remoteInfo = "ActivityTimer WatchKit Extension";
-		};
-		1FE10C5922B1B1EB00C4CDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FE10C4B22B1B1EA00C4CDEE;
+			remoteGlobalIDString = 1F52A29322C40ECE00A962F1;
 			remoteInfo = WatchOSShared;
-		};
-		1FE10C6222B1B50500C4CDEE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 1FE10C4A22B1B1EA00C4CDEE;
-			remoteInfo = WatchOSShared;
-		};
-		1FE5394922B63DB7008DC81A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FA2734822B2F9A300DB5B24;
-			remoteInfo = WatchOSSharedTests;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1F52A29222C40ECE00A962F1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F9A09EA22974A9F00C1C3DA /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +187,14 @@
 		1F30239B22C01A46004BE29B /* NSManagedObjectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextMock.swift; sourceTree = "<group>"; };
 		1F30239E22C02530004BE29B /* ActivityTimerTestsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTimerTestsError.swift; sourceTree = "<group>"; };
 		1F510FCB229C01E500B5C258 /* ActivityTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityTimer.xcdatamodel; sourceTree = "<group>"; };
+		1F52A29422C40ECE00A962F1 /* libWatchOSShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWatchOSShared.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F52A2A022C40F4700A962F1 /* ActivityOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
+		1F52A2A222C40F4F00A962F1 /* NSKeyedUnarchiverError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverError.swift; sourceTree = "<group>"; };
+		1F52A2A422C40F5700A962F1 /* OSLogExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
+		1F52A2A522C40F5700A962F1 /* NSKeyedUnarchivedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchivedExtension.swift; sourceTree = "<group>"; };
+		1F52A2A622C40F5700A962F1 /* WCSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionExtension.swift; sourceTree = "<group>"; };
+		1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKAlertHelper.swift; sourceTree = "<group>"; };
+		1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		1F574E2D22BC22A40067F17E /* ActivityModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModelTests.swift; sourceTree = "<group>"; };
 		1F574E2F22BC22A40067F17E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F574E3522BC233E0067F17E /* NSManagedObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectTests.swift; sourceTree = "<group>"; };
@@ -206,15 +246,20 @@
 		1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
-		1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WatchOSShared.xcodeproj; path = WatchOSShared/WatchOSShared.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F52A29122C40ECE00A962F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F9A099C22974A9A00C1C3DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FC0E43022C3F0B500490FC8 /* libIOSShared.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,8 +267,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FC0E43122C3F11E00490FC8 /* libIOSShared.a in Frameworks */,
-				1FB8D1D222BCE3E900B40474 /* libWatchOSShared.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +274,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FEB273A22B993DF001EA5F7 /* libWatchOSShared.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +281,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE10C5E22B1B2FF00C4CDEE /* libWatchOSShared.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +318,60 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		1F52A29522C40ECE00A962F1 /* WatchOSShared */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A29F22C40EFD00A962F1 /* Enums */,
+				1F52A29E22C40EF500A962F1 /* Errors */,
+				1F52A29D22C40EEE00A962F1 /* Extensions */,
+				1F52A29C22C40EE700A962F1 /* Helpers */,
+				1F52A29B22C40EE000A962F1 /* Models */,
+			);
+			path = WatchOSShared;
+			sourceTree = "<group>";
+		};
+		1F52A29B22C40EE000A962F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F52A29C22C40EE700A962F1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1F52A29D22C40EEE00A962F1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A2A522C40F5700A962F1 /* NSKeyedUnarchivedExtension.swift */,
+				1F52A2A422C40F5700A962F1 /* OSLogExtension.swift */,
+				1F52A2A622C40F5700A962F1 /* WCSessionExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F52A29E22C40EF500A962F1 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A2A222C40F4F00A962F1 /* NSKeyedUnarchiverError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		1F52A29F22C40EFD00A962F1 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1F52A2A022C40F4700A962F1 /* ActivityOperationType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		1F574E2C22BC22A40067F17E /* ActivityModelTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,7 +392,6 @@
 		1F9A099622974A9A00C1C3DA = {
 			isa = PBXGroup;
 			children = (
-				1FDDA84722B05E1800646E66 /* WatchOS */,
 				1F9A09A122974A9A00C1C3DA /* ActivityTimer */,
 				1F9A09B622974A9D00C1C3DA /* ActivityTimerTests */,
 				1F9A09C122974A9D00C1C3DA /* ActivityTimerUITests */,
@@ -305,6 +399,7 @@
 				1F9A09DA22974A9E00C1C3DA /* ActivityTimer WatchKit Extension */,
 				1F574E2C22BC22A40067F17E /* ActivityModelTests */,
 				1FC0E40D22C3E56700490FC8 /* IOSShared */,
+				1F52A29522C40ECE00A962F1 /* WatchOSShared */,
 				1F9A09A022974A9A00C1C3DA /* Products */,
 				1FB6AC3922987A4F001B7576 /* Frameworks */,
 			);
@@ -319,6 +414,7 @@
 				1F9A09C722974A9D00C1C3DA /* ActivityTimer WatchKit App.app */,
 				1F9A09D622974A9E00C1C3DA /* ActivityTimer WatchKit Extension.appex */,
 				1FC0E40C22C3E56600490FC8 /* libIOSShared.a */,
+				1F52A29422C40ECE00A962F1 /* libWatchOSShared.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -497,8 +593,8 @@
 			isa = PBXGroup;
 			children = (
 				1FC0E41F22C3E95800490FC8 /* NSCoder.swift */,
-				1FC0E42122C3E95800490FC8 /* NSKeyedArchiverExtension.swift */,
 				1FC0E41C22C3E95800490FC8 /* NSManagedObjectArrayExtension.swift */,
+				1FC0E42122C3E95800490FC8 /* NSKeyedArchiverExtension.swift */,
 				1FC0E42222C3E95800490FC8 /* NSManagedObjectContextExtension.swift */,
 				1FC0E41D22C3E95800490FC8 /* NSManagedObjectExtension.swift */,
 				1FC0E41E22C3E95800490FC8 /* OSLogExtension.swift */,
@@ -523,23 +619,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		1FDDA84722B05E1800646E66 /* WatchOS */ = {
-			isa = PBXGroup;
-			children = (
-				1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */,
-			);
-			path = WatchOS;
-			sourceTree = "<group>";
-		};
-		1FE10C5622B1B1EA00C4CDEE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */,
-				1FE5394A22B63DB7008DC81A /* WatchOSSharedTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1FE5396522B6DCA5008DC81A /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +630,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1F52A29322C40ECE00A962F1 /* WatchOSShared */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F52A29822C40ECE00A962F1 /* Build configuration list for PBXNativeTarget "WatchOSShared" */;
+			buildPhases = (
+				1F52A29022C40ECE00A962F1 /* Sources */,
+				1F52A29122C40ECE00A962F1 /* Frameworks */,
+				1F52A29222C40ECE00A962F1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WatchOSShared;
+			productName = WatchOSShared2;
+			productReference = 1F52A29422C40ECE00A962F1 /* libWatchOSShared.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		1F9A099E22974A9A00C1C3DA /* ActivityTimer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F9A09EF22974A9F00C1C3DA /* Build configuration list for PBXNativeTarget "ActivityTimer" */;
@@ -616,7 +712,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1F9A09D922974A9E00C1C3DA /* PBXTargetDependency */,
+				1F9A889722C4128200A27B43 /* PBXTargetDependency */,
 			);
 			name = "ActivityTimer WatchKit App";
 			productName = "ActivityTimer WatchKit App";
@@ -634,7 +730,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1FE10C6322B1B50500C4CDEE /* PBXTargetDependency */,
 			);
 			name = "ActivityTimer WatchKit Extension";
 			productName = "ActivityTimer WatchKit Extension";
@@ -668,6 +763,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Krzysztof Maraszkiewicz";
 				TargetAttributes = {
+					1F52A29322C40ECE00A962F1 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+					};
 					1F9A099E22974A9A00C1C3DA = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
@@ -708,12 +807,6 @@
 			mainGroup = 1F9A099622974A9A00C1C3DA;
 			productRefGroup = 1F9A09A022974A9A00C1C3DA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1FE10C5622B1B1EA00C4CDEE /* Products */;
-					ProjectRef = 1FE10C5522B1B1EA00C4CDEE /* WatchOSShared.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1F9A099E22974A9A00C1C3DA /* ActivityTimer */,
@@ -722,26 +815,10 @@
 				1F9A09C622974A9D00C1C3DA /* ActivityTimer WatchKit App */,
 				1F9A09D522974A9E00C1C3DA /* ActivityTimer WatchKit Extension */,
 				1FC0E40B22C3E56600490FC8 /* IOSShared */,
+				1F52A29322C40ECE00A962F1 /* WatchOSShared */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1FE10C5A22B1B1EB00C4CDEE /* libWatchOSShared.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libWatchOSShared.a;
-			remoteRef = 1FE10C5922B1B1EB00C4CDEE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1FE5394A22B63DB7008DC81A /* WatchOSSharedTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = WatchOSSharedTests.xctest;
-			remoteRef = 1FE5394922B63DB7008DC81A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1F9A099D22974A9A00C1C3DA /* Resources */ = {
@@ -789,14 +866,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F52A29022C40ECE00A962F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F52A2AB22C40F5E00A962F1 /* WKAlertHelper.swift in Sources */,
+				1F52A2A922C40F5700A962F1 /* WCSessionExtension.swift in Sources */,
+				1F52A2A822C40F5700A962F1 /* NSKeyedUnarchivedExtension.swift in Sources */,
+				1F52A2A722C40F5700A962F1 /* OSLogExtension.swift in Sources */,
+				1F52A2A122C40F4700A962F1 /* ActivityOperationType.swift in Sources */,
+				1F52A2AD22C40F6600A962F1 /* ActivityModel.swift in Sources */,
+				1F52A2A322C40F4F00A962F1 /* NSKeyedUnarchiverError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F9A099B22974A9A00C1C3DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A88D322C4190100A27B43 /* ActivityOperationType.swift in Sources */,
 				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,
 				1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */,
+				1F9A88CE22C4190100A27B43 /* NSManagedObjectExtension.swift in Sources */,
+				1F9A88CD22C4190100A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
 				1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
+				1F9A88C822C4190100A27B43 /* ActivityService.swift in Sources */,
+				1F9A88C922C4190100A27B43 /* ActivityModel.swift in Sources */,
+				1F9A88D222C4190100A27B43 /* ServiceError.swift in Sources */,
+				1F9A88CF22C4190100A27B43 /* OSLogExtension.swift in Sources */,
+				1F9A88D122C4190100A27B43 /* ActivityOperationTypeError.swift in Sources */,
+				1F9A88CB22C4190100A27B43 /* NSManagedObjectArrayExtension.swift in Sources */,
+				1F9A88CC22C4190100A27B43 /* NSKeyedArchiverExtension.swift in Sources */,
+				1F9A88CA22C4190100A27B43 /* NSCoder.swift in Sources */,
+				1F9A88D022C4190100A27B43 /* WCSessionExtension.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,21 +908,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FC0E43222C3F18500490FC8 /* NSKeyedArchiverExtension.swift in Sources */,
-				1F12C2AB22C17D2A007919EE /* ActivityServiceTests.swift in Sources */,
+				1F9A88BA22C4180400A27B43 /* ServiceError.swift in Sources */,
+				1F9A88BB22C4180400A27B43 /* ActivityOperationType.swift in Sources */,
+				1F9A88C322C4186B00A27B43 /* ActivityServiceTests.swift in Sources */,
+				1F9A88AD22C4170800A27B43 /* WCSessionExtension.swift in Sources */,
+				1F9A88A722C4170800A27B43 /* NSCoder.swift in Sources */,
 				1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */,
+				1F9A88A822C4170800A27B43 /* NSKeyedArchiverExtension.swift in Sources */,
+				1F9A88C522C4186B00A27B43 /* NSManagedObjectArrayExtensionTests.swift in Sources */,
+				1F9A88C422C4186B00A27B43 /* ActivityModelTests.swift in Sources */,
 				1F30239F22C02530004BE29B /* ActivityTimerTestsError.swift in Sources */,
 				1F9EDA1822BACD6600AE7EDE /* NSKeyedUnarchiverTests.swift in Sources */,
+				1F9A88B822C4180400A27B43 /* OSLogExtension.swift in Sources */,
 				1F12DEB222C29C3F005C5A27 /* ActivityTimer.xcdatamodeld in Sources */,
-				1F574E3822BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift in Sources */,
+				1F9A88B622C4180400A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
+				1F9A88B722C4180400A27B43 /* NSManagedObjectExtension.swift in Sources */,
+				1F9A88B322C4180400A27B43 /* ActivityService.swift in Sources */,
 				1F9EDA1C22BACD7500AE7EDE /* WCSessionExtensionMock.swift in Sources */,
+				1F9A88C722C4186B00A27B43 /* WCSessionExtesionTests.swift in Sources */,
+				1F9A88B522C4180400A27B43 /* NSManagedObjectArrayExtension.swift in Sources */,
 				1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */,
+				1F9A88B922C4180400A27B43 /* ActivityOperationTypeError.swift in Sources */,
 				1F9EDA1D22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift in Sources */,
-				1F574E3722BC233E0067F17E /* NSManagedObjectTests.swift in Sources */,
 				1F30239C22C01A46004BE29B /* NSManagedObjectContextMock.swift in Sources */,
+				1F9A88C622C4186B00A27B43 /* NSManagedObjectTests.swift in Sources */,
+				1F9A88B422C4180400A27B43 /* ActivityModel.swift in Sources */,
 				1FB5C4D322BC038900E9E803 /* CoreDataManager.swift in Sources */,
-				1F574E3D22BC24060067F17E /* ActivityModelTests.swift in Sources */,
-				1F9EDA1922BACD6600AE7EDE /* WCSessionExtesionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,10 +941,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A88DF22C419ED00A27B43 /* ActivityOperationType.swift in Sources */,
 				1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 				1F9A09C322974A9D00C1C3DA /* ActivityTimerUITests.swift in Sources */,
 				1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */,
+				1F9A88DA22C419ED00A27B43 /* NSManagedObjectExtension.swift in Sources */,
+				1F9A88D922C419ED00A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
 				1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */,
+				1F9A88D422C419ED00A27B43 /* ActivityService.swift in Sources */,
+				1F9A88D522C419ED00A27B43 /* ActivityModel.swift in Sources */,
+				1F9A88DE22C419ED00A27B43 /* ServiceError.swift in Sources */,
+				1F9A88DB22C419ED00A27B43 /* OSLogExtension.swift in Sources */,
+				1F9A88DD22C419ED00A27B43 /* ActivityOperationTypeError.swift in Sources */,
+				1F9A88D722C419ED00A27B43 /* NSManagedObjectArrayExtension.swift in Sources */,
+				1F9A88D822C419ED00A27B43 /* NSKeyedArchiverExtension.swift in Sources */,
+				1F9A88D622C419ED00A27B43 /* NSCoder.swift in Sources */,
+				1F9A88DC22C419ED00A27B43 /* WCSessionExtension.swift in Sources */,
 				1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -839,6 +965,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A889822C412A200A27B43 /* ActivityOperationType.swift in Sources */,
+				1F9A889922C412A200A27B43 /* NSKeyedUnarchiverError.swift in Sources */,
+				1F9A889A22C412A200A27B43 /* NSKeyedUnarchivedExtension.swift in Sources */,
+				1F9A889B22C412A200A27B43 /* OSLogExtension.swift in Sources */,
+				1F9A889C22C412A200A27B43 /* WCSessionExtension.swift in Sources */,
+				1F9A889D22C412A200A27B43 /* WKAlertHelper.swift in Sources */,
+				1F9A889E22C412A200A27B43 /* ActivityModel.swift in Sources */,
 				1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */,
 				1F9A09E022974A9E00C1C3DA /* NotificationController.swift in Sources */,
 				1F9A09DE22974A9E00C1C3DA /* ExtensionDelegate.swift in Sources */,
@@ -883,15 +1016,10 @@
 			target = 1F9A09C622974A9D00C1C3DA /* ActivityTimer WatchKit App */;
 			targetProxy = 1F9A09C922974A9D00C1C3DA /* PBXContainerItemProxy */;
 		};
-		1F9A09D922974A9E00C1C3DA /* PBXTargetDependency */ = {
+		1F9A889722C4128200A27B43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1F9A09D522974A9E00C1C3DA /* ActivityTimer WatchKit Extension */;
-			targetProxy = 1F9A09D822974A9E00C1C3DA /* PBXContainerItemProxy */;
-		};
-		1FE10C6322B1B50500C4CDEE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = WatchOSShared;
-			targetProxy = 1FE10C6222B1B50500C4CDEE /* PBXContainerItemProxy */;
+			target = 1F52A29322C40ECE00A962F1 /* WatchOSShared */;
+			targetProxy = 1F9A889622C4128200A27B43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -923,6 +1051,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F52A29922C40ECE00A962F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U88DLR87FV;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		1F52A29A22C40ECE00A962F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U88DLR87FV;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
 		1F9A09E522974A9F00C1C3DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1270,6 +1441,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F52A29822C40ECE00A962F1 /* Build configuration list for PBXNativeTarget "WatchOSShared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F52A29922C40ECE00A962F1 /* Debug */,
+				1F52A29A22C40ECE00A962F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1F9A099A22974A9A00C1C3DA /* Build configuration list for PBXProject "ActivityTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

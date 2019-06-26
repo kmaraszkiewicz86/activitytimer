@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IOSShared
 
 class WCSessionExtensionMock: WCSessionProtocol {
     

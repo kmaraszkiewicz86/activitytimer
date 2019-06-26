@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import WatchOSShared
 import os.log
 import WatchKit
 import WatchConnectivity

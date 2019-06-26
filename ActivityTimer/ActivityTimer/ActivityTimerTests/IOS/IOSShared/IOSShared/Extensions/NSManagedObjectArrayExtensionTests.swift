@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import XCTest
-import IOSShared
 
 ///Unit tests for ios version of NSManagedObject array
 class NSManagedObjectArrayExtensionTests: XCTestCase {

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
-@testable import IOSShared
 import UIKit
 import XCTest
 

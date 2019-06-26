@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import IOSShared
 
 class ActivityServiceTests: XCTestCase {
 
