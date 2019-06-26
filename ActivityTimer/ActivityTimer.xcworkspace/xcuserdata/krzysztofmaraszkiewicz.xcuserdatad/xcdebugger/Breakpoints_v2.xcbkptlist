@@ -31,11 +31,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-            timestampString = "583182046.710586"
+            timestampString = "583266744.7298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -44,14 +44,14 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 () -&gt; __C.NSPersistentContainer in ActivityTimerTests.CoreDataManger.persistentContainer.getter : __C.NSPersistentContainer"
                   moduleName = "ActivityTimerTests"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-                  timestampString = "583182047.247285"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+                  timestampString = "583258527.99722"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -59,14 +59,14 @@
                   offsetFromSymbolStart = "88">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (__C.NSPersistentStoreDescription, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; __C.NSPersistentContainer in ActivityTimerTests.CoreDataManger.persistentContainer.getter : __C.NSPersistentContainer"
                   moduleName = "ActivityTimerTests"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-                  timestampString = "583182047.248897"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
+                  timestampString = "583258528.0000761"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "22"
@@ -79,11 +79,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-            timestampString = "583182046.710857"
+            timestampString = "583266744.731524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -95,11 +95,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-            timestampString = "583182046.711044"
+            timestampString = "583266744.731614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -111,11 +111,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-            timestampString = "583182046.711228"
+            timestampString = "583266744.731662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -127,11 +127,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-            timestampString = "583182046.711408"
+            timestampString = "583266744.731706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -143,11 +143,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerTests/Managers/CoreDataManager.swift"
-            timestampString = "583182046.711589"
+            timestampString = "583266744.73175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
