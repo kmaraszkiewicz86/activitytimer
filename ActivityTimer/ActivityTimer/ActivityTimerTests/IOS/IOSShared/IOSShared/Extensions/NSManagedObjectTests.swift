@@ -13,19 +13,19 @@ import XCTest
 class NSManagedObjectTests: XCTestCase {
 
     ///Helper class, that create mock version of Core Data base classes
-    var coreDataManager: CoreDataManger!
+    var context: NSManagedObjectContextMock!
     
     ///Set up required data
     override func setUp() {
         super.setUp()
         
-        coreDataManager = CoreDataManger()
+        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext() as! NSManagedObjectContextMock)
     }
     
     //Clean data after each test
     override func tearDown() {
         super.tearDown()
-        coreDataManager = nil
+        context = nil
     }
 
     
@@ -52,10 +52,9 @@ class NSManagedObjectTests: XCTestCase {
     /// - Returns: NSManagedObject object
     private func generateNsManagedObject(acivity: ActivityModel) -> NSManagedObject {
         
-        let context = self.coreDataManager.mainContext
-        let description = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+        let description = NSEntityDescription.entity(forEntityName: "Activity", in: context.context)
         
-        let managedObject = NSManagedObject(entity: description!, insertInto: context)
+        let managedObject = NSManagedObject(entity: description!, insertInto: context.context)
         
         managedObject.setValue(acivity.name, forKey: "name")
         acivity.id = managedObject.objectID.uriRepresentation()

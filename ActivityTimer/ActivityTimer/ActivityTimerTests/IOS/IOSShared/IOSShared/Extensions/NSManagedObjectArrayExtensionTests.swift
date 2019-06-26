@@ -14,18 +14,18 @@ import XCTest
 class NSManagedObjectArrayExtensionTests: XCTestCase {
 
     ///Helper class, that create mock version of Core Data base classes
-    var coreDataManager: CoreDataManger!
+    var context: NSManagedObjectContextMock!
     
     ///Set up required data
     override func setUp() {
         super.setUp()
         
-        coreDataManager = CoreDataManger()
+        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext() as! NSManagedObjectContextMock)
     }
 
     ///Clean data after each test
     override func tearDown() {
-        coreDataManager = nil
+        context = nil
     }
     
     ///Test valid version of data of toActivityModel method
@@ -60,8 +60,8 @@ class NSManagedObjectArrayExtensionTests: XCTestCase {
         
         return activities.map({ (activityModel) -> NSManagedObject in
             
-            let description = NSEntityDescription.entity(forEntityName: "Activity", in: self.coreDataManager.mainContext)
-            let managdObject = NSManagedObject(entity: description!, insertInto: self.coreDataManager.mainContext)
+            let description = NSEntityDescription.entity(forEntityName: "Activity", in: self.context.context)
+            let managdObject = NSManagedObject(entity: description!, insertInto: self.context.context)
             
             managdObject.setValue(activityModel.name, forKey: "name")
             activityModel.id = managdObject.objectID.uriRepresentation()

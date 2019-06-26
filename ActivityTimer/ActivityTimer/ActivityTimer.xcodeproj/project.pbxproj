@@ -84,11 +84,11 @@
 		1F9A88DD22C419ED00A27B43 /* ActivityOperationTypeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42A22C3E96A00490FC8 /* ActivityOperationTypeError.swift */; };
 		1F9A88DE22C419ED00A27B43 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
 		1F9A88DF22C419ED00A27B43 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
+		1F9A88E122C4292300A27B43 /* CoreDataFakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5C4D222BC038900E9E803 /* CoreDataFakeManager.swift */; };
 		1F9EDA1822BACD6600AE7EDE /* NSKeyedUnarchiverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1622BACD6600AE7EDE /* NSKeyedUnarchiverTests.swift */; };
 		1F9EDA1C22BACD7500AE7EDE /* WCSessionExtensionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1A22BACD7500AE7EDE /* WCSessionExtensionMock.swift */; };
 		1F9EDA1D22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9EDA1B22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift */; };
 		1FB5C4D022BBD81B00E9E803 /* AppDelegate.swift in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
-		1FB5C4D322BC038900E9E803 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5C4D222BC038900E9E803 /* CoreDataManager.swift */; };
 		1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */; };
 		1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */; };
@@ -228,7 +228,7 @@
 		1F9EDA1722BACD6600AE7EDE /* WCSessionExtesionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionExtesionTests.swift; sourceTree = "<group>"; };
 		1F9EDA1A22BACD7500AE7EDE /* WCSessionExtensionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCSessionExtensionMock.swift; sourceTree = "<group>"; };
 		1F9EDA1B22BACD7500AE7EDE /* NSKeyedUnarchiverMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSKeyedUnarchiverMock.swift; sourceTree = "<group>"; };
-		1FB5C4D222BC038900E9E803 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1FB5C4D222BC038900E9E803 /* CoreDataFakeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFakeManager.swift; sourceTree = "<group>"; };
 		1FB6AC382298784E001B7576 /* ActivityTimer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ActivityTimer.entitlements; sourceTree = "<group>"; };
 		1FB6AC3E2298827E001B7576 /* ActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		1FB6AC41229883A1001B7576 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 		1FB5C4D122BBDC4000E9E803 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				1FB5C4D222BC038900E9E803 /* CoreDataManager.swift */,
+				1FB5C4D222BC038900E9E803 /* CoreDataFakeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -780,6 +780,7 @@
 					};
 					1F9A09B222974A9D00C1C3DA = {
 						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 1F9A099E22974A9A00C1C3DA;
 					};
 					1F9A09BD22974A9D00C1C3DA = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -908,6 +909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A88E122C4292300A27B43 /* CoreDataFakeManager.swift in Sources */,
 				1F9A88BA22C4180400A27B43 /* ServiceError.swift in Sources */,
 				1F9A88BB22C4180400A27B43 /* ActivityOperationType.swift in Sources */,
 				1F9A88C322C4186B00A27B43 /* ActivityServiceTests.swift in Sources */,
@@ -933,7 +935,6 @@
 				1F30239C22C01A46004BE29B /* NSManagedObjectContextMock.swift in Sources */,
 				1F9A88C622C4186B00A27B43 /* NSManagedObjectTests.swift in Sources */,
 				1F9A88B422C4180400A27B43 /* ActivityModel.swift in Sources */,
-				1FB5C4D322BC038900E9E803 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1351,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ActivityTimer.app/ActivityTimer";
 			};
 			name = Debug;
 		};
@@ -1369,6 +1371,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ActivityTimer.app/ActivityTimer";
 			};
 			name = Release;
 		};

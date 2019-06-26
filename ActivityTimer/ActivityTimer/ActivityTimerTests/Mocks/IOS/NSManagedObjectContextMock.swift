@@ -13,7 +13,11 @@ import CoreData
 class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     
     /// The CoreDataManager helper to manage database mock
-    let coreDataManager = CoreDataManger.shared
+    let context: NSManagedObjectContext
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
     
     ///The activities items provided from test scenario to injection it to mocking ActivityService class
     var activities: [ActivityModel]?
@@ -21,7 +25,6 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     var shouldThrowOnSave = false
     
     private func getContextAndEntityDescription() -> (context: NSManagedObjectContext, descritpion: NSEntityDescription) {
-        let context = coreDataManager.mainContext
         let description = NSEntityDescription.entity(forEntityName: "Activity", in: context)!
         
         return (context, description)
