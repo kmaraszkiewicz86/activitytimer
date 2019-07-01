@@ -47,7 +47,7 @@ public class ActivityService {
             
             let activities = try managedObjectContext.fetch(fetchPredicate)
             
-            return activities.toActivityModel()
+            return activities.toActivityModels()
             
         } catch let error as NSError {
             os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")

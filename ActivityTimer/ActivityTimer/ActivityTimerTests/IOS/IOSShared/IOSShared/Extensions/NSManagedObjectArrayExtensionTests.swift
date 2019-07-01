@@ -21,7 +21,7 @@ class NSManagedObjectArrayExtensionTests: XCTestCase {
     ///Set up required data
     override func setUp() {
         super.setUp()
-        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext(self.activities) as! NSManagedObjectContextMock)
+        context = CoreDataFakeManager.setupInMemoryManagedObjectContext()
     }
 
     ///Clean data after each test
@@ -36,7 +36,7 @@ class NSManagedObjectArrayExtensionTests: XCTestCase {
         let activitiesNSManagedObjects = generateNSManagedObjects(activities)
         
         //When
-        let activitiesFromModel = activitiesNSManagedObjects.toActivityModel()
+        let activitiesFromModel = activitiesNSManagedObjects.toActivityModels()
         
         //Then
         XCTAssertEqual(activities.count, activitiesFromModel.count)

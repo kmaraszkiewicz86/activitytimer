@@ -13,7 +13,7 @@ import Foundation
 public extension Array where Element: NSManagedObject{
     
     ///Converts array of NSManagedObjects to array of ActivityModel objects
-    func toActivityModel () -> [ActivityModel] {
+    func toActivityModels () -> [ActivityModel] {
         var activities = [ActivityModel]()
         
         if !self.isEmpty {

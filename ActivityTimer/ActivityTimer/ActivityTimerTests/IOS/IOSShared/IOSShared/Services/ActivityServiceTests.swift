@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 class ActivityServiceTests: XCTestCase {
 
     ///The subject under test
@@ -18,6 +19,9 @@ class ActivityServiceTests: XCTestCase {
     ///Set up required data
     override func setUp() {
         
+        managedObjectContextMock = CoreDataFakeManager.setupInMemoryManagedObjectContext()
+        sut = ActivityService.shared(managedObjectContextMock)
+        
     }
 
     
@@ -26,18 +30,15 @@ class ActivityServiceTests: XCTestCase {
     /// - Throws: unit test error
     func test_getAll_databaseNotEmpty_ShouldReturnNotNullData() throws {
         
-        managedObjectContextMock = (CoreDataFakeManager.setupInMemoryManagedObjectContext([ActivityModel(name: "test1"),
-                                                                                           ActivityModel(name: "test2"),
-                                                                                           ActivityModel(name: "test3")]) as! NSManagedObjectContextMock)
-        sut = ActivityService.shared(managedObjectContextMock)
+        NSManagedObjectContextMock.activities = [ActivityModel(name: "test1"),                                                          ActivityModel(name: "test2"), ActivityModel(name: "test3")]
         
         do {
             let activitiesFromDatabase = try sut.getAll()
             
-            XCTAssertEqual(managedObjectContextMock.activities!.count, activitiesFromDatabase.count)
+            XCTAssertEqual(NSManagedObjectContextMock.activities!.count, activitiesFromDatabase.count)
             
-            for index in 0..<managedObjectContextMock.activities!.count {
-                XCTAssertEqual(managedObjectContextMock.activities![index].name, activitiesFromDatabase[index].name)
+            for index in 0..<NSManagedObjectContextMock.activities!.count {
+                XCTAssertEqual(NSManagedObjectContextMock.activities![index].name, activitiesFromDatabase[index].name)
             }
             
             
@@ -46,12 +47,11 @@ class ActivityServiceTests: XCTestCase {
         }
     }
     
-    /// <#Description#>
+    /// test get all when database is empty
     ///
-    /// - Throws: <#throws value description#>
+    /// - Throws: throws when getAll method throw error
     func test_getAll_databaseEmpty_ShouldReturnEmptyData() throws {
-        managedObjectContextMock = (CoreDataFakeManager.setupInMemoryManagedObjectContext([]) as! NSManagedObjectContextMock)
-        sut = ActivityService.shared(managedObjectContextMock)
+        NSManagedObjectContextMock.activities = []
         
         do {
             let activitiesFromDatabase = try sut.getAll()
@@ -63,10 +63,14 @@ class ActivityServiceTests: XCTestCase {
         }
     }
     
+    
+    /// test getAll method when database throw error
+    ///
+    /// - Throws: throws when tests doesnt detect that getAll method throws error
     func test_getAll_databaseThrowException_ShouldReturnNotNullData() throws {
         
-        managedObjectContextMock = (CoreDataFakeManager.setupInMemoryManagedObjectContext([ActivityModel(name: "test1")]) as! NSManagedObjectContextMock)
-        sut = ActivityService.shared(managedObjectContextMock)
+        NSManagedObjectContextMock.activities = []
+        NSManagedObjectContextMock.shouldThrowOnSave = true
         
         do {
             try sut.getAll()
@@ -80,9 +84,10 @@ class ActivityServiceTests: XCTestCase {
     
     //Clean data after each test
     override func tearDown() {
-        managedObjectContextMock.activities = nil
-        managedObjectContextMock.activityIndex = 0
+        NSManagedObjectContextMock.activities = nil
+        NSManagedObjectContextMock.activityIndex = 0
         managedObjectContextMock = nil
         sut = nil
+        
     }
 }

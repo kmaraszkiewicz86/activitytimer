@@ -15,7 +15,7 @@ class CoreDataFakeManager {
     ///
     /// - Parameter activities: <#activities description#>
     /// - Returns: <#return value description#>
-    static func setupInMemoryManagedObjectContext(_ activities: [ActivityModel]) -> NSManagedObjectContextProtocol {
+    static func setupInMemoryManagedObjectContext() -> NSManagedObjectContextMock {
         let container = NSPersistentContainer(name: "ActivityTimer")
         
         let description = NSPersistentStoreDescription()
@@ -28,6 +28,6 @@ class CoreDataFakeManager {
             }
         })
         
-        return NSManagedObjectContextMock(activities, context: container.viewContext)
+        return NSManagedObjectContextMock(context: container.viewContext)
     }
 }

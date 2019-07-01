@@ -20,7 +20,7 @@ class NSManagedObjectTests: XCTestCase {
     ///Set up required data
     override func setUp() {
         super.setUp()
-        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext(self.activities) as! NSManagedObjectContextMock)
+        context = CoreDataFakeManager.setupInMemoryManagedObjectContext()
     }
     
     //Clean data after each test
