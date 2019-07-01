@@ -2,4 +2,102 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+            timestampString = "583618438.794246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "toNSManagedObjectArray()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+            timestampString = "583618438.794304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "toNSManagedObjectArray()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.NSManagedObjectContextMock.toNSManagedObjectArray() -&gt; Swift.Array&lt;__C.NSManagedObject&gt;"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+                  timestampString = "583618439.293584"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "194">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ActivityTimerTests.ActivityModel) -&gt; __C.NSManagedObject in ActivityTimerTests.NSManagedObjectContextMock.toNSManagedObjectArray() -&gt; Swift.Array&lt;__C.NSManagedObject&gt;"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/Repo/activitytimer/ActivityTimer/ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+                  timestampString = "583618439.295566"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+            timestampString = "583618438.794346"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "toNSManagedObjectArray()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
+            timestampString = "583618438.794384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "toNSManagedObjectArray()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

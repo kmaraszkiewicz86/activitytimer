@@ -16,11 +16,12 @@ class NSManagedObjectArrayExtensionTests: XCTestCase {
     ///Helper class, that create mock version of Core Data base classes
     var context: NSManagedObjectContextMock!
     
+    let activities = [ActivityModel(name: "test1"), ActivityModel(name: "test2"), ActivityModel(name: "test3")]
+    
     ///Set up required data
     override func setUp() {
         super.setUp()
-        
-        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext() as! NSManagedObjectContextMock)
+        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext(self.activities) as! NSManagedObjectContextMock)
     }
 
     ///Clean data after each test
@@ -30,8 +31,6 @@ class NSManagedObjectArrayExtensionTests: XCTestCase {
     
     ///Test valid version of data of toActivityModel method
     func test_toActivitiesModel_whenDataIsValid_ShouldreturnValidActivityItemss() {
-        
-        let activities: [ActivityModel] = [ActivityModel(name: "test1"), ActivityModel(name: "test2"), ActivityModel(name: "test3")]
         
         //Given
         let activitiesNSManagedObjects = generateNSManagedObjects(activities)

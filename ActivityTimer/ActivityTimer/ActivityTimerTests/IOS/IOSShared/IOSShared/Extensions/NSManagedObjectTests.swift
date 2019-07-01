@@ -15,11 +15,12 @@ class NSManagedObjectTests: XCTestCase {
     ///Helper class, that create mock version of Core Data base classes
     var context: NSManagedObjectContextMock!
     
+    let activities = [ActivityModel(name: "test1")]
+    
     ///Set up required data
     override func setUp() {
         super.setUp()
-        
-        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext() as! NSManagedObjectContextMock)
+        context = (CoreDataFakeManager.setupInMemoryManagedObjectContext(self.activities) as! NSManagedObjectContextMock)
     }
     
     //Clean data after each test
@@ -33,7 +34,7 @@ class NSManagedObjectTests: XCTestCase {
     func test_toActivityModel_shouldGenerateValidModel () {
         
         //Given
-        let activity = ActivityModel(name: "test1")
+        let activity = self.activities.first!
         
         //When
         let activityManagedObject = generateNsManagedObject(acivity: activity)

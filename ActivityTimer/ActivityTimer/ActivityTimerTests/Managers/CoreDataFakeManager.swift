@@ -11,8 +11,11 @@ import CoreData
 ///Mock of CoreData fake base classes required by unit tests
 class CoreDataFakeManager {
     
-    ///Replace NSManagedObjectContext on real application with fake mocking object
-    static func setupInMemoryManagedObjectContext() -> NSManagedObjectContextProtocol {
+    /// Replace NSManagedObjectContext on real application with fake mocking object
+    ///
+    /// - Parameter activities: <#activities description#>
+    /// - Returns: <#return value description#>
+    static func setupInMemoryManagedObjectContext(_ activities: [ActivityModel]) -> NSManagedObjectContextProtocol {
         let container = NSPersistentContainer(name: "ActivityTimer")
         
         let description = NSPersistentStoreDescription()
@@ -25,6 +28,6 @@ class CoreDataFakeManager {
             }
         })
         
-        return NSManagedObjectContextMock(context: container.viewContext)
+        return NSManagedObjectContextMock(activities, context: container.viewContext)
     }
 }
