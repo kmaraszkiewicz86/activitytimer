@@ -9,8 +9,25 @@
 import CoreData
 
 
+class NSPersistentStoreCoordinatorMock: NSPersistentStoreCoordinatorProtocol {
+    
+    let managedObjectContextMock: NSManagedObjectContextMock!
+    
+    init (_ managedObjectContextMock: NSManagedObjectContextMock) {
+        self.managedObjectContextMock = managedObjectContextMock
+    }
+    
+    func managedObjectID(forURIRepresentation url: URL) -> NSManagedObjectID? {
+        return self.managedObjectContextMock.toNSManagedObject(activity: NSManagedObjectContextMock.activities![NSManagedObjectContextMock.activityIndex!]).objectID
+    }
+}
+
 /// Mock class for NSManagedObjectContextMock for use it in unit tests
 class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
+    ///The mock version of NSPersistentStoreCoordinator object
+    var persistentStoreCoordinatorHelper: NSPersistentStoreCoordinatorProtocol? {
+        return NSPersistentStoreCoordinatorMock(self)
+    }
     
     /// The CoreDataManager helper to manage database mock
     let context: NSManagedObjectContext
@@ -32,6 +49,15 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
         self.context = context
     }
     
+    
+    /// Gets NSManagedObjectContext and NSEntityDescription objects
+    ///
+    /// - Returns: NSManagedObjectContext and NSEntityDescription objects
+    private func getContextAndEntityDescription() -> (context: NSManagedObjectContext, descritpion: NSEntityDescription) {
+        let description = NSEntityDescription.entity(forEntityName: "Activity", in: context)!
+        
+        return (context, description)
+    }
     
     /// The mock method of fetch from NSManagedObjectContext class
     ///

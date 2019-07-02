@@ -131,7 +131,7 @@ public class ActivityService {
     private func findByUrlId (_ id: URL?) throws -> NSManagedObject {
         do {
             guard let id = id,
-                let objectID = (managedObjectContext as! NSManagedObjectContext).persistentStoreCoordinator?.managedObjectID(forURIRepresentation: id) else {
+                let objectID = managedObjectContext.persistentStoreCoordinatorHelper?.managedObjectID(forURIRepresentation: id) else {
                     
                     os_log("Error occours while tring to get object id from ActivityModel",
                            log: ActivityService.osLogName,

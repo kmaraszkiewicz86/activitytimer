@@ -21,7 +21,6 @@ class ActivityServiceTests: XCTestCase {
         
         managedObjectContextMock = CoreDataFakeManager.setupInMemoryManagedObjectContext()
         sut = ActivityService.shared(managedObjectContextMock)
-        
     }
 
     
@@ -73,12 +72,32 @@ class ActivityServiceTests: XCTestCase {
         NSManagedObjectContextMock.shouldThrowOnSave = true
         
         do {
-            try sut.getAll()
+            let _ = try sut.getAll()
             
             throw ActivityTimerTestsError.unitTestError
             
         } catch {
             
+        }
+    }
+    
+    
+    /// Test update method should save data in database with success
+    func test_update_shouldSaveItemInDatabase() throws {
+        
+        NSManagedObjectContextMock.activities = [ActivityModel(id: URL(string: "test1"), name: "test1"),                                                          ActivityModel(id: URL(string: "test2"), name: "test2"), ActivityModel(id: URL(string: "test3"), name: "test3")]
+        
+        NSManagedObjectContextMock.activityIndex = 0
+        
+        do {
+            //given
+            let activity = ActivityModel(name: "test")
+            //when
+            try sut.update(id: URL(string: "test1"), activityModel: activity)
+            
+        } catch {
+            //then
+            throw ActivityTimerTestsError.error
         }
     }
     
