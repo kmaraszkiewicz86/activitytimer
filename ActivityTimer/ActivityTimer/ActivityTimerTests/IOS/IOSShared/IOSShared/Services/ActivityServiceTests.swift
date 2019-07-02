@@ -39,8 +39,6 @@ class ActivityServiceTests: XCTestCase {
             for index in 0..<NSManagedObjectContextMock.activities!.count {
                 XCTAssertEqual(NSManagedObjectContextMock.activities![index].name, activitiesFromDatabase[index].name)
             }
-            
-            
         } catch {
             throw ActivityTimerTestsError.unitTestError
         }
@@ -62,25 +60,68 @@ class ActivityServiceTests: XCTestCase {
         }
     }
     
-    
     /// test getAll method when database throw error
     ///
     /// - Throws: throws when tests doesnt detect that getAll method throws error
     func test_getAll_databaseThrowException_ShouldReturnNotNullData() throws {
         
         NSManagedObjectContextMock.activities = []
-        NSManagedObjectContextMock.shouldThrowOnSave = true
+        NSManagedObjectContextMock.shouldThrowOnFetch = true
         
         do {
             let _ = try sut.getAll()
             
-            throw ActivityTimerTestsError.unitTestError
+        } catch ServiceError.databaseError {
+            return
+        }
+        
+        //then
+        throw ActivityTimerTestsError.unitTestError
+    }
+    
+    
+    /// Test save method should save data in database with success
+    func test_save_shouldSaveItemInDatabase() throws {
+        
+        NSManagedObjectContextMock.activities = [ActivityModel(id: URL(string: "test1"), name: "test1"),                                                          ActivityModel(id: URL(string: "test2"), name: "test2"), ActivityModel(id: URL(string: "test3"), name: "test3")]
+        
+        do {
+            //given
+            let activity = ActivityModel(id: URL(string: "test1"), name: "test")
+            //when
+            let activityFromDB = try sut.save(activityModel: activity)
+            
+            XCTAssertEqual(activity.id, activityFromDB.id)
+            XCTAssertEqual(activity.name, activityFromDB.name)
             
         } catch {
-            
+            //then
+            throw ActivityTimerTestsError.error
         }
     }
     
+    /// Test save method when action throws error
+    func test_save_shouldThrowsError() throws {
+        
+        NSManagedObjectContextMock.activities = [ActivityModel(id: URL(string: "test1"), name: "test1"),                                                          ActivityModel(id: URL(string: "test2"), name: "test2"), ActivityModel(id: URL(string: "test3"), name: "test3")]
+        
+        NSManagedObjectContextMock.shouldThrowOnSave = true
+        
+        do {
+            //given
+            let activity = ActivityModel(name: "test")
+            //when
+            let _ = try sut.save(activityModel: activity)
+            
+        } catch ServiceError.databaseError {
+            //test passed
+            return
+        }
+        
+        //then
+        //test failed
+        throw ActivityTimerTestsError.error
+    }
     
     /// Test update method should save data in database with success
     func test_update_shouldSaveItemInDatabase() throws {
@@ -101,10 +142,37 @@ class ActivityServiceTests: XCTestCase {
         }
     }
     
+    /// Test update method when no item found should throws error
+    func test_update_whenNoItemFound_shouldThrowsError() throws {
+        
+        NSManagedObjectContextMock.activities = [ActivityModel(id: URL(string: "test1"), name: "test1")]
+        
+        NSManagedObjectContextMock.activityIndex = 0
+        NSManagedObjectContextMock.shouldFoundNoItem = true
+        
+        do {
+            //given
+            let activity = ActivityModel(name: "test")
+            //when
+            try sut.update(id: URL(string: "test1"), activityModel: activity)
+            
+        } catch ServiceError.databaseError {
+            //test passed
+            return
+        }
+        
+        //then
+        //test failed
+        throw ActivityTimerTestsError.error
+    }
+    
     //Clean data after each test
     override func tearDown() {
         NSManagedObjectContextMock.activities = nil
         NSManagedObjectContextMock.activityIndex = 0
+        NSManagedObjectContextMock.shouldThrowOnSave = false
+        NSManagedObjectContextMock.shouldThrowOnFetch = false
+        NSManagedObjectContextMock.shouldFoundNoItem = false
         managedObjectContextMock = nil
         sut = nil
         

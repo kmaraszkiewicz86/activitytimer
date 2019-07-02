@@ -18,6 +18,11 @@ class NSPersistentStoreCoordinatorMock: NSPersistentStoreCoordinatorProtocol {
     }
     
     func managedObjectID(forURIRepresentation url: URL) -> NSManagedObjectID? {
+        
+        if NSManagedObjectContextMock.shouldFoundNoItem {
+            return nil
+        }
+        
         return self.managedObjectContextMock.toNSManagedObject(activity: NSManagedObjectContextMock.activities![NSManagedObjectContextMock.activityIndex!]).objectID
     }
 }
@@ -39,7 +44,13 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     static var activityIndex: Int?
     
     ///Set to true if mocking save method should throw error
+    static var shouldThrowOnFetch = false
+    
+    ///Set to true if mocking save method should throw error
     static var shouldThrowOnSave = false
+    
+    ///Set to true if you want to simulate no item found when user want to get some data from database
+    static var shouldFoundNoItem = false
     
     
     /// Initialize object of class
@@ -65,6 +76,11 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     /// - Returns: Returns NSFetchRequestResult object
     /// - Throws:
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] where T : NSFetchRequestResult {
+        
+        if NSManagedObjectContextMock.shouldThrowOnFetch {
+            throw ActivityTimerTestsError.error
+        }
+        
         return toNSManagedObjectArray().map({ (managedObject) -> T in
             return managedObject as! T
         })

@@ -11,4 +11,7 @@ public enum ServiceError: Error {
     
     ///Database error could be rise wile using database service
     case databaseError
+    
+    ///When no items found in database
+    case noItemsFound
 }

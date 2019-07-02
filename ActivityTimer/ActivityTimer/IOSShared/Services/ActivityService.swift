@@ -93,8 +93,17 @@ public class ActivityService {
             
             try managedObjectContext.save()
             
-        } catch let error as NSError {
-            os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
+        } catch ServiceError.noItemsFound {
+            
+            //log info about no items in database, but app should continue work
+            
+            os_log("No items found when tring to update item from database by id %{PUBLIC}%",
+                   log: ActivityService.osLogName,
+                   type: .info,
+                   id == nil ? "" : String(describing: id!))
+            
+        }catch let error as NSError {
+            os_log("Error occours while tring to updating data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
                    log: ActivityService.osLogName,
                    type: .error,
                    "\(error)", "\(error.userInfo)")
@@ -113,6 +122,15 @@ public class ActivityService {
             managedObjectContext.delete(try findByUrlId(activityModel.id))
             
             try managedObjectContext.save()
+            
+        } catch ServiceError.noItemsFound {
+            
+            //log info about no items in database, but app should continue work
+            
+            os_log("No items found when tring to delete item from database by id %{PUBLIC}%",
+                   log: ActivityService.osLogName,
+                   type: .info,
+                   String(describing: activityModel.id))
             
         } catch let error as NSError {
             os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
@@ -137,7 +155,7 @@ public class ActivityService {
                            log: ActivityService.osLogName,
                            type: .error)
                     
-                    throw ServiceError.databaseError
+                    throw ServiceError.noItemsFound
                     
             }
             
