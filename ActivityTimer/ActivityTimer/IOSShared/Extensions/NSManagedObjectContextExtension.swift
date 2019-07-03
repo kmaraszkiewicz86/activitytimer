@@ -22,7 +22,7 @@ public protocol NSManagedObjectContextProtocol {
 }
 
 ///Add to NSManagedObjectContext class NSManaggedObjectContextProtocol and inject methods to help running unit tests
-extension NSManagedObjectContext: NSManaggedObjectContextProtocol {
+extension NSManagedObjectContext: NSManagedObjectContextProtocol {
     
     ///Variable stub to mocking NSManagedObjectContext on unit testing
     public var context: NSManagedObjectContext {
