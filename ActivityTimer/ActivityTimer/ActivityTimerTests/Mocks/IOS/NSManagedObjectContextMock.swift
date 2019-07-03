@@ -19,16 +19,21 @@ class NSPersistentStoreCoordinatorMock: NSPersistentStoreCoordinatorProtocol {
     
     func managedObjectID(forURIRepresentation url: URL) -> NSManagedObjectID? {
         
-        if NSManagedObjectContextMock.shouldFoundNoItem {
+        if self.managedObjectContextMock.shouldFoundNoItem {
             return nil
         }
         
-        return self.managedObjectContextMock.toNSManagedObject(activity: NSManagedObjectContextMock.activities![NSManagedObjectContextMock.activityIndex!]).objectID
+        return self.managedObjectContextMock.toNSManagedObject(activity: self.managedObjectContextMock.activities![self.managedObjectContextMock.activityIndex!]).objectID
     }
 }
 
 /// Mock class for NSManagedObjectContextMock for use it in unit tests
 class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
+    
+    var isMockingProtocol: Bool {
+        return true
+    }
+    
     ///The mock version of NSPersistentStoreCoordinator object
     var persistentStoreCoordinatorHelper: NSPersistentStoreCoordinatorProtocol? {
         return NSPersistentStoreCoordinatorMock(self)
@@ -38,19 +43,19 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     let context: NSManagedObjectContext
     
     ///The activities items provided from test scenario to injection it to mocking ActivityService class
-    static var activities: [ActivityModel]?
+    var activities: [ActivityModel]?
     
     ///The index of eleemnt from Activities
-    static var activityIndex: Int?
+    var activityIndex: Int?
     
     ///Set to true if mocking save method should throw error
-    static var shouldThrowOnFetch = false
+    var shouldThrowOnFetch = false
     
     ///Set to true if mocking save method should throw error
-    static var shouldThrowOnSave = false
+    var shouldThrowOnSave = false
     
     ///Set to true if you want to simulate no item found when user want to get some data from database
-    static var shouldFoundNoItem = false
+    var shouldFoundNoItem = false
     
     
     /// Initialize object of class
@@ -77,7 +82,7 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     /// - Throws:
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] where T : NSFetchRequestResult {
         
-        if NSManagedObjectContextMock.shouldThrowOnFetch {
+        if self.shouldThrowOnFetch {
             throw ActivityTimerTestsError.error
         }
         
@@ -91,7 +96,7 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     ///
     /// - Throws: throws error when SManagedObjectContextMock.shouldThrowOnSave property i set to true
     func save() throws {
-        if NSManagedObjectContextMock.shouldThrowOnSave {
+        if self.shouldThrowOnSave {
             throw ActivityTimerTestsError.error
         }
     }
@@ -104,8 +109,8 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     }
     
     func existingObject(with objectID: NSManagedObjectID) throws -> NSManagedObject {
-        if !(NSManagedObjectContextMock.activities?.isEmpty ?? false) {
-            return toNSManagedObject(activity: NSManagedObjectContextMock.activities![NSManagedObjectContextMock.activityIndex!])
+        if !(self.activities?.isEmpty ?? false) {
+            return toNSManagedObject(activity: self.activities![self.activityIndex!])
         }
         
         throw ActivityTimerTestsError.error
@@ -117,7 +122,7 @@ class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     /// - Returns: return array of NSManagedObject
     public func toNSManagedObjectArray () -> [NSManagedObject] {
         
-        if let activitiesTmp = NSManagedObjectContextMock.activities, !activitiesTmp.isEmpty {
+        if let activitiesTmp = self.activities, !activitiesTmp.isEmpty {
             return activitiesTmp.map({ (activity) -> NSManagedObject in
                 return toNSManagedObject(activity: activity)
             })

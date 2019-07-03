@@ -6,17 +6,241 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActivityTimer/ActivityTimerTests/Mocks/IOS/NSManagedObjectContextMock.swift"
-            timestampString = "583801269.4697419"
+            filePath = "ActivityTimer/IOSShared/Services/ActivityService.swift"
+            timestampString = "583847778.619392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "existingObject(with:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "save(activityModel:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimer.ActivityService.save(activityModel: ActivityTimer.ActivityModel) throws -&gt; ActivityTimer.ActivityModel"
+                  moduleName = "ActivityTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847778.860698"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "266">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.ActivityService.save(activityModel: ActivityTimerTests.ActivityModel) throws -&gt; ActivityTimerTests.ActivityModel"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847780.029873"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "266">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/IOSShared/Services/ActivityService.swift"
+            timestampString = "583847778.620253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "save(activityModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimer.ActivityService.save(activityModel: ActivityTimer.ActivityModel) throws -&gt; ActivityTimer.ActivityModel"
+                  moduleName = "ActivityTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847778.889506"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "1341">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.ActivityService.save(activityModel: ActivityTimerTests.ActivityModel) throws -&gt; ActivityTimerTests.ActivityModel"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847780.033504"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "1341">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/IOSShared/Services/ActivityService.swift"
+            timestampString = "583847778.620627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "save(activityModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimer.ActivityService.save(activityModel: ActivityTimer.ActivityModel) throws -&gt; ActivityTimer.ActivityModel"
+                  moduleName = "ActivityTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847778.911525"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "1495">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.ActivityService.save(activityModel: ActivityTimerTests.ActivityModel) throws -&gt; ActivityTimerTests.ActivityModel"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847780.036831"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "1495">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/IOSShared/Services/ActivityService.swift"
+            timestampString = "583847778.6209821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "save(activityModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimer.ActivityService.save(activityModel: ActivityTimer.ActivityModel) throws -&gt; ActivityTimer.ActivityModel"
+                  moduleName = "ActivityTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847778.923596"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "469">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.ActivityService.save(activityModel: ActivityTimerTests.ActivityModel) throws -&gt; ActivityTimerTests.ActivityModel"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847780.0424449"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "469">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityTimer/IOSShared/Services/ActivityService.swift"
+            timestampString = "583847778.621335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "save(activityModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimer.ActivityService.save(activityModel: ActivityTimer.ActivityModel) throws -&gt; ActivityTimer.ActivityModel"
+                  moduleName = "ActivityTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847778.949409"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "791">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActivityTimerTests.ActivityService.save(activityModel: ActivityTimerTests.ActivityModel) throws -&gt; ActivityTimerTests.ActivityModel"
+                  moduleName = "ActivityTimerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krzysztofmaraszkiewicz/Library/Developer/repo/ActivityTimer/activitytimer/ActivityTimer/ActivityTimer/IOSShared/Services/ActivityService.swift"
+                  timestampString = "583847780.046077"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "791">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

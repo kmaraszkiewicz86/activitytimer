@@ -30,7 +30,7 @@ public class ActivityService {
     ///The singlethon of ActivityService class
     public static func shared(_ managedObjectContext: NSManagedObjectContextProtocol) -> ActivityService {
     
-        if ActivityService.sharedCommon == nil {
+        if ActivityService.sharedCommon == nil || managedObjectContext.isMockingProtocol {
             ActivityService.sharedCommon = ActivityService(managedObjectContext: managedObjectContext)
         }
     
@@ -63,8 +63,15 @@ public class ActivityService {
     /// - returns: The ActivityModel array
     public func save(activityModel: ActivityModel) throws -> ActivityModel {
         
-        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedObjectContext as! NSManagedObjectContext)!
-        let activity = NSManagedObject(entity: entity, insertInto: managedObjectContext as? NSManagedObjectContext)
+        guard let managedObjectContextTmp = self.managedObjectContext as? NSManagedObjectContext else {
+            
+            os_log("Bad managedObjectContext protocol type", log: ActivityService.osLogName, type: .error)
+            
+            fatalError("Bad managedObjectContext protocol type")
+        }
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedObjectContextTmp)!
+        let activity = NSManagedObject(entity: entity, insertInto: managedObjectContextTmp)
         
         activity.setValue(activityModel.name, forKey: "name")
         

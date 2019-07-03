@@ -11,6 +11,7 @@ import CoreData
 ///Protocol used for mocking and use it in unit testing
 public protocol NSManagedObjectContextProtocol {
     
+    var isMockingProtocol: Bool { get }
     var persistentStoreCoordinatorHelper: NSPersistentStoreCoordinatorProtocol? { get }
     
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] where T : NSFetchRequestResult
@@ -31,6 +32,11 @@ extension NSPersistentStoreCoordinator: NSPersistentStoreCoordinatorProtocol {
 }
 
 extension NSManagedObjectContext: NSManagedObjectContextProtocol {
+    
+    public var isMockingProtocol: Bool {
+        return false
+    }
+    
     public var persistentStoreCoordinatorHelper: NSPersistentStoreCoordinatorProtocol? {
         return self.persistentStoreCoordinator
     }
