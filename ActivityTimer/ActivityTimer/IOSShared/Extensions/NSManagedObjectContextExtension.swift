@@ -13,6 +13,7 @@ public protocol NSManagedObjectContextProtocol {
     
     var isMockingProtocol: Bool { get }
     var persistentStoreCoordinatorHelper: NSPersistentStoreCoordinatorProtocol? { get }
+    var context: NSManagedObjectContext { get }
     
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] where T : NSFetchRequestResult
     func save() throws
@@ -32,6 +33,10 @@ extension NSPersistentStoreCoordinator: NSPersistentStoreCoordinatorProtocol {
 }
 
 extension NSManagedObjectContext: NSManagedObjectContextProtocol {
+    
+    public var context: NSManagedObjectContext {
+        return self
+    }
     
     public var isMockingProtocol: Bool {
         return false

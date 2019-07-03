@@ -64,7 +64,7 @@ class ActivityServiceTests: XCTestCase {
     /// test getAll method when database throw error
     ///
     /// - Throws: throws when tests doesnt detect that getAll method throws error
-    func test_getAll_databaseThrowException_ShouldReturnNotNullData() throws {
+    func test_getAll_ShouldDatabaseThrowException() throws {
         
         managedObjectContextMock.shouldThrowOnFetch = true
         
@@ -89,7 +89,7 @@ class ActivityServiceTests: XCTestCase {
             //when
             let activityFromDB = try sut.save(activityModel: activity)
             
-            XCTAssertEqual(activity.id, activityFromDB.id)
+            XCTAssertNotNil(activityFromDB.id)
             XCTAssertEqual(activity.name, activityFromDB.name)
             
         } catch {
@@ -119,6 +119,64 @@ class ActivityServiceTests: XCTestCase {
         throw ActivityTimerTestsError.error
     }
     
+    ///Test delete method that should delete item from db
+    func test_delete_shouldDeleteItemFromDatabase() throws {
+        
+        managedObjectContextMock.activityIndex = 0
+        
+        do {
+            //given
+            let activity = ActivityModel(id: URL(string: "test1"), name: "test")
+            //when
+            try sut.delete(activityModel: activity)
+            
+        } catch ServiceError.databaseError {
+            //then
+            throw ActivityTimerTestsError.error
+        }
+    }
+    
+    /// Test delete method when no item found should throws error
+    func test_delete_whenNoItemFound_shouldThrowsError() throws {
+        
+        managedObjectContextMock.activityIndex = 0
+        managedObjectContextMock.shouldFoundNoItem = true
+        
+        do {
+            //given
+            let activity = ActivityModel(id: URL(string: "test1"), name: "test")
+            //when
+            try sut.delete(activityModel: activity)
+            
+        } catch ServiceError.noItemsFound {
+            //test passed
+            return
+        }
+        
+        //then
+        //test failed
+        throw ActivityTimerTestsError.error
+    }
+    
+    func test_delete_ShouldDatabaseThrowException() throws {
+        
+        managedObjectContextMock.activityIndex = 0
+        managedObjectContextMock.shouldThrowOnSave = true
+        
+        do {
+            //given
+            let activity = ActivityModel(id: URL(string: "test1"), name: "test")
+            //when
+            try sut.delete(activityModel: activity)
+            
+        } catch ServiceError.databaseError {
+            return
+        }
+        
+        //then
+        throw ActivityTimerTestsError.unitTestError
+    }
+    
     /// Test update method should save data in database with success
     func test_update_shouldSaveItemInDatabase() throws {
         
@@ -130,7 +188,7 @@ class ActivityServiceTests: XCTestCase {
             //when
             try sut.update(id: URL(string: "test1"), activityModel: activity)
             
-        } catch {
+        } catch ServiceError.databaseError {
             //then
             throw ActivityTimerTestsError.error
         }
@@ -148,7 +206,7 @@ class ActivityServiceTests: XCTestCase {
             //when
             try sut.update(id: URL(string: "test1"), activityModel: activity)
             
-        } catch ServiceError.databaseError {
+        } catch ServiceError.noItemsFound {
             //test passed
             return
         }
@@ -156,6 +214,25 @@ class ActivityServiceTests: XCTestCase {
         //then
         //test failed
         throw ActivityTimerTestsError.error
+    }
+    
+    func test_update_ShouldDatabaseThrowException() throws {
+        
+        managedObjectContextMock.activityIndex = 0
+        managedObjectContextMock.shouldThrowOnSave = true
+        
+        do {
+            //given
+            let activity = ActivityModel(id: URL(string: "test1"), name: "test")
+            //when
+            try sut.update(id: URL(string: "test1"), activityModel: activity)
+            
+        } catch ServiceError.databaseError {
+            return
+        }
+        
+        //then
+        throw ActivityTimerTestsError.unitTestError
     }
     
     //Clean data after each test

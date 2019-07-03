@@ -213,6 +213,8 @@ class ActivityTableViewController: UITableViewController {
                         activities.append(addedActivity)
                         self.tableView.reloadData()
                     }
+                } catch ServiceError.noItemsFound {
+                    return
                 } catch ServiceError.databaseError {
                     showAlert(title: "Error", withMessage: "Error with \(workType) data occours")
                 } catch {

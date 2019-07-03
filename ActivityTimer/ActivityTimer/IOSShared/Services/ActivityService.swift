@@ -63,15 +63,8 @@ public class ActivityService {
     /// - returns: The ActivityModel array
     public func save(activityModel: ActivityModel) throws -> ActivityModel {
         
-        guard let managedObjectContextTmp = self.managedObjectContext as? NSManagedObjectContext else {
-            
-            os_log("Bad managedObjectContext protocol type", log: ActivityService.osLogName, type: .error)
-            
-            fatalError("Bad managedObjectContext protocol type")
-        }
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedObjectContextTmp)!
-        let activity = NSManagedObject(entity: entity, insertInto: managedObjectContextTmp)
+        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: self.managedObjectContext.context)!
+        let activity = NSManagedObject(entity: entity, insertInto: self.managedObjectContext.context)
         
         activity.setValue(activityModel.name, forKey: "name")
         
@@ -93,23 +86,15 @@ public class ActivityService {
     /// - Throws: `ServiceError.databaseError` if error occours while updating data
     public func update (id: URL?, activityModel: ActivityModel) throws {
         
+        let activity = try findByUrlId(id)
+        
         do {
-            let activity = try findByUrlId(id)
             
             activity.setValue(activityModel.name, forKey: "name")
             
             try managedObjectContext.save()
             
-        } catch ServiceError.noItemsFound {
-            
-            //log info about no items in database, but app should continue work
-            
-            os_log("No items found when tring to update item from database by id %{PUBLIC}%",
-                   log: ActivityService.osLogName,
-                   type: .info,
-                   id == nil ? "" : String(describing: id!))
-            
-        }catch let error as NSError {
+        } catch let error as NSError {
             os_log("Error occours while tring to updating data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
                    log: ActivityService.osLogName,
                    type: .error,
@@ -125,19 +110,12 @@ public class ActivityService {
     /// - Throws: `ServiceError.databaseError` if error occours while deleting data
     public func delete(activityModel: ActivityModel) throws {
         
+        let id = try findByUrlId(activityModel.id)
+        
         do {
-            managedObjectContext.delete(try findByUrlId(activityModel.id))
+            managedObjectContext.delete(id)
             
             try managedObjectContext.save()
-            
-        } catch ServiceError.noItemsFound {
-            
-            //log info about no items in database, but app should continue work
-            
-            os_log("No items found when tring to delete item from database by id %{PUBLIC}%",
-                   log: ActivityService.osLogName,
-                   type: .info,
-                   String(describing: activityModel.id))
             
         } catch let error as NSError {
             os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
@@ -154,18 +132,18 @@ public class ActivityService {
     /// - Throws: `ServiceError.databaseError` if error occours while updating data
     /// - returns: The NSManagedObject
     private func findByUrlId (_ id: URL?) throws -> NSManagedObject {
+        
+        guard let id = id,
+            let objectID = managedObjectContext.persistentStoreCoordinatorHelper?.managedObjectID(forURIRepresentation: id) else {
+                
+                os_log("Error occours while tring to get object id from ActivityModel",
+                       log: ActivityService.osLogName,
+                       type: .error)
+                
+                throw ServiceError.noItemsFound
+        }
+        
         do {
-            guard let id = id,
-                let objectID = managedObjectContext.persistentStoreCoordinatorHelper?.managedObjectID(forURIRepresentation: id) else {
-                    
-                    os_log("Error occours while tring to get object id from ActivityModel",
-                           log: ActivityService.osLogName,
-                           type: .error)
-                    
-                    throw ServiceError.noItemsFound
-                    
-            }
-            
             return try managedObjectContext.existingObject(with: objectID)
             
         } catch let error as NSError {
