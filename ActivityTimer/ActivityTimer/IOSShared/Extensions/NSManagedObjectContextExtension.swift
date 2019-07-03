@@ -21,19 +21,22 @@ public protocol NSManagedObjectContextProtocol {
     func existingObject(with objectID: NSManagedObjectID) throws -> NSManagedObject
 }
 
+///Add to NSManagedObjectContext class NSManaggedObjectContextProtocol and inject methods to help running unit tests
 extension NSManagedObjectContext: NSManaggedObjectContextProtocol {
     
+    ///Variable stub to mocking NSManagedObjectContext on unit testing
     public var context: NSManagedObjectContext {
         return self
     }
     
+    ///Get info if NSManagedObjectContext is in mock state
+    ///Helps with working with singleton instance of ActivityService
     public var isMockingProtocol: Bool {
         return false
     }
     
+    ///Used for mocking NSPersistentStoreCoordinator class
     public var persistentStoreCoordinatorHelper: NSPersistentStoreCoordinatorProtocol? {
         return self.persistentStoreCoordinator
     }
-    
-    
 }

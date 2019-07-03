@@ -64,7 +64,7 @@ class ActivityServiceTests: XCTestCase {
     /// test getAll method when database throw error
     ///
     /// - Throws: throws when tests doesnt detect that getAll method throws error
-    func test_getAll_ShouldDatabaseThrowException() throws {
+    func test_getAll_WhenDatabaseThrowException() throws {
         
         managedObjectContextMock.shouldThrowOnFetch = true
         
@@ -98,8 +98,8 @@ class ActivityServiceTests: XCTestCase {
         }
     }
     
-    /// Test save method when action throws error
-    func test_save_shouldThrowsError() throws {
+    /// Test save method when database throws error
+    func test_save_whenDatabaseThrowsError() throws {
         
         managedObjectContextMock.shouldThrowOnSave = true
         
@@ -158,7 +158,8 @@ class ActivityServiceTests: XCTestCase {
         throw ActivityTimerTestsError.error
     }
     
-    func test_delete_ShouldDatabaseThrowException() throws {
+    ///Test delete method when database throws error
+    func test_delete_WhenDatabaseThrowException() throws {
         
         managedObjectContextMock.activityIndex = 0
         managedObjectContextMock.shouldThrowOnSave = true
@@ -216,7 +217,8 @@ class ActivityServiceTests: XCTestCase {
         throw ActivityTimerTestsError.error
     }
     
-    func test_update_ShouldDatabaseThrowException() throws {
+    ///Test update method when database throws error
+    func test_update_WhenDatabaseThrowException() throws {
         
         managedObjectContextMock.activityIndex = 0
         managedObjectContextMock.shouldThrowOnSave = true

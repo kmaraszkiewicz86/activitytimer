@@ -8,16 +8,21 @@
 
 import CoreData
 
+///The mock version of persistentStoreCoordinator class
 class NSPersistentStoreCoordinatorMock: NSPersistentStoreCoordinatorProtocol {
     
+    ///Get NSManagedObjectContextMock instance for using its methods
     let managedObjectContextMock: NSManagedObjectContextMock!
     
+    ///The intialize instance of NSManagedObjectContextMock class
     init (_ managedObjectContextMock: NSManagedObjectContextMock) {
         self.managedObjectContextMock = managedObjectContextMock
     }
     
+    ///Mocking managedObjectID method of NSPersistentStoreCoordinator class
     func managedObjectID(forURIRepresentation url: URL) -> NSManagedObjectID? {
         
+        //to simulate empty database response
         if self.managedObjectContextMock.shouldFoundNoItem {
             return nil
         }
