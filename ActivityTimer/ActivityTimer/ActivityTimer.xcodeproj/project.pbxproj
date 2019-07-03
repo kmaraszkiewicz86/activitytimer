@@ -22,6 +22,11 @@
 		1F52A2AB22C40F5E00A962F1 /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */; };
 		1F52A2AD22C40F6600A962F1 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */; };
 		1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */; };
+		1F93388D22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
+		1F93388E22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
+		1F93388F22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
+		1F93389222CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93389022CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift */; };
+		1F93389422CD4FF0003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
 		1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */; };
 		1F9A09A822974A9A00C1C3DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A09A622974A9A00C1C3DA /* Main.storyboard */; };
@@ -201,6 +206,8 @@
 		1F574E3622BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtensionTests.swift; sourceTree = "<group>"; };
 		1F574E3C22BC24060067F17E /* ActivityModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModelTests.swift; sourceTree = "<group>"; };
 		1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoderMock.swift; sourceTree = "<group>"; };
+		1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinatorExtension.swift; sourceTree = "<group>"; };
+		1F93389022CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinatorMock.swift; sourceTree = "<group>"; };
 		1F9A099F22974A9A00C1C3DA /* ActivityTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F9A09A422974A9A00C1C3DA /* ActivityFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFormViewController.swift; sourceTree = "<group>"; };
@@ -523,6 +530,7 @@
 				1F9EDA1A22BACD7500AE7EDE /* WCSessionExtensionMock.swift */,
 				1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */,
 				1F30239B22C01A46004BE29B /* NSManagedObjectContextMock.swift */,
+				1F93389022CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift */,
 			);
 			path = IOS;
 			sourceTree = "<group>";
@@ -599,6 +607,7 @@
 				1FC0E41D22C3E95800490FC8 /* NSManagedObjectExtension.swift */,
 				1FC0E41E22C3E95800490FC8 /* OSLogExtension.swift */,
 				1FC0E42022C3E95800490FC8 /* WCSessionExtension.swift */,
+				1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -889,6 +898,7 @@
 				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,
 				1F510FCC229C01E500B5C258 /* ActivityTimer.xcdatamodeld in Sources */,
+				1F93388D22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
 				1F9A88CE22C4190100A27B43 /* NSManagedObjectExtension.swift in Sources */,
 				1F9A88CD22C4190100A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
 				1FB6AC42229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
@@ -913,6 +923,7 @@
 				1F9A88BA22C4180400A27B43 /* ServiceError.swift in Sources */,
 				1F9A88BB22C4180400A27B43 /* ActivityOperationType.swift in Sources */,
 				1F9A88C322C4186B00A27B43 /* ActivityServiceTests.swift in Sources */,
+				1F93388E22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
 				1F9A88AD22C4170800A27B43 /* WCSessionExtension.swift in Sources */,
 				1F9A88A722C4170800A27B43 /* NSCoder.swift in Sources */,
 				1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */,
@@ -926,6 +937,7 @@
 				1F9A88B622C4180400A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
 				1F9A88B722C4180400A27B43 /* NSManagedObjectExtension.swift in Sources */,
 				1F9A88B322C4180400A27B43 /* ActivityService.swift in Sources */,
+				1F93389222CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift in Sources */,
 				1F9EDA1C22BACD7500AE7EDE /* WCSessionExtensionMock.swift in Sources */,
 				1F9A88C722C4186B00A27B43 /* WCSessionExtesionTests.swift in Sources */,
 				1F9A88B522C4180400A27B43 /* NSManagedObjectArrayExtension.swift in Sources */,
@@ -946,6 +958,7 @@
 				1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 				1F9A09C322974A9D00C1C3DA /* ActivityTimerUITests.swift in Sources */,
 				1F510FCF229C04A900B5C258 /* ActivityFormViewController.swift in Sources */,
+				1F93389422CD4FF0003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
 				1F9A88DA22C419ED00A27B43 /* NSManagedObjectExtension.swift in Sources */,
 				1F9A88D922C419ED00A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
 				1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */,
@@ -984,6 +997,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F93388F22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
 				1FC0E42D22C3E96B00490FC8 /* ServiceError.swift in Sources */,
 				1FC0E42522C3E95800490FC8 /* OSLogExtension.swift in Sources */,
 				1FC0E41922C3E94100490FC8 /* ActivityService.swift in Sources */,

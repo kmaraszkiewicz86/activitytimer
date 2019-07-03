@@ -21,18 +21,7 @@ public protocol NSManagedObjectContextProtocol {
     func existingObject(with objectID: NSManagedObjectID) throws -> NSManagedObject
 }
 
-///Protocol for mocking NSPersistentStoreCoordinator used by unit tests
-public protocol NSPersistentStoreCoordinatorProtocol {
-    
-    func managedObjectID(forURIRepresentation url: URL) -> NSManagedObjectID?
-    
-}
-
-extension NSPersistentStoreCoordinator: NSPersistentStoreCoordinatorProtocol {
-    
-}
-
-extension NSManagedObjectContext: NSManagedObjectContextProtocol {
+extension NSManagedObjectContext: NSManaggedObjectContextProtocol {
     
     public var context: NSManagedObjectContext {
         return self

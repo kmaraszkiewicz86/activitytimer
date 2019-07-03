@@ -8,25 +8,6 @@
 
 import CoreData
 
-
-class NSPersistentStoreCoordinatorMock: NSPersistentStoreCoordinatorProtocol {
-    
-    let managedObjectContextMock: NSManagedObjectContextMock!
-    
-    init (_ managedObjectContextMock: NSManagedObjectContextMock) {
-        self.managedObjectContextMock = managedObjectContextMock
-    }
-    
-    func managedObjectID(forURIRepresentation url: URL) -> NSManagedObjectID? {
-        
-        if self.managedObjectContextMock.shouldFoundNoItem {
-            return nil
-        }
-        
-        return self.managedObjectContextMock.toNSManagedObject(activity: self.managedObjectContextMock.activities![self.managedObjectContextMock.activityIndex!]).objectID
-    }
-}
-
 /// Mock class for NSManagedObjectContextMock for use it in unit tests
 class NSManagedObjectContextMock: NSManagedObjectContextProtocol {
     
