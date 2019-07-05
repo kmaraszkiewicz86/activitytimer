@@ -34,19 +34,24 @@ class ActivityTimerUITests: XCTestCase {
         textField.typeText("testowe słowo   ")
         textField.tap()
         
-        print(textField.staticTexts.accessibilityElement(at: 0))
+        app.keyboards.buttons["Hide keyboard"]
         
-//        app.navigationBars["ActivityTimer.ActivityFormView"].buttons["Save"].tap()
-//        activitytimerActivitytableviewNavigationBar.buttons["Edit"].tap()
-//
-//        let tablesQuery = app.tables
-//
-//        XCTAssertNotNil(tablesQuery.buttons["testowe słowo"])
-//
-//        tablesQuery.buttons["testowe słowo"].tap()
-//        tablesQuery.buttons["Delete"].tap()
-//
-//        XCTAssertNil(tablesQuery.buttons["testowe słowo"])
+        let firstKey = app.keys.element(boundBy: 0)
+        if firstKey.exists {
+            app.typeText("\n")
+        }
+        
+        app.navigationBars["ActivityTimer.ActivityFormView"].buttons["Save"].tap()
+        activitytimerActivitytableviewNavigationBar.buttons["Edit"].tap()
+
+        let tablesQuery = app.tables
+
+        XCTAssertNotNil(tablesQuery.buttons["testowe słowo"])
+
+        tablesQuery.buttons["testowe słowo"].tap()
+        tablesQuery.buttons["Delete"].tap()
+
+        XCTAssertNil(tablesQuery.buttons["testowe słowo"])
     }
     
     func test_editActivityItem() {

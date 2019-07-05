@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActivityTimer/ActivityTimerUITests/ActivityTimerUITests.swift"
-            timestampString = "584028682.789434"
+            timestampString = "584055443.498639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "test_addingActivityItem()"
             landmarkType = "7">
          </BreakpointContent>
