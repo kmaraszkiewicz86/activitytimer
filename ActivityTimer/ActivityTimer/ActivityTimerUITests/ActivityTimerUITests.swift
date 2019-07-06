@@ -10,86 +10,119 @@ import XCTest
 
 class ActivityTimerUITests: XCTestCase {
 
+    private let uuid = NSUUID().uuidString
+    
     private var app: XCUIApplication!
     
+    private var tablesQuery: XCUIElementQuery  {
+        return self.app.tables
+    }
+    
+    private var activityTableView: XCUIElement {
+        return app.navigationBars["ActivityTimer.ActivityTableView"]
+    }
+    
+    private var activityFormView: XCUIElement {
+        return app.navigationBars["ActivityTimer.ActivityFormView"]
+    }
+    
+    private var addButton: XCUIElement {
+        return self.activityTableView.buttons["Add"]
+    }
+    
+    private var editButton: XCUIElement {
+        return self.activityTableView.buttons["Edit"]
+    }
+    
+    private var saveButton: XCUIElement {
+        return self.activityFormView.buttons["Save"]
+    }
+    
+    private var addTextField: XCUIElement {
+        return app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element
+    }
+    
+    
+    
+    private var editTextField: XCUIElement {
+        return app.otherElements.containing(.navigationBar, identifier:"ActivityTimer.ActivityFormView").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element
+    }
+    
     override func setUp() {
-        self.app = XCUIApplication()
-        
         continueAfterFailure = false
-
-        XCUIApplication().launch()
+        
+        self.app = XCUIApplication()
+        self.app.launch()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.app = nil
     }
 
-    func test_addingActivityItem() {
+    private func fillActivityForm (suffix: String? = nil) {
         
-        let activitytimerActivitytableviewNavigationBar = app.navigationBars["ActivityTimer.ActivityTableView"]
-        activitytimerActivitytableviewNavigationBar.buttons["Add"].tap()
+        var textField = self.addTextField
+        var value = self.uuid
         
-        let textField = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element
+        if let val = suffix {
+            textField = self.editTextField
+            value = " \(val)"
+        }
+        
         textField.tap()
-        textField.typeText("testowe słowo   ")
-        textField.tap()
+        textField.typeText("\(value)")
+        pressReturnOnKeyboard()
+
+        self.saveButton.tap()
+    }
+    
+    private func deleteActivity(id: String) {
+        self.editButton.tap()
         
-        app.keyboards.buttons["Hide keyboard"]
-        
+        self.tablesQuery.buttons["Delete \(id)"].tap()
+        self.tablesQuery.buttons["Delete"].tap()
+    }
+    
+    private func pressReturnOnKeyboard() {
+        //simulate press return key on textfield
         let firstKey = app.keys.element(boundBy: 0)
         if firstKey.exists {
             app.typeText("\n")
         }
+    }
+    
+    private func isTableContainElement(_ text: String) -> Bool {
+        return self.tablesQuery.containing(XCUIElement.ElementType.staticText, identifier: text).count > 0
+    }
+    
+    func test_addingActivityItem() {
+        self.addButton.tap()
         
-        app.navigationBars["ActivityTimer.ActivityFormView"].buttons["Save"].tap()
-        activitytimerActivitytableviewNavigationBar.buttons["Edit"].tap()
+        fillActivityForm()
+        
+        XCTAssertTrue(isTableContainElement("\(self.uuid)"))
 
-        let tablesQuery = app.tables
-
-        XCTAssertNotNil(tablesQuery.buttons["testowe słowo"])
-
-        tablesQuery.buttons["testowe słowo"].tap()
-        tablesQuery.buttons["Delete"].tap()
-
-        XCTAssertNil(tablesQuery.buttons["testowe słowo"])
+        deleteActivity(id: uuid)
+        
+        XCTAssertFalse(isTableContainElement("\(self.uuid)"))
     }
     
     func test_editActivityItem() {
+        self.addButton.tap()
         
-        let activitytimerActivitytableviewNavigationBar = app.navigationBars["ActivityTimer.ActivityTableView"]
-        activitytimerActivitytableviewNavigationBar.buttons["Add"].tap()
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element.tap()
+        fillActivityForm()
         
-        let saveButton = app.navigationBars["ActivityTimer.ActivityFormView"].buttons["Save"]
-        saveButton.tap()
+        XCTAssertTrue(isTableContainElement("\(self.uuid)"))
         
-        let tablesQuery2 = app.tables
-        let tablesQuery = tablesQuery2
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["testowanie"]/*[[".cells.staticTexts[\"testowanie\"]",".staticTexts[\"testowanie\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.otherElements.containing(.navigationBar, identifier:"ActivityTimer.ActivityFormView").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element.tap()
-        saveButton.tap()
-        activitytimerActivitytableviewNavigationBar.buttons["Edit"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Delete testowanie 123"]/*[[".cells.buttons[\"Delete testowanie 123\"]",".buttons[\"Delete testowanie 123\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery2.buttons["Delete"].tap()
+        self.tablesQuery.staticTexts["\(self.uuid)"].tap()
         
+        fillActivityForm(suffix: "1")
         
+        XCTAssertFalse(isTableContainElement("\(self.uuid)"))
+        XCTAssertTrue(isTableContainElement("\(self.uuid) 1"))
+        
+        deleteActivity(id: "\(self.uuid) 1")
+        
+        XCTAssertFalse(isTableContainElement("\(self.uuid) 1"))
     }
-    
-    func test_deleteActivityItem() {
-        
-        let activitytimerActivitytableviewNavigationBar = app.navigationBars["ActivityTimer.ActivityTableView"]
-        activitytimerActivitytableviewNavigationBar.buttons["Add"].tap()
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element.tap()
-        app.navigationBars["ActivityTimer.ActivityFormView"].buttons["Save"].tap()
-        
-        let editButton = activitytimerActivitytableviewNavigationBar.buttons["Edit"]
-        editButton.tap()
-        editButton.tap()
-        
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Delete testowanie"]/*[[".cells.buttons[\"Delete testowanie\"]",".buttons[\"Delete testowanie\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        tablesQuery.buttons["Delete"].tap()
-        
-    }
-
 }
