@@ -113,6 +113,7 @@
 		1FC0E42D22C3E96B00490FC8 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
 		1FC0E42F22C3E97800490FC8 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
+		1FD5763322D77A7300ACCD34 /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5763222D77A7300ACCD34 /* ActivityCloudModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +258,7 @@
 		1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
+		1FD5763222D77A7300ACCD34 /* ActivityCloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCloudModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				1FC0E41A22C3E94B00490FC8 /* ActivityModel.swift */,
+				1FD5763222D77A7300ACCD34 /* ActivityCloudModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1005,6 +1008,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F93388F22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
+				1FD5763322D77A7300ACCD34 /* ActivityCloudModel.swift in Sources */,
 				1FC0E42D22C3E96B00490FC8 /* ServiceError.swift in Sources */,
 				1FC0E42522C3E95800490FC8 /* OSLogExtension.swift in Sources */,
 				1FC0E41922C3E94100490FC8 /* ActivityService.swift in Sources */,

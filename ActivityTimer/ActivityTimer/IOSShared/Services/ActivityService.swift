@@ -6,6 +6,7 @@
 //  Copyright © 2019 Krzysztof Maraszkiewicz. All rights reserved.
 //
 
+import CloudKit
 import CoreData
 import os.log
 import UIKit
@@ -21,6 +22,8 @@ public class ActivityService {
     
     ///The NSManagedObjectContext instance
     private let managedObjectContext: NSManagedObjectContextProtocol
+    
+    
 
     ///The initializer of ActiveService instance
     private init(managedObjectContext: NSManagedObjectContextProtocol) {

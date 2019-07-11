@@ -24,6 +24,10 @@ public extension OSLog {
     ///The NSKeyedArchiverExtension name for oslog class
     static let nsKeyedArchiverExtension = OSLog(subsystem: bundle, category: "NSKeyedArchiverExtension")
     
+    ///The initIOSSession name for oslog class
     static let initIOSSession = OSLog(subsystem: bundle, category: "InitIOSSession")
+    
+    ///The ActivityModelExtension name for oslog class
+    static let activityModelExtension = OSLog(subsystem: bundle, category: "ActivityModelExtension")
     
 }
