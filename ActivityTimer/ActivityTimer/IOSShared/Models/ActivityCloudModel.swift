@@ -11,6 +11,10 @@ import CloudKit
 ///Model for cloud kit data
 public struct ActivityCloudModel {
     
+    ///Data of record from cloud kit storage
+    public let record: CKRecord
+    
+    ///Name of zone in cloud storage
     private static let recordType = "Activity"
     
     ///Name of columns on cloud kit zone
@@ -39,10 +43,6 @@ public struct ActivityCloudModel {
             self.record.setValue(newValue, forKey: keys.name)
         }
     }
-    
-    ///Data of record from cloud kit storage
-    private let record: CKRecord
-    
     
     /// Initialize new instance of struct
     ///

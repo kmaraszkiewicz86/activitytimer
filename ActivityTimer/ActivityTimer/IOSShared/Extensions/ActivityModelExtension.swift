@@ -21,7 +21,7 @@ public extension ActivityModel {
             fatalError("The activity identifier is required")
         }
         
-        return ActivityCloudModel(id: id, name: name)
+        return ActivityCloudModel(id: String(describing: id), name: name)
     }
     
 }
