@@ -9,7 +9,7 @@
 import CloudKit
 
 ///Model for cloud kit data
-struct ActivityCloudModel {
+public struct ActivityCloudModel {
     
     private static let recordType = "Activity"
     
@@ -25,7 +25,7 @@ struct ActivityCloudModel {
     ///Set or get value of id from cloud kit storage
     public var id: String {
         get {
-            return self.record.value(forKey: keys.id)
+            return self.record.value(forKey: keys.id) as! String
         } set {
             self.record.setValue(newValue, forKey: keys.id)
         }
@@ -34,7 +34,7 @@ struct ActivityCloudModel {
     ///Set or get value of name from cloud kit storage
     public var name: String {
         get {
-            return self.record.value(forKey: keys.name)
+            return self.record.value(forKey: keys.name) as! String
         } set {
             self.record.setValue(newValue, forKey: keys.name)
         }

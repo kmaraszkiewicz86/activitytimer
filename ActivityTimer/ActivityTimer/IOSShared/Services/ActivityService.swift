@@ -23,11 +23,17 @@ public class ActivityService {
     ///The NSManagedObjectContext instance
     private let managedObjectContext: NSManagedObjectContextProtocol
     
-    
+    private var activityCloudService: ActivityCloudServiceProtocol
 
     ///The initializer of ActiveService instance
-    private init(managedObjectContext: NSManagedObjectContextProtocol) {
+    private init(managedObjectContext: NSManagedObjectContextProtocol, activityCloudService: ActivityCloudServiceProtocol? = nil) {
         self.managedObjectContext = managedObjectContext
+        
+        if activityCloudService == nil {
+            self.activityCloudService = ActivityCloudService()
+        } else {
+            self.activityCloudService = activityCloudService!
+        }
     }
     
     ///The singlethon of ActivityService class
@@ -72,6 +78,7 @@ public class ActivityService {
         activity.setValue(activityModel.name, forKey: "name")
         
         do {
+            
             try managedObjectContext.save()
             
             return activity.toActivityModel()

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1F035BCD22B92D5900CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
 		1F035BCF22B92D8000CED93D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A09A222974A9A00C1C3DA /* AppDelegate.swift */; };
+		1F10598022D8A57B00BAA590 /* ActivityModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10597F22D8A57B00BAA590 /* ActivityModelExtension.swift */; };
+		1F10598122D8A81600BAA590 /* ActivityCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4704FF22D6505100E83B7B /* ActivityCloudService.swift */; };
+		1F10598222D8A81700BAA590 /* ActivityCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4704FF22D6505100E83B7B /* ActivityCloudService.swift */; };
 		1F12DEB222C29C3F005C5A27 /* ActivityTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F510FCA229C01E500B5C258 /* ActivityTimer.xcdatamodeld */; };
 		1F30239C22C01A46004BE29B /* NSManagedObjectContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30239B22C01A46004BE29B /* NSManagedObjectContextMock.swift */; };
 		1F30239F22C02530004BE29B /* ActivityTimerTestsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30239E22C02530004BE29B /* ActivityTimerTestsError.swift */; };
@@ -24,6 +27,14 @@
 		1F52A2AB22C40F5E00A962F1 /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */; };
 		1F52A2AD22C40F6600A962F1 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */; };
 		1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */; };
+		1F91C6DF22D8AEB70006E5CD /* ActivityCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4704FF22D6505100E83B7B /* ActivityCloudService.swift */; };
+		1F91C6E122D8B31B0006E5CD /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */; };
+		1F91C6E222D8B4A30006E5CD /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */; };
+		1F91C6E322D8B4A30006E5CD /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */; };
+		1F91C6E422D8B4A40006E5CD /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */; };
+		1F91C6E522D8B4B10006E5CD /* ActivityModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10597F22D8A57B00BAA590 /* ActivityModelExtension.swift */; };
+		1F91C6E622D8B4B20006E5CD /* ActivityModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10597F22D8A57B00BAA590 /* ActivityModelExtension.swift */; };
+		1F91C6E722D8B4B20006E5CD /* ActivityModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10597F22D8A57B00BAA590 /* ActivityModelExtension.swift */; };
 		1F93388D22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
 		1F93388E22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
 		1F93388F22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */; };
@@ -113,7 +124,6 @@
 		1FC0E42D22C3E96B00490FC8 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */; };
 		1FC0E42F22C3E97800490FC8 /* ActivityOperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */; };
 		1FD282A9229F14DF000EAF03 /* ActivityRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */; };
-		1FD5763322D77A7300ACCD34 /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5763222D77A7300ACCD34 /* ActivityCloudModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +201,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F10597F22D8A57B00BAA590 /* ActivityModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModelExtension.swift; sourceTree = "<group>"; };
 		1F12C2AA22C17D2A007919EE /* ActivityServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityServiceTests.swift; sourceTree = "<group>"; };
 		1F30239B22C01A46004BE29B /* NSManagedObjectContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextMock.swift; sourceTree = "<group>"; };
 		1F30239E22C02530004BE29B /* ActivityTimerTestsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTimerTestsError.swift; sourceTree = "<group>"; };
@@ -211,6 +222,7 @@
 		1F574E3622BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtensionTests.swift; sourceTree = "<group>"; };
 		1F574E3C22BC24060067F17E /* ActivityModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModelTests.swift; sourceTree = "<group>"; };
 		1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoderMock.swift; sourceTree = "<group>"; };
+		1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCloudModel.swift; sourceTree = "<group>"; };
 		1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinatorExtension.swift; sourceTree = "<group>"; };
 		1F93389022CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinatorMock.swift; sourceTree = "<group>"; };
 		1F9A099F22974A9A00C1C3DA /* ActivityTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,7 +270,6 @@
 		1FC0E42B22C3E96B00490FC8 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		1FC0E42E22C3E97800490FC8 /* ActivityOperationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOperationType.swift; sourceTree = "<group>"; };
 		1FD282A8229F14DF000EAF03 /* ActivityRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowController.swift; sourceTree = "<group>"; };
-		1FD5763222D77A7300ACCD34 /* ActivityCloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCloudModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -616,6 +627,7 @@
 				1FC0E41E22C3E95800490FC8 /* OSLogExtension.swift */,
 				1FC0E42022C3E95800490FC8 /* WCSessionExtension.swift */,
 				1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */,
+				1F10597F22D8A57B00BAA590 /* ActivityModelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -624,7 +636,7 @@
 			isa = PBXGroup;
 			children = (
 				1FC0E41A22C3E94B00490FC8 /* ActivityModel.swift */,
-				1FD5763222D77A7300ACCD34 /* ActivityCloudModel.swift */,
+				1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -904,6 +916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F91C6E722D8B4B20006E5CD /* ActivityModelExtension.swift in Sources */,
 				1F9A88D322C4190100A27B43 /* ActivityOperationType.swift in Sources */,
 				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,
@@ -920,8 +933,10 @@
 				1F9A88CB22C4190100A27B43 /* NSManagedObjectArrayExtension.swift in Sources */,
 				1F9A88CC22C4190100A27B43 /* NSKeyedArchiverExtension.swift in Sources */,
 				1F9A88CA22C4190100A27B43 /* NSCoder.swift in Sources */,
+				1F91C6E422D8B4A40006E5CD /* ActivityCloudModel.swift in Sources */,
 				1F9A88D022C4190100A27B43 /* WCSessionExtension.swift in Sources */,
 				1FB6AC3F2298827E001B7576 /* ActivityTableViewController.swift in Sources */,
+				1F10598222D8A81700BAA590 /* ActivityCloudService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,16 +949,19 @@
 				1F9A88BB22C4180400A27B43 /* ActivityOperationType.swift in Sources */,
 				1F9A88C322C4186B00A27B43 /* ActivityServiceTests.swift in Sources */,
 				1F93388E22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
+				1F91C6E622D8B4B20006E5CD /* ActivityModelExtension.swift in Sources */,
 				1F9A88AD22C4170800A27B43 /* WCSessionExtension.swift in Sources */,
 				1F9A88A722C4170800A27B43 /* NSCoder.swift in Sources */,
 				1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */,
 				1F9A88A822C4170800A27B43 /* NSKeyedArchiverExtension.swift in Sources */,
 				1F9A88C522C4186B00A27B43 /* NSManagedObjectArrayExtensionTests.swift in Sources */,
+				1F10598122D8A81600BAA590 /* ActivityCloudService.swift in Sources */,
 				1F9A88C422C4186B00A27B43 /* ActivityModelTests.swift in Sources */,
 				1F30239F22C02530004BE29B /* ActivityTimerTestsError.swift in Sources */,
 				1F9EDA1822BACD6600AE7EDE /* NSKeyedUnarchiverTests.swift in Sources */,
 				1F9A88B822C4180400A27B43 /* OSLogExtension.swift in Sources */,
 				1F12DEB222C29C3F005C5A27 /* ActivityTimer.xcdatamodeld in Sources */,
+				1F91C6E322D8B4A30006E5CD /* ActivityCloudModel.swift in Sources */,
 				1F9A88B622C4180400A27B43 /* NSManagedObjectContextExtension.swift in Sources */,
 				1F9A88B722C4180400A27B43 /* NSManagedObjectExtension.swift in Sources */,
 				1F9A88B322C4180400A27B43 /* ActivityService.swift in Sources */,
@@ -964,6 +982,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F91C6E522D8B4B10006E5CD /* ActivityModelExtension.swift in Sources */,
 				1F9A88DF22C419ED00A27B43 /* ActivityOperationType.swift in Sources */,
 				1FB6AC402298827E001B7576 /* ActivityTableViewController.swift in Sources */,
 				1F9A09C322974A9D00C1C3DA /* ActivityTimerUITests.swift in Sources */,
@@ -980,8 +999,10 @@
 				1F9A88D722C419ED00A27B43 /* NSManagedObjectArrayExtension.swift in Sources */,
 				1F9A88D822C419ED00A27B43 /* NSKeyedArchiverExtension.swift in Sources */,
 				1F9A88D622C419ED00A27B43 /* NSCoder.swift in Sources */,
+				1F91C6E222D8B4A30006E5CD /* ActivityCloudModel.swift in Sources */,
 				1F9A88DC22C419ED00A27B43 /* WCSessionExtension.swift in Sources */,
 				1FB6AC43229883A1001B7576 /* ActivityTableViewCell.swift in Sources */,
+				1F91C6DF22D8AEB70006E5CD /* ActivityCloudService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,13 +1029,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F93388F22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift in Sources */,
-				1FD5763322D77A7300ACCD34 /* ActivityCloudModel.swift in Sources */,
+				1F10598022D8A57B00BAA590 /* ActivityModelExtension.swift in Sources */,
 				1FC0E42D22C3E96B00490FC8 /* ServiceError.swift in Sources */,
 				1FC0E42522C3E95800490FC8 /* OSLogExtension.swift in Sources */,
 				1FC0E41922C3E94100490FC8 /* ActivityService.swift in Sources */,
 				1F47050022D6505100E83B7B /* ActivityCloudService.swift in Sources */,
 				1FC0E42622C3E95800490FC8 /* NSCoder.swift in Sources */,
 				1FC0E42822C3E95800490FC8 /* NSKeyedArchiverExtension.swift in Sources */,
+				1F91C6E122D8B31B0006E5CD /* ActivityCloudModel.swift in Sources */,
 				1FC0E42C22C3E96B00490FC8 /* ActivityOperationTypeError.swift in Sources */,
 				1FC0E42922C3E95800490FC8 /* NSManagedObjectContextExtension.swift in Sources */,
 				1FC0E41B22C3E94B00490FC8 /* ActivityModel.swift in Sources */,

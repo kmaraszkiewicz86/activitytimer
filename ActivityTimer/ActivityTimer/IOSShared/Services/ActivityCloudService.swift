@@ -7,65 +7,34 @@
 //
 
 import CloudKit
-import UIKit
 import os.log
 
+///ActivityCloudService protocol
+public protocol ActivityCloudServiceProtocol {
+    /// Save activity to database
+    ///
+    /// - Parameter activity: The activity data
+    func add(activity: ActivityCloudModel) throws
+}
+
 ///Manages activity type on ICloudKit storage
-public class ActivityCloudService {
+public class ActivityCloudService: ActivityCloudServiceProtocol {
     
     /// Conncetion of cloud kit default database
     private lazy var database: CKDatabase = {
         return CKContainer.default().privateCloudDatabase
     }()
     
-    ///On error action. Run when on database action occours error
-    private var onError: (error: Error?) -> Void
-    
-    
-    /// IKnitialize class
-    ///
-    /// - Parameter onError: On error action. Run when on database action occours error
-    init(onError: (error: Error) -> Void) {
-        self.onError = onError
-    }
-    
-    
     /// Save activity to database
     ///
     /// - Parameter activity: The activity data
-    public func save(activity: ActivityCloudModel) {
+    public func add(activity: ActivityCloudModel) throws {
         database.save(activity) { (record, error) in
             if error != nil {
-                onError(error)
+                os_log("Save item to storage finish with error %{PUBLIC}%", log: OSLog.activityCloudService, type: .error, "\(error)")
+                
+                throw ServiceError.cloudKitStorageError
             }
         }
     }
 }
-
-public protocol ActivityCloudServiceProtocol {
-    /// Conncetion of cloud kit default database
-    private var database: CKDatabase { get }
-    
-    ///On error action. Run when on database action occours error
-    private var onError: (error: Error?) -> Void
-    
-    
-    /// Save activity to database
-    ///
-    /// - Parameter activity: The activity data
-    public func save(activity: ActivityCloudModel)
-}
-
-public extension ActivityModel {
-    
-    func toActivityCloudModel() -> ActivityCloudModel {
-        guard let id = id else {
-            os_log("The activity identifier is required", log: OSLog.activityModelExtension, type: .error)
-            fatalError("The activity identifier is required")
-        }
-        
-        return ActivityCloudModel(id: id, name: name)
-    }
-    
-}
-

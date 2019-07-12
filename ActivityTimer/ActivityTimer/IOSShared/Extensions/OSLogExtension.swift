@@ -30,4 +30,7 @@ public extension OSLog {
     ///The ActivityModelExtension name for oslog class
     static let activityModelExtension = OSLog(subsystem: bundle, category: "ActivityModelExtension")
     
+    ///The ActivityCloudService name for oslog class
+    static let activityCloudService = OSLog(subsystem: bundle, category: "ActivityCloudService")
+    
 }

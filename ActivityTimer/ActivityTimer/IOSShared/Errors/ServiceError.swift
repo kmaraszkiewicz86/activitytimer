@@ -14,4 +14,7 @@ public enum ServiceError: Error {
     
     ///When no items found in database
     case noItemsFound
+    
+    ///Throws when error occours when tring to save item to cloud kit storage
+    case cloudKitStorageError
 }
