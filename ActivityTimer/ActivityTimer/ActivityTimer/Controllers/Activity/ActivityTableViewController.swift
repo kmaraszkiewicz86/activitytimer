@@ -42,7 +42,7 @@ class ActivityTableViewController: UITableViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol)
+        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol, onError: showAlert(withError:))
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
@@ -221,6 +221,14 @@ class ActivityTableViewController: UITableViewController {
                     showAlert(title: "Error", withMessage: "Unknow exception occours")
                 }
         }
+    }
+    
+    
+    /// Show alert
+    ///
+    /// - Parameter error: The Error object
+    private func showAlert(withError error: Error?) {
+        self.showAlert(title: "An error occured", withMessage: String(describing: error))
     }
     
     //MARK: helper methods

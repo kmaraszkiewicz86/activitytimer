@@ -22,12 +22,20 @@ public class ActivityService {
     
     ///The NSManagedObjectContext instance
     private let managedObjectContext: NSManagedObjectContextProtocol
-    
+
+    ///Instance of activity cloud service
     private var activityCloudService: ActivityCloudServiceProtocol
 
+    ///Action that run when occours errors using activity cloud service
+    private var onError: ((String?) -> Void)?
+    
     ///The initializer of ActiveService instance
-    private init(managedObjectContext: NSManagedObjectContextProtocol, activityCloudService: ActivityCloudServiceProtocol? = nil) {
+    private init(managedObjectContext: NSManagedObjectContextProtocol, onError: ((Error?) -> Void)? = nil, activityCloudService: ActivityCloudServiceProtocol? = nil) {
         self.managedObjectContext = managedObjectContext
+        
+        if let onErrorTmp = onError {
+            self.onError = onErrorTmp
+        }
         
         if activityCloudService == nil {
             self.activityCloudService = ActivityCloudService()
@@ -37,7 +45,7 @@ public class ActivityService {
     }
     
     ///The singlethon of ActivityService class
-    public static func shared(_ managedObjectContext: NSManagedObjectContextProtocol) -> ActivityService {
+    public static func shared(_ managedObjectContext: NSManagedObjectContextProtocol, onError: ((Error?) -> Void)? = nil, activityCloudService: ActivityCloudServiceProtocol? = nil) -> ActivityService {
     
         if ActivityService.sharedCommon == nil || managedObjectContext.isMockingProtocol {
             ActivityService.sharedCommon = ActivityService(managedObjectContext: managedObjectContext)
@@ -71,23 +79,27 @@ public class ActivityService {
     /// - throws: `ServiceError.databaseError` if error occours while saving data
     /// - returns: The ActivityModel array
     public func save(activityModel: ActivityModel) throws -> ActivityModel {
-        
+
         let entity = NSEntityDescription.entity(forEntityName: "Activity", in: self.managedObjectContext.context)!
         let activity = NSManagedObject(entity: entity, insertInto: self.managedObjectContext.context)
         
         activity.setValue(activityModel.name, forKey: "name")
         
-        do {
-            
-            try managedObjectContext.save()
-            
-            return activity.toActivityModel()
-        } catch let error as NSError {
-            
-            os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")
-            
-            throw ServiceError.databaseError
-        }
+        self.activityCloudService.save(activityModel: activity.toActivityCloudModel(), onSuccess: {
+            do {
+                
+                try self.managedObjectContext.save()
+                activity.toActivityModel()
+            } catch let error as NSError {
+                
+                os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")
+                
+                self.onError?(String(desc))
+            }
+        }, onError: { (error) in
+            self.onError?(String(desc))
+        })
+        
     }
     
     ///Updates activity model data
