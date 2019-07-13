@@ -42,7 +42,11 @@ class ActivityTableViewController: UITableViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol, onError: showAlert(withError:))
+        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol, onError: {
+            error in {
+                showAlert(error:error!)
+            }
+        })
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
@@ -200,18 +204,20 @@ class ActivityTableViewController: UITableViewController {
                         
                         workType = "saving"
                         
-                        let addedActivity = try activityService!.save(activityModel: activity)
-                        
-                        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                        activityService!.save(activityModel: activity, onSuccess: {
+                            addedActivity in
+                          
+                            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                                
+                                let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
+                                
+                                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                                
+                            })
                             
-                            let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
-                            
-                        validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                            
+                            self.activities.append(addedActivity)
+                            self.tableView.reloadData()
                         })
-                        
-                        activities.append(addedActivity)
-                        self.tableView.reloadData()
                     }
                 } catch ServiceError.noItemsFound {
                     return
@@ -226,8 +232,8 @@ class ActivityTableViewController: UITableViewController {
     
     /// Show alert
     ///
-    /// - Parameter error: The Error object
-    private func showAlert(withError error: Error?) {
+    /// - Parameter error: The Error message
+    private func showAlert(error: String?) {
         self.showAlert(title: "An error occured", withMessage: String(describing: error))
     }
     

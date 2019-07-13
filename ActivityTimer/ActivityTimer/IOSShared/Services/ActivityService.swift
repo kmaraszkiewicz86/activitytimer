@@ -30,7 +30,7 @@ public class ActivityService {
     private var onError: ((String?) -> Void)?
     
     ///The initializer of ActiveService instance
-    private init(managedObjectContext: NSManagedObjectContextProtocol, onError: ((Error?) -> Void)? = nil, activityCloudService: ActivityCloudServiceProtocol? = nil) {
+    private init(managedObjectContext: NSManagedObjectContextProtocol, onError: ((String?) -> Void)? = nil, activityCloudService: ActivityCloudServiceProtocol? = nil) {
         self.managedObjectContext = managedObjectContext
         
         if let onErrorTmp = onError {
@@ -78,7 +78,8 @@ public class ActivityService {
     /// - parameter activityModel: The activity model data
     /// - throws: `ServiceError.databaseError` if error occours while saving data
     /// - returns: The ActivityModel array
-    public func save(activityModel: ActivityModel) throws -> ActivityModel {
+    public func save(activityModel: ActivityModel,
+                    onSuccess: @escaping (ActivityModel) -> Void) {
 
         let entity = NSEntityDescription.entity(forEntityName: "Activity", in: self.managedObjectContext.context)!
         let activity = NSManagedObject(entity: entity, insertInto: self.managedObjectContext.context)
@@ -89,15 +90,15 @@ public class ActivityService {
             do {
                 
                 try self.managedObjectContext.save()
-                activity.toActivityModel()
+                onSuccess(activity.toActivityModel())
             } catch let error as NSError {
                 
                 os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")
                 
-                self.onError?(String(desc))
+                self.onError?(String(describing: error))
             }
         }, onError: { (error) in
-            self.onError?(String(desc))
+            self.onError?(String(describing: error))
         })
         
     }
