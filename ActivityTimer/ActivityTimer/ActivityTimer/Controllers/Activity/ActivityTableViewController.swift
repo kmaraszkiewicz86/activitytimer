@@ -42,11 +42,7 @@ class ActivityTableViewController: UITableViewController {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol, onError: {
-            error in {
-                showAlert(error:error!)
-            }
-        })
+        self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol, onError:showAlert(error:))
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
@@ -57,7 +53,6 @@ class ActivityTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    
     ///Selects max number of selection in table
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -88,7 +83,6 @@ class ActivityTableViewController: UITableViewController {
         return true
     }
 
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

@@ -27,28 +27,26 @@ public class ActivityService {
     private var activityCloudService: ActivityCloudServiceProtocol
 
     ///Action that run when occours errors using activity cloud service
-    private var onError: ((String?) -> Void)?
+    private var onError: (String?) -> Void
     
     ///The initializer of ActiveService instance
-    private init(managedObjectContext: NSManagedObjectContextProtocol, onError: ((String?) -> Void)? = nil, activityCloudService: ActivityCloudServiceProtocol? = nil) {
+    private init(managedObjectContext: NSManagedObjectContextProtocol, onError: @escaping (String?) -> Void, activityCloudService: ActivityCloudServiceProtocol? = nil) {
         self.managedObjectContext = managedObjectContext
         
-        if let onErrorTmp = onError {
-            self.onError = onErrorTmp
-        }
+        self.onError = onError
         
         if activityCloudService == nil {
-            self.activityCloudService = ActivityCloudService()
+            self.activityCloudService = ActivityCloudService(onError: self.onError)
         } else {
             self.activityCloudService = activityCloudService!
         }
     }
     
     ///The singlethon of ActivityService class
-    public static func shared(_ managedObjectContext: NSManagedObjectContextProtocol, onError: ((Error?) -> Void)? = nil, activityCloudService: ActivityCloudServiceProtocol? = nil) -> ActivityService {
+    public static func shared(_ managedObjectContext: NSManagedObjectContextProtocol, onError: @escaping (String?) -> Void, activityCloudService: ActivityCloudServiceProtocol? = nil) -> ActivityService {
     
         if ActivityService.sharedCommon == nil || managedObjectContext.isMockingProtocol {
-            ActivityService.sharedCommon = ActivityService(managedObjectContext: managedObjectContext)
+            ActivityService.sharedCommon = ActivityService(managedObjectContext: managedObjectContext, onError: onError)
         }
     
         return ActivityService.sharedCommon!
@@ -95,10 +93,8 @@ public class ActivityService {
                 
                 os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")
                 
-                self.onError?(String(describing: error))
+                self.onError(String(describing: error))
             }
-        }, onError: { (error) in
-            self.onError?(String(describing: error))
         })
         
     }

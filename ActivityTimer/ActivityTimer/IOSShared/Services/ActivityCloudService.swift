@@ -15,8 +15,7 @@ public protocol ActivityCloudServiceProtocol {
     ///
     /// - Parameter activityModel: The activity data
     func save(activityModel: ActivityCloudModel,
-              onSuccess: @escaping () -> Void,
-              onError: @escaping (Error?) -> Void)
+              onSuccess: @escaping () -> Void)
 }
 
 ///Manages activity type on ICloudKit storage
@@ -27,17 +26,23 @@ public class ActivityCloudService: ActivityCloudServiceProtocol {
         return CKContainer.default().privateCloudDatabase
     }()
     
+    private var onError: (String?) -> Void
+    
+    init (onError: @escaping (String?) -> Void) {
+        self.onError = onError
+    }
+    
     /// Save activity to database
     ///
     /// - Parameter activityModel: The activity data
-    public func save(activityModel: ActivityCloudModel, onSuccess: @escaping () -> Void, onError: @escaping (Error?) -> Void) {
+    public func save(activityModel: ActivityCloudModel, onSuccess: @escaping () -> Void) {
         
         database.save(activityModel.record, completionHandler: {
             (record: CKRecord?, error: Error?) in
             if error != nil {
                 os_log("Save item to storage finish with error %{PUBLIC}%", log: OSLog.activityCloudService, type: .error, String(describing: error))
                 
-                onError(error)
+                self.onError(String(describing: error))
                 return
             }
             
