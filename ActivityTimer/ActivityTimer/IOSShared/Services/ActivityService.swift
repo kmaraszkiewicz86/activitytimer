@@ -127,22 +127,28 @@ public class ActivityService {
     ///Deletes activity
     /// - parameter activityModel: The activity model data
     /// - Throws: `ServiceError.databaseError` if error occours while deleting data
-    public func delete(activityModel: ActivityModel) throws {
-        
-        let id = try findByUrlId(activityModel.id)
+    public func delete(activityModel: ActivityModel) {
         
         do {
-            managedObjectContext.delete(id)
+            let id = try findByUrlId(activityModel.id)
             
-            try managedObjectContext.save()
-            
+            self.activityCloudService.delete(id: activityModel.id) {
+                do {
+                    managedObjectContext.delete(id)
+                    
+                    try managedObjectContext.save()
+                    
+                } catch let error as NSError {
+                    os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
+                           log: ActivityService.osLogName,
+                           type: .error,
+                           "\(error)", "\(error.userInfo)")
+                    
+                    throw ServiceError.databaseError
+                }
+            }
         } catch let error as NSError {
-            os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
-                   log: ActivityService.osLogName,
-                   type: .error,
-                   "\(error)", "\(error.userInfo)")
-            
-            throw ServiceError.databaseError
+            self.onError(String(describing: error))
         }
     }
     

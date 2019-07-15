@@ -15,7 +15,7 @@ public struct ActivityCloudModel {
     public let record: CKRecord
     
     ///Name of zone in cloud storage
-    private static let recordType = "Activity"
+    public static let recordType = "Activity"
     
     ///Name of columns on cloud kit zone
     private struct keys {
