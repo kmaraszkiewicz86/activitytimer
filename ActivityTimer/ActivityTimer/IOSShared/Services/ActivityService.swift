@@ -84,17 +84,18 @@ public class ActivityService {
         
         activity.setValue(activityModel.name, forKey: "name")
         
+        do {
+            
+            try self.managedObjectContext.save()
+        } catch let error as NSError {
+            
+            os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")
+            
+            self.onError(String(describing: error))
+        }
+        
         self.activityCloudService.save(activityModel: activity.toActivityCloudModel(), onSuccess: {
-            do {
-                
-                try self.managedObjectContext.save()
-                onSuccess(activity.toActivityModel())
-            } catch let error as NSError {
-                
-                os_log("Error while saving data to database. %{PUBLIC}@. %{PUBLIC}@", log: ActivityService.osLogName, type: .error, "\(error)", "\(error.userInfo)")
-                
-                self.onError(String(describing: error))
-            }
+            onSuccess(activity.toActivityModel())
         })
         
     }
@@ -127,16 +128,18 @@ public class ActivityService {
     ///Deletes activity
     /// - parameter activityModel: The activity model data
     /// - Throws: `ServiceError.databaseError` if error occours while deleting data
-    public func delete(activityModel: ActivityModel) {
+    public func delete(activityModel: ActivityModel, onSuccess: @escaping () -> Void) {
         
         do {
-            let id = try findByUrlId(activityModel.id)
+            let activityManagedObject = try findByUrlId(activityModel.id)
             
-            self.activityCloudService.delete(id: activityModel.id) {
+            self.activityCloudService.delete(id: activityManagedObject.objectID.uriRepresentation()) {
                 do {
-                    self.managedObjectContext.delete(id)
+                    self.managedObjectContext.delete(activityManagedObject)
                     
                     try self.managedObjectContext.save()
+                    
+                    onSuccess()
                     
                 } catch let error as NSError {
                     os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",

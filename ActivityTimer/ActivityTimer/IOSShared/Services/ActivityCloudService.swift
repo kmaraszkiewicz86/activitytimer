@@ -67,7 +67,7 @@ public class ActivityCloudService: ActivityCloudServiceProtocol {
             return
         }
         
-        let query = CKQuery(recordType: ActivityCloudModel.recordType, predicate: NSPredicate(format: "id=%@", String(describing: idTmp)))
+        let query = CKQuery(recordType: ActivityCloudModel.recordType, predicate: NSPredicate(format: "id == %@", String(describing: idTmp)))
         
         self.database.perform(query, inZoneWith: nil) { (records, error) in
             if self.isErrorExists("Could not found item with error %{PUBLIC}%", error) {
@@ -84,10 +84,12 @@ public class ActivityCloudService: ActivityCloudServiceProtocol {
                             return
                         }
                         
-                        onSuccess()
+                        
                     })
                 }
             }
+            
+            onSuccess()
         }
     }
     

@@ -31,7 +31,7 @@ public class ActivityModel: NSObject, NSCoding, NSSecureCoding {
     ///The name of activity
     public var name: String
     
-    ///The operation activity type
+    ///The operation activity ty
     public var operationType: ActivityOperationType?
     
     ///Initialize data for NSCoding decode

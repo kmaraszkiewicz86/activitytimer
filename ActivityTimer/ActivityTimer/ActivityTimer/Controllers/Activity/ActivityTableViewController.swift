@@ -94,10 +94,12 @@ class ActivityTableViewController: UITableViewController {
                 
             })
             
-            activityService?.delete(activityModel: activities[indexPath.row])
-            activities.remove(at: indexPath.row)
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            activityService?.delete(activityModel: activities[indexPath.row]) {
+                DispatchQueue.main.async {
+                    self.activities.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
         }
     }
     
