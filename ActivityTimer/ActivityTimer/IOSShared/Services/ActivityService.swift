@@ -134,9 +134,9 @@ public class ActivityService {
             
             self.activityCloudService.delete(id: activityModel.id) {
                 do {
-                    managedObjectContext.delete(id)
+                    self.managedObjectContext.delete(id)
                     
-                    try managedObjectContext.save()
+                    try self.managedObjectContext.save()
                     
                 } catch let error as NSError {
                     os_log("Error occours while tring to deleting data from CoreData. %{PUBLIC}@. %{PUBLIC}@",
@@ -144,7 +144,7 @@ public class ActivityService {
                            type: .error,
                            "\(error)", "\(error.userInfo)")
                     
-                    throw ServiceError.databaseError
+                    self.onError(String(describing: error))
                 }
             }
         } catch let error as NSError {

@@ -55,7 +55,6 @@ public class ActivityCloudService: ActivityCloudServiceProtocol {
         })
     }
     
-    
     /// Deletes activity by id
     ///
     /// - Parameters:
@@ -92,6 +91,12 @@ public class ActivityCloudService: ActivityCloudServiceProtocol {
         }
     }
     
+    /// Check if Error instance is not empty and send error to error action
+    ///
+    /// - Parameters:
+    ///   - logMessage: The log message that be save in logs
+    ///   - error: The Error type object
+    /// - Returns: returns true if error is not empty
     private func isErrorExists(_ logMessage: StaticString, _ error: Error?) -> Bool {
         if error != nil {
             sendError(logMessage: logMessage, errorMessage: String(describing: error))
@@ -101,8 +106,13 @@ public class ActivityCloudService: ActivityCloudServiceProtocol {
         return false
     }
     
+    /// Send error to error action and logs custom log message to logs
+    ///
+    /// - Parameters:
+    ///   - logMessage: The log message that be save in logs
+    ///   - errorMessage: The error message that be send by onError(String:) property
     private func sendError (logMessage: StaticString, errorMessage: String) {
-        os_log(logMessage, log: OSLog.activityCloudService, type: .error, String(describing: error))
+        os_log(logMessage, log: OSLog.activityCloudService, type: .error, errorMessage)
         
         self.onError(errorMessage)
     }

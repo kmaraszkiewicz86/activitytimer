@@ -39,7 +39,7 @@ class ActivityTableViewController: UITableViewController {
     ///The view did load event
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         self.activityService = ActivityService.shared(appDelegate.persistentContainer.viewContext as NSManagedObjectContextProtocol, onError:showAlert(error:))
@@ -51,18 +51,18 @@ class ActivityTableViewController: UITableViewController {
         
         fetchData()
     }
-
+    
     // MARK: - Table view data source
     ///Selects max number of selection in table
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     ///Sets table items count
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activities.count
     }
-
+    
     ///Fills data in table
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell", for: indexPath) as? ActivityTableViewCell else {
@@ -70,61 +70,39 @@ class ActivityTableViewController: UITableViewController {
             os_log("Could not found valid ActivityTableViewCell type to convert data to table cell", log: ActivityTableViewController.osLogName, type: .fault)
             fatalError("Occours error while tring to find proper table cell type")
         }
-
+        
         let activity = activities[indexPath.row]
         
         cell.nameLabel.text = activity.name
-
+        
         return cell
     }
- 
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            do {
-                WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-                    
-                    let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
-                     validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                    
-                })
+            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                 
-                try activityService?.delete(activityModel: activities[indexPath.row])
-                activities.remove(at: indexPath.row)
+                let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
+                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                 
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } catch ServiceError.databaseError {
-                showAlert(title: "Error", withMessage: "Error with saving data occours")
-            } catch {
-                showAlert(title: "Error", withMessage: "Unknow exception occours")
-            }
+            })
+            
+            activityService?.delete(activityModel: activities[indexPath.row])
+            activities.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -134,7 +112,7 @@ class ActivityTableViewController: UITableViewController {
             os_log("Adding activity with %{PUBLIC}@ destination",
                    log: ActivityTableViewController.osLogName,
                    type: .info,
-            segue.destination)
+                   segue.destination)
             
         case "EditActivity":
             
@@ -175,51 +153,51 @@ class ActivityTableViewController: UITableViewController {
         if let activityFormViewController = sender.source as? ActivityFormViewController,
             let activity = activityFormViewController.activity {
             
-                var workType = ""
+            var workType = ""
             
-                do {
-                    if let index = tableView.indexPathForSelectedRow {
+            do {
+                if let index = tableView.indexPathForSelectedRow {
+                    
+                    workType = "updating"
+                    
+                    WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                         
-                        workType = "updating"
+                        let activityModelToSend = ActivityModel(id: activities[index.row].id, name: activity.name, operationType: ActivityOperationType.updated)
+                        
+                        validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                        
+                    })
+                    
+                    try activityService!.update(id: activities[index.row].id, activityModel: activity)
+                    activities[index.row].name = activity.name
+                    tableView.reloadRows(at: [index], with: .fade)
+                    
+                } else {
+                    
+                    workType = "saving"
+                    
+                    activityService!.save(activityModel: activity, onSuccess: {
+                        addedActivity in
                         
                         WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                             
-                            let activityModelToSend = ActivityModel(id: activities[index.row].id, name: activity.name, operationType: ActivityOperationType.updated)
+                            let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
                             
                             validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
                             
                         })
                         
-                        try activityService!.update(id: activities[index.row].id, activityModel: activity)
-                        activities[index.row].name = activity.name
-                        tableView.reloadRows(at: [index], with: .fade)
-                        
-                    } else {
-                        
-                        workType = "saving"
-                        
-                        activityService!.save(activityModel: activity, onSuccess: {
-                            addedActivity in
-                          
-                            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-                                
-                                let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
-                                
-                                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                                
-                            })
-                            
-                            self.activities.append(addedActivity)
-                            self.tableView.reloadData()
-                        })
-                    }
-                } catch ServiceError.noItemsFound {
-                    return
-                } catch ServiceError.databaseError {
-                    showAlert(title: "Error", withMessage: "Error with \(workType) data occours")
-                } catch {
-                    showAlert(title: "Error", withMessage: "Unknow exception occours")
+                        self.activities.append(addedActivity)
+                        self.tableView.reloadData()
+                    })
                 }
+            } catch ServiceError.noItemsFound {
+                return
+            } catch ServiceError.databaseError {
+                showAlert(title: "Error", withMessage: "Error with \(workType) data occours")
+            } catch {
+                showAlert(title: "Error", withMessage: "Unknow exception occours")
+            }
         }
     }
     
