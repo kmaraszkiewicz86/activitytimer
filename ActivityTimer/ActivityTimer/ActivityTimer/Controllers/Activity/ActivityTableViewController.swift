@@ -87,57 +87,26 @@ class ActivityTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-                
-                let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
-                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                
-            })
-            
-            activityService?.delete(activityModel: activities[indexPath.row]) {
-                DispatchQueue.main.async {
-                    self.activities.remove(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
-                }
-            }
+            deleteActivity(indexPath: indexPath)
         }
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /// In a storyboard-based application, you will often want to do a little preparation before navigation
+    ///
+    /// - Parameters:
+    ///   - segue: The UIStoryboardSegue
+    ///   - sender: The sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch (segue.identifier ?? "") {
         case "AddActivity":
-            os_log("Adding activity with %{PUBLIC}@ destination",
-                   log: ActivityTableViewController.osLogName,
-                   type: .info,
-                   segue.destination)
+            prepareAddActivityForm(for: segue)
             
         case "EditActivity":
-            
-            guard let activityFormViewController = segue.destination as? ActivityFormViewController else {
-                os_log("Invalid convertion from segue.destination to ActivityFormViewController", log: ActivityTableViewController.osLogName, type: .error)
-                
-                fatalError("Errour occours while tring to navigate to edit form")
-                
-            }
-            
-            guard let selectedCell = sender as? ActivityTableViewCell else {
-                os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
-                
-                fatalError("Errour occours while tring to navigate to edit form")
-            }
-            
-            guard let index = tableView.indexPath(for: selectedCell) else {
-                os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
-                
-                fatalError("Errour occours while tring to navigate to edit form")
-            }
-            
-            activityFormViewController.activity = activities[index.row]
+            prepareEditActivityForm(for: segue, sender: sender)
             
         default:
             os_log("Destination %s not implemented",
@@ -162,36 +131,13 @@ class ActivityTableViewController: UITableViewController {
                     
                     workType = "updating"
                     
-                    WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-                        
-                        let activityModelToSend = ActivityModel(id: activities[index.row].id, name: activity.name, operationType: ActivityOperationType.updated)
-                        
-                        validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                        
-                    })
-                    
-                    try activityService!.update(id: activities[index.row].id, activityModel: activity)
-                    activities[index.row].name = activity.name
-                    tableView.reloadRows(at: [index], with: .fade)
+                    try updateActivity(activity: activity, index: index)
                     
                 } else {
                     
                     workType = "saving"
                     
-                    activityService!.save(activityModel: activity, onSuccess: {
-                        addedActivity in
-                        
-                        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-                            
-                            let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
-                            
-                            validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                            
-                        })
-                        
-                        self.activities.append(addedActivity)
-                        self.tableView.reloadData()
-                    })
+                    addActivity(activity: activity)
                 }
             } catch ServiceError.noItemsFound {
                 return
@@ -203,6 +149,7 @@ class ActivityTableViewController: UITableViewController {
         }
     }
     
+    //MARK: HELPER METHODS
     
     /// Show alert
     ///
@@ -211,7 +158,6 @@ class ActivityTableViewController: UITableViewController {
         self.showAlert(title: "An error occured", withMessage: String(describing: error))
     }
     
-    //MARK: helper methods
     ///Show alert
     ///- parameter title: The alert title
     ///- parameter withMessage: The alert message
@@ -236,6 +182,111 @@ class ActivityTableViewController: UITableViewController {
             showAlert(title: "Error", withMessage: "Error with saving data occours")
         } catch {
             showAlert(title: "Error", withMessage: "Unknow exception occours")
+        }
+    }
+    
+    //MARK: Navigation helper methods
+    
+    /// Prepare before navigates to add activity form
+    ///
+    /// - Parameter segue: The UIStoryboardSegue
+    private func prepareAddActivityForm(for segue: UIStoryboardSegue) {
+        os_log("Adding activity with %{PUBLIC}@ destination",
+               log: ActivityTableViewController.osLogName,
+               type: .info,
+               segue.destination)
+    }
+    
+    
+    /// Prepare before navigates to update activity form
+    ///
+    /// - Parameters:
+    ///   - segue: The UIStoryboardSegue
+    ///   - sender: The sender
+    private func prepareEditActivityForm(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let activityFormViewController = segue.destination as? ActivityFormViewController else {
+            os_log("Invalid convertion from segue.destination to ActivityFormViewController", log: ActivityTableViewController.osLogName, type: .error)
+            
+            fatalError("Errour occours while tring to navigate to edit form")
+            
+        }
+        
+        guard let selectedCell = sender as? ActivityTableViewCell else {
+            os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
+            
+            fatalError("Errour occours while tring to navigate to edit form")
+        }
+        
+        guard let index = tableView.indexPath(for: selectedCell) else {
+            os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
+            
+            fatalError("Errour occours while tring to navigate to edit form")
+        }
+        
+        activityFormViewController.activity = activities[index.row]
+    }
+    
+    //MARK: Activity crud methods
+    
+    
+    /// Adds activity to storages
+    ///
+    /// - Parameter activity: The activity model data
+    private func addActivity (activity: ActivityModel) {
+        activityService!.save(activityModel: activity, onSuccess: {
+            addedActivity in
+            
+            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                
+                let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
+                
+                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                
+            })
+            
+            self.activities.append(addedActivity)
+            self.tableView.reloadData()
+        })
+    }
+    
+    
+    /// Update activity from storages
+    ///
+    /// - Parameters:
+    ///   - activity: The activity data
+    ///   - index: The index path informations
+    /// - Throws: Throws error when somthing went wrong while updating activity on starages
+    private func updateActivity(activity: ActivityModel, index: IndexPath) throws {
+        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+            
+            let activityModelToSend = ActivityModel(id: activities[index.row].id, name: activity.name, operationType: ActivityOperationType.updated)
+            
+            validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+            
+        })
+        
+        try activityService!.update(id: activities[index.row].id, activityModel: activity)
+        activities[index.row].name = activity.name
+        tableView.reloadRows(at: [index], with: .fade)
+    }
+    
+    
+    /// Deletes activity from storages
+    ///
+    /// - Parameter indexPath: The index path of activity on activity models list
+    private func deleteActivity(indexPath: IndexPath) {
+        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+            
+            let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
+            validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+            
+        })
+        
+        activityService?.delete(activityModel: activities[indexPath.row]) {
+            DispatchQueue.main.async {
+                self.activities.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
 }
