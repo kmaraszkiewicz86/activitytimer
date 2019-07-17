@@ -26,6 +26,7 @@
 		1F52A2AB22C40F5E00A962F1 /* WKAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AA22C40F5E00A962F1 /* WKAlertHelper.swift */; };
 		1F52A2AD22C40F6600A962F1 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F52A2AC22C40F6600A962F1 /* ActivityModel.swift */; };
 		1F574E3F22BC27CC0067F17E /* NSCoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */; };
+		1F7ED66522DFCF66009D9DA9 /* LoadingBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7ED66422DFCF66009D9DA9 /* LoadingBarViewController.swift */; };
 		1F91C6DF22D8AEB70006E5CD /* ActivityCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4704FF22D6505100E83B7B /* ActivityCloudService.swift */; };
 		1F91C6E122D8B31B0006E5CD /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */; };
 		1F91C6E222D8B4A30006E5CD /* ActivityCloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */; };
@@ -217,6 +218,7 @@
 		1F574E3622BC233E0067F17E /* NSManagedObjectArrayExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectArrayExtensionTests.swift; sourceTree = "<group>"; };
 		1F574E3C22BC24060067F17E /* ActivityModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModelTests.swift; sourceTree = "<group>"; };
 		1F574E3E22BC27CC0067F17E /* NSCoderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoderMock.swift; sourceTree = "<group>"; };
+		1F7ED66422DFCF66009D9DA9 /* LoadingBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBarViewController.swift; sourceTree = "<group>"; };
 		1F91C6E022D8B31B0006E5CD /* ActivityCloudModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCloudModel.swift; sourceTree = "<group>"; };
 		1F93388C22CD4ED3003D4359 /* NSPersistentStoreCoordinatorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinatorExtension.swift; sourceTree = "<group>"; };
 		1F93389022CD4F51003D4359 /* NSPersistentStoreCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPersistentStoreCoordinatorMock.swift; sourceTree = "<group>"; };
@@ -409,6 +411,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1F7ED66322DFCEFB009D9DA9 /* LoadingBar */ = {
+			isa = PBXGroup;
+			children = (
+				1F7ED66422DFCF66009D9DA9 /* LoadingBarViewController.swift */,
+			);
+			path = LoadingBar;
+			sourceTree = "<group>";
+		};
 		1F9A099622974A9A00C1C3DA = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +577,7 @@
 		1FB6AC3C2298822D001B7576 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F7ED66322DFCEFB009D9DA9 /* LoadingBar */,
 				1FB6AC3D2298823D001B7576 /* Activity */,
 			);
 			path = Controllers;
@@ -910,6 +921,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F7ED66522DFCF66009D9DA9 /* LoadingBarViewController.swift in Sources */,
 				1F9A88D322C4190100A27B43 /* ActivityOperationType.swift in Sources */,
 				1F9A09A522974A9A00C1C3DA /* ActivityFormViewController.swift in Sources */,
 				1F9A09A322974A9A00C1C3DA /* AppDelegate.swift in Sources */,

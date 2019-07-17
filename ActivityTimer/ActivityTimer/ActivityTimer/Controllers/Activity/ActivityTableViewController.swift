@@ -149,6 +149,12 @@ class ActivityTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func testAction(_ sender: Any) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoadingBarViewController") as! LoadingBarViewController
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     //MARK: HELPER METHODS
     
     /// Show alert
