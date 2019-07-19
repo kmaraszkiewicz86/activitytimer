@@ -149,13 +149,41 @@ class ActivityTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func testAction(_ sender: Any) {
+    //MARK: HELPER METHODS
+    
+    
+    /// Do backgroung action using loading bar view
+    ///
+    /// - Parameter onAction: <#onAction description#>
+    private func doActionWithLoadingBar(_ onAction:  @escaping ((_ onFinish: @escaping () -> Void) -> Void)) {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoadingBarViewController") as! LoadingBarViewController
+        
+        controller.onAction = {
+            onFinish in
+            onAction(onFinish)
+        }
+        
+        controller.modalPresentationStyle = .fullScreen
         
         self.present(controller, animated: true, completion: nil)
     }
     
-    //MARK: HELPER METHODS
+    @IBAction private func test() {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoadingBarViewController") as! LoadingBarViewController
+        
+//        controller.onAction = {
+//            onFinish in
+//            onAction(onFinish)
+//        }
+        
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.show(controller, sender: self)
+        
+//        self.navigationController?.present(controller, animated: true, completion: nil)
+        
+//        self.present(controller, animated: true, completion: nil)
+    }
     
     /// Show alert
     ///
@@ -234,27 +262,32 @@ class ActivityTableViewController: UITableViewController {
     
     //MARK: Activity crud methods
     
-    
     /// Adds activity to storages
     ///
     /// - Parameter activity: The activity model data
     private func addActivity (activity: ActivityModel) {
-        activityService!.save(activityModel: activity, onSuccess: {
-            addedActivity in
-            
-            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-                
-                let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
-                
-                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-                
-            })
-            
-            self.activities.append(addedActivity)
-            self.tableView.reloadData()
-        })
+        
+        self.test()
+        
+//        self.doActionWithLoadingBar { (onFinish) in
+//            self.activityService!.save(activityModel: activity, onSuccess: {
+//                addedActivity in
+//                
+//                WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+//                    
+//                    let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
+//                    
+//                    validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+//                    
+//                })
+//                
+//                self.activities.append(addedActivity)
+//                self.tableView.reloadData()
+//                
+//                //onFinish()
+//            })
+//        }
     }
-    
     
     /// Update activity from storages
     ///
@@ -276,22 +309,26 @@ class ActivityTableViewController: UITableViewController {
         tableView.reloadRows(at: [index], with: .fade)
     }
     
-    
     /// Deletes activity from storages
     ///
     /// - Parameter indexPath: The index path of activity on activity models list
     private func deleteActivity(indexPath: IndexPath) {
-        WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
-            
-            let activityModelToSend = ActivityModel(id: activities[indexPath.row].id, name: activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
-            validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
-            
-        })
         
-        activityService?.delete(activityModel: activities[indexPath.row]) {
-            DispatchQueue.main.async {
-                self.activities.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
+        self.doActionWithLoadingBar { (onFinish) in
+            WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
+                
+                let activityModelToSend = ActivityModel(id: self.activities[indexPath.row].id, name: self.activities[indexPath.row].name, operationType: ActivityOperationType.deleted)
+                validreachableSession.sendMessageData(NSKeyedArchiver.encodeActivity(activityModelToSend, forKey: "activity"), replyHandler: nil, errorHandler: nil)
+                
+            })
+            
+            self.activityService?.delete(activityModel: self.activities[indexPath.row]) {
+                DispatchQueue.main.async {
+                    self.activities.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    
+                    onFinish()
+                }
             }
         }
     }

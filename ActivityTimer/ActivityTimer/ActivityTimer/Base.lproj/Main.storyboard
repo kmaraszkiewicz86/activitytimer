@@ -58,9 +58,9 @@
                                     <segue destination="zYo-6N-Tn5" kind="show" identifier="AddActivity" id="aTN-dS-58t"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="D4X-GY-GV2">
+                            <barButtonItem title="Item" id="p9N-su-0Yw">
                                 <connections>
-                                    <action selector="testAction:" destination="m1o-TZ-7fz" id="l9D-iK-MS8"/>
+                                    <action selector="test" destination="m1o-TZ-7fz" id="PhN-KX-xGO"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -82,18 +82,13 @@
                                 <rect key="frame" x="188" y="409" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awr-6R-3xP">
-                                <rect key="frame" x="228" y="262" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="cancel:" destination="yAD-H0-qEa" eventType="touchUpInside" id="u9W-hD-m0l"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="S9b-8S-SM1"/>
                     </view>
+                    <connections>
+                        <outlet property="loaderBar" destination="dqn-v7-dDk" id="cTK-aR-eLW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9y-9j-gEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,6 +186,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tC2-AF-Ffa"/>
+        <segue reference="eCI-XF-rqN"/>
     </inferredMetricsTieBreakers>
 </document>
