@@ -89,7 +89,9 @@ class ActivityTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            deleteActivity(indexPath: indexPath)
+            self.toggleLoadingBar(visible: true) {
+                self.deleteActivity(indexPath: indexPath)
+            }
         }
     }
     
@@ -102,10 +104,12 @@ class ActivityTableViewController: UITableViewController {
     ///   - sender: The sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        print("1")
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch (segue.identifier ?? "") {
         case "AddActivity":
+            print("2")
             prepareAddActivityForm(for: segue)
             
         case "EditActivity":
@@ -124,41 +128,42 @@ class ActivityTableViewController: UITableViewController {
     ///Event triggers after response comming from another view
     @IBAction func redeirectFromForm(sender: UIStoryboardSegue) {
         
-        toggleLoadingBar(visible: true)
-        
-        if let activityFormViewController = sender.source as? ActivityFormViewController,
-            let activity = activityFormViewController.activity {
-            
-            var workType = ""
-            
-            do {
-                if let index = tableView.indexPathForSelectedRow {
-                    
-                    workType = "updating"
-                    
-                    try updateActivity(activity: activity, index: index)
-                    
-                } else {
-                    
-                    workType = "saving"
-                    
-                    addActivity(activity: activity)
+        toggleLoadingBar(visible: true) {
+            print("4")
+            if let activityFormViewController = sender.source as? ActivityFormViewController,
+                let activity = activityFormViewController.activity {
+                
+                var workType = ""
+                
+                do {
+                    if let index = self.tableView.indexPathForSelectedRow {
+                        
+                        workType = "updating"
+                        
+                        try self.updateActivity(activity: activity, index: index)
+                        
+                    } else {
+                        
+                        workType = "saving"
+                        print("5")
+                        self.addActivity(activity: activity)
+                    }
+                } catch ServiceError.noItemsFound {
+                    return
+                } catch ServiceError.databaseError {
+                    self.showAlert(title: "Error", withMessage: "Error with \(workType) data occours")
+                } catch {
+                    self.showAlert(title: "Error", withMessage: "Unknow exception occours")
                 }
-            } catch ServiceError.noItemsFound {
-                return
-            } catch ServiceError.databaseError {
-                showAlert(title: "Error", withMessage: "Error with \(workType) data occours")
-            } catch {
-                showAlert(title: "Error", withMessage: "Unknow exception occours")
             }
         }
     }
     
     //MARK: HELPER METHODS
     
-    
+    private var finish = false
     /// Presents loading bar view controller
-    private func toggleLoadingBar(visible: Bool) {
+    private func toggleLoadingBar(visible: Bool, onViewCompletion: (() -> Void)?) {
         
         DispatchQueue.main.async {
             
@@ -169,8 +174,13 @@ class ActivityTableViewController: UITableViewController {
             }
             
             if visible && self.loadingBarViewController != nil {
-                self.present(self.loadingBarViewController!, animated: false, completion: nil)
+                print("3")
+                self.present(self.loadingBarViewController!, animated: false, completion: {
+                    onViewCompletion?()
+                })
             } else if !visible {
+                print("9")
+                
                 self.loadingBarViewController?.close()
                 self.loadingBarViewController = nil
             }
@@ -258,10 +268,10 @@ class ActivityTableViewController: UITableViewController {
     ///
     /// - Parameter activity: The activity model data
     private func addActivity (activity: ActivityModel) {
-        
+        print("6")
         self.activityService!.save(activityModel: activity, onSuccess: {
             addedActivity in
-            
+            print("7")
             WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                 
                 let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
@@ -273,10 +283,12 @@ class ActivityTableViewController: UITableViewController {
             self.activities.append(addedActivity)
             
             DispatchQueue.main.async {
+                print("8")
                 self.tableView.reloadData()
+                self.toggleLoadingBar(visible: false, onViewCompletion: nil)
             }
             
-            self.toggleLoadingBar(visible: false)
+            
         })
     }
     
@@ -317,6 +329,7 @@ class ActivityTableViewController: UITableViewController {
                 self.activities.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
+            self.toggleLoadingBar(visible: false, onViewCompletion: nil)
         }
     }
 }
