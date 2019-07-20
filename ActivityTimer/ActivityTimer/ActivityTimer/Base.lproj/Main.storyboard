@@ -52,18 +52,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="W1w-9E-tDR">
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="add" id="Yu8-Rg-XhH">
-                                <connections>
-                                    <segue destination="zYo-6N-Tn5" kind="show" identifier="AddActivity" id="aTN-dS-58t"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="p9N-su-0Yw">
-                                <connections>
-                                    <action selector="test" destination="m1o-TZ-7fz" id="PhN-KX-xGO"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Yu8-Rg-XhH">
+                            <connections>
+                                <segue destination="zYo-6N-Tn5" kind="show" identifier="AddActivity" id="aTN-dS-58t"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woa-W9-1MJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,6 +179,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eCI-XF-rqN"/>
+        <segue reference="tC2-AF-Ffa"/>
     </inferredMetricsTieBreakers>
 </document>
