@@ -14,18 +14,14 @@ class LoadingBarViewController: UIViewController {
     ///The loader bar outlet
     @IBOutlet weak var loaderBar: UIActivityIndicatorView!
     
-    //MARK: events
-    ///The action to put functionality when view cover the content
-    public var onAction: ((_ onFinish: @escaping () -> Void) -> Void)!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        modalPresentationStyle = .fullScreen
         
-//        self.onAction() {
-//            self.dismiss(animated: true, completion: nil)
-//        }
-        // Do any additional setup after loading the view.
+        loaderBar.startAnimating()
+    }
+    
+    ///Close view controller
+    public func close() {
+        self.dismiss(animated: false, completion: nil)
     }
 }

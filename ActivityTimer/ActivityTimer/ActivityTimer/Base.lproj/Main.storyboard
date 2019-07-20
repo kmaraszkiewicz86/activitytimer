@@ -71,12 +71,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dqn-v7-dDk">
-                                <rect key="frame" x="188" y="409" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dqn-v7-dDk">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dqn-v7-dDk" firstAttribute="centerY" secondItem="S9b-8S-SM1" secondAttribute="centerY" id="Vyg-Qp-ukk"/>
+                            <constraint firstItem="dqn-v7-dDk" firstAttribute="centerX" secondItem="S9b-8S-SM1" secondAttribute="centerX" id="vSb-TR-qSf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="S9b-8S-SM1"/>
                     </view>
                     <connections>

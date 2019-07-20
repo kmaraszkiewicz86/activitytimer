@@ -123,6 +123,9 @@ class ActivityTableViewController: UITableViewController {
     
     ///Event triggers after response comming from another view
     @IBAction func redeirectFromForm(sender: UIStoryboardSegue) {
+        
+        toggleLoadingBar(visible: true)
+        
         if let activityFormViewController = sender.source as? ActivityFormViewController,
             let activity = activityFormViewController.activity {
             
@@ -158,16 +161,17 @@ class ActivityTableViewController: UITableViewController {
     private func toggleLoadingBar(visible: Bool) {
         
         DispatchQueue.main.async {
+            
             if self.loadingBarViewController == nil {
-                
                 self.loadingBarViewController = (self.storyboard?.instantiateViewController(withIdentifier: "LoadingBarViewController") as! LoadingBarViewController)
                 
-                loadingBarViewController?.modalPresentationStyle = .fullScreen
+                self.loadingBarViewController!.modalPresentationStyle = .fullScreen
             }
             
             if visible && self.loadingBarViewController != nil {
-                self.present(self.loadingBarViewController!, animated: true, completion: nil)
+                self.present(self.loadingBarViewController!, animated: false, completion: nil)
             } else if !visible {
+                self.loadingBarViewController?.close()
                 self.loadingBarViewController = nil
             }
         }
@@ -267,7 +271,12 @@ class ActivityTableViewController: UITableViewController {
             })
             
             self.activities.append(addedActivity)
-            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+            self.toggleLoadingBar(visible: false)
         })
     }
     
@@ -307,8 +316,6 @@ class ActivityTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.activities.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
-                
-                onFinish()
             }
         }
     }
