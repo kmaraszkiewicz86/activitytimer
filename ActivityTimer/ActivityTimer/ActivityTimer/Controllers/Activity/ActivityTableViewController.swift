@@ -104,12 +104,10 @@ class ActivityTableViewController: UITableViewController {
     ///   - sender: The sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        print("1")
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         switch (segue.identifier ?? "") {
         case "AddActivity":
-            print("2")
             prepareAddActivityForm(for: segue)
             
         case "EditActivity":
@@ -159,68 +157,6 @@ class ActivityTableViewController: UITableViewController {
         }
     }
     
-    //MARK: HELPER METHODS
-    
-    private var finish = false
-    /// Presents loading bar view controller
-    private func toggleLoadingBar(visible: Bool, onViewCompletion: (() -> Void)?) {
-        
-        DispatchQueue.main.async {
-            
-            if self.loadingBarViewController == nil {
-                self.loadingBarViewController = (self.storyboard?.instantiateViewController(withIdentifier: "LoadingBarViewController") as! LoadingBarViewController)
-                
-                self.loadingBarViewController!.modalPresentationStyle = .fullScreen
-            }
-            
-            if visible && self.loadingBarViewController != nil {
-                print("3")
-                self.present(self.loadingBarViewController!, animated: false, completion: {
-                    onViewCompletion?()
-                })
-            } else if !visible {
-                print("9")
-                
-                self.loadingBarViewController?.close()
-                self.loadingBarViewController = nil
-            }
-        }
-    }
-    
-    /// Show alert
-    ///
-    /// - Parameter error: The Error message
-    private func showAlert(error: String?) {
-        self.showAlert(title: "An error occured", withMessage: String(describing: error))
-    }
-    
-    ///Show alert
-    ///- parameter title: The alert title
-    ///- parameter withMessage: The alert message
-    private func showAlert (title: String, withMessage: String) {
-        
-        let action = UIAlertController(title: title, message: withMessage, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        
-        action.addAction(okAction)
-        
-        present(action, animated: true)
-        
-    }
-    
-    ///Fetch activies models data
-    private func fetchData () {
-        do {
-            activities = try activityService!.getAll()
-            tableView.reloadData()
-        } catch ServiceError.databaseError {
-            showAlert(title: "Error", withMessage: "Error with saving data occours")
-        } catch {
-            showAlert(title: "Error", withMessage: "Unknow exception occours")
-        }
-    }
-    
     //MARK: Navigation helper methods
     
     /// Prepare before navigates to add activity form
@@ -233,6 +169,28 @@ class ActivityTableViewController: UITableViewController {
                segue.destination)
     }
     
+    //MARK: LoadingBarViewController helpers
+    /// Presents loading bar view controller
+    private func toggleLoadingBar(visible: Bool, onViewCompletion: (() -> Void)?) {
+        
+        DispatchQueue.main.async {
+            
+            if self.loadingBarViewController == nil {
+                self.loadingBarViewController = (self.storyboard?.instantiateViewController(withIdentifier: "LoadingBarViewController") as! LoadingBarViewController)
+                
+                self.loadingBarViewController!.modalPresentationStyle = .fullScreen
+            }
+            
+            if visible && self.loadingBarViewController != nil {
+                self.present(self.loadingBarViewController!, animated: false, completion: {
+                    onViewCompletion?()
+                })
+            } else if !visible {
+                self.loadingBarViewController?.close()
+                self.loadingBarViewController = nil
+            }
+        }
+    }
     
     /// Prepare before navigates to update activity form
     ///
@@ -268,10 +226,8 @@ class ActivityTableViewController: UITableViewController {
     ///
     /// - Parameter activity: The activity model data
     private func addActivity (activity: ActivityModel) {
-        print("6")
         self.activityService!.save(activityModel: activity, onSuccess: {
             addedActivity in
-            print("7")
             WCSession.initIOSSession(session: self.sesssion, sessionAction: { (validreachableSession) in
                 
                 let activityModelToSend = ActivityModel(id: addedActivity.id, name: addedActivity.name, operationType: ActivityOperationType.added)
@@ -283,7 +239,6 @@ class ActivityTableViewController: UITableViewController {
             self.activities.append(addedActivity)
             
             DispatchQueue.main.async {
-                print("8")
                 self.tableView.reloadData()
                 self.toggleLoadingBar(visible: false, onViewCompletion: nil)
             }
@@ -332,6 +287,42 @@ class ActivityTableViewController: UITableViewController {
             self.toggleLoadingBar(visible: false, onViewCompletion: nil)
         }
     }
+    
+    ///Fetch activies models data
+    private func fetchData () {
+        do {
+            activities = try activityService!.getAll()
+            tableView.reloadData()
+        } catch ServiceError.databaseError {
+            showAlert(title: "Error", withMessage: "Error with fetching data occours")
+        } catch {
+            showAlert(title: "Error", withMessage: "Unknow exception occours")
+        }
+    }
+    
+    //MARK: HELPER METHODS
+    
+    /// Show alert
+    ///
+    /// - Parameter error: The Error message
+    private func showAlert(error: String?) {
+        self.showAlert(title: "An error occured", withMessage: String(describing: error))
+    }
+    
+    ///Show alert
+    ///- parameter title: The alert title
+    ///- parameter withMessage: The alert message
+    private func showAlert (title: String, withMessage: String) {
+        
+        let action = UIAlertController(title: title, message: withMessage, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        action.addAction(okAction)
+        
+        present(action, animated: true)
+        
+    }
 }
 
 ///The ActivityTableViewController extension with WCSessionDelegate helpers methods
@@ -344,16 +335,15 @@ extension ActivityTableViewController: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
+        os_log("activationDidCompleteWith activationState:%{PUBLIC}@ error:%{PUBLIC}@)", log: ActivityTableViewController.osLogName, type: .error, String(describing: activationState), String(describing: error))
+
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print("sessionDidBecomeInactive: \(session)")
+        os_log("sessionDidBecomeInactive: %{PUBLIC}@", log: ActivityTableViewController.osLogName, type: .info, String(describing: session))
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print("sessionDidDeactivate: \(session)")
-        
         self.sesssion?.activate()
     }
     
