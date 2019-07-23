@@ -42,7 +42,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="Ihr-oq-Iy4" id="zRe-0E-hyh"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="EditActivity" id="tC2-AF-Ffa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -93,7 +92,7 @@
         <!--Activity Form View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ActivityFormViewController" customModule="ActivityTimer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityFormViewController" id="BYZ-38-t0r" customClass="ActivityFormViewController" customModule="ActivityTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +180,4 @@
             <point key="canvasLocation" x="1990" y="550"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="tC2-AF-Ffa"/>
-    </inferredMetricsTieBreakers>
 </document>

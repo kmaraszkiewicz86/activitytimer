@@ -85,14 +85,41 @@ class ActivityTableViewController: UITableViewController {
         return true
     }
     
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    
+    /// Build buttons for edit style in cell rows
+    ///
+    /// - Parameters:
+    ///   - tableView: The tableView instance
+    ///   - indexPath: The indexPath of row cell
+    /// - Returns: returns custom buttons for editing syle for table view row cells
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (tableViewRowAction, indexPath) in
             
-            self.toggleLoadingBar(visible: true) {
-                self.deleteActivity(indexPath: indexPath)
+            guard let cell = tableView.cellForRow(at: indexPath) else {
+                self.showAlert(title: "Error while tring to go to edit form", withMessage: "The required cell row at index \(indexPath.row) not found")
+                
+                return
             }
+            
+            let activityFormViewController = self.storyboard?.instantiateViewController(withIdentifier: "ActivityFormViewController") as! ActivityFormViewController
+            
+            self.prepareEditActivityForm(for: activityFormViewController, sender: cell)
+            
+            self.present(activityFormViewController, animated: true, completion: nil)
         }
+        
+        editAction.backgroundColor = .blue
+        
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (tableViewRowAction, indexPath) in
+            self.toggleLoadingBar(visible: true, onViewCompletion: {
+                self.deleteActivity(indexPath: indexPath)
+            })
+        }
+        
+        deleteAction.backgroundColor = .red
+        
+        return [deleteAction, editAction]
     }
     
     // MARK: - Navigation
@@ -109,9 +136,6 @@ class ActivityTableViewController: UITableViewController {
         switch (segue.identifier ?? "") {
         case "AddActivity":
             prepareAddActivityForm(for: segue)
-            
-        case "EditActivity":
-            prepareEditActivityForm(for: segue, sender: sender)
             
         default:
             os_log("Destination %s not implemented",
@@ -195,15 +219,9 @@ class ActivityTableViewController: UITableViewController {
     /// Prepare before navigates to update activity form
     ///
     /// - Parameters:
-    ///   - segue: The UIStoryboardSegue
-    ///   - sender: The sender
-    private func prepareEditActivityForm(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let activityFormViewController = segue.destination as? ActivityFormViewController else {
-            os_log("Invalid convertion from segue.destination to ActivityFormViewController", log: ActivityTableViewController.osLogName, type: .error)
-            
-            fatalError("Errour occours while tring to navigate to edit form")
-            
-        }
+    ///   - activityFormViewController: The ActivityFormViewController view controller
+    ///   - sender: The cell row object
+    private func prepareEditActivityForm(for activityFormViewController: ActivityFormViewController, sender: Any?) {
         
         guard let selectedCell = sender as? ActivityTableViewCell else {
             os_log("Invalid convertion from sender to ActivityTableViewCell", log: ActivityTableViewController.osLogName, type: .error)
