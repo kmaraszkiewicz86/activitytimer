@@ -106,7 +106,7 @@ class ActivityTableViewController: UITableViewController {
             
             self.prepareEditActivityForm(for: activityFormViewController, sender: cell)
             
-            self.present(activityFormViewController, animated: true, completion: nil)
+            self.show(activityFormViewController, sender: cell)
         }
         
         editAction.backgroundColor = .blue
