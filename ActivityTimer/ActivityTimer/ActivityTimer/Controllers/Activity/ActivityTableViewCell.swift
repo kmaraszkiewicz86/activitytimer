@@ -23,5 +23,20 @@ class ActivityTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        let actionButton = UIButton(type: .custom)
+        actionButton.setTitle("Test", for: .normal)
+        
+        self.addSubview(actionButton)
+        
+        self.addConstraint(NSLayoutConstraint(item: actionButton, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.0, constant: 10.0))
+        
+        self.addConstraint(NSLayoutConstraint(item: actionButton, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 0.6, constant: 0.0))
+        
+        self.addConstraint(NSLayoutConstraint(item: actionButton, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 0, constant: 10.0))
+        
+        self.addConstraint(NSLayoutConstraint(item: actionButton, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 0, constant: 10.0))
+    }
 
 }
